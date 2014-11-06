@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -62,22 +62,34 @@
 
         <div class="row">
             <div class="col-md-12">
+		 	<div class="hero-unit">
+		
+		        <p class="btn btn-primary btn-large"> Listado Centro de Formacion</p>
+		        <br/><br/>
+		      </div>
                 <table class="table table-striped table-bordered">
                     <tr>
-                        <th>Nombre</th>
+                        <th>Centro Formacion</th>
                         <th>Tipo</th>
                         <th>URL</th>
                     </tr>
                     <tr>
+                   
+           
                         <%@page import="java.util.*,modelo.CentroFormacion" %>
                         <%
+                        
                         	ArrayList<CentroFormacion> Centros=(ArrayList<CentroFormacion>) request.getAttribute("Centros");
+                        
                         
                         	if (Centros!=null){
                         		
                         		for(CentroFormacion c: Centros){
                         			out.println("<tr>");
-                        			
+                        			out.println("<td> "  + c.getNom_CentroFormacion() +  "  </td>");
+                        			out.println("<td> "  + c.getDs_TipoCentroFormacion() +  "  </td>");
+                        			out.println("<td> "  + c.getUrl_CentroFormacion() +  "  </td>");
+                        			                        					
                         			out.println("</tr>");
                         		}
                              	
@@ -97,7 +109,11 @@
             </div>
 
         </div>
-
+ 					<form method="post" action="CentroFormacionServlet">
+                    <p>
+                    <input type="submit" value="Listar" />
+                    </p>
+         			</form>
         <footer>
             <p>&copy; Company 2014</p>
         </footer>
