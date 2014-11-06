@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>  
 	<meta charset="utf-8">	
@@ -6,8 +6,10 @@
     <meta name="description" content="David Rodr&iacute;guez Condezo">
 	<meta name="keywords" content="David Rodriguez Condezo Rodr&iacute;guez Curriculum Hoja de vida consultoria ti">
     <meta name="author" content="David Rodr&iacute;guez Condezo">
-	
-    <title>David Rodr&iacute;guez Condezo</title>
+
+   <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+   
+    <title>StarSoft</title>
 	
 	<script src="js/jquery-1.10.2.js"></script>
     <script src="js/bootstrap-3.2.0.js"></script>
@@ -42,11 +44,11 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">OpciÃ³n 1</a></li>
-            <li><a href="#">OpciÃ³n 2</a></li>
-			<li><a href="#">OpciÃ³n 3</a></li>
-			<li><a href="#">OpciÃ³n 4</a></li>            
-			<li><a href="#">OpciÃ³n 5</a></li>
+            <li class="active"><a href="#">Opción 1</a></li>
+            <li><a href="#">Opción 2</a></li>
+			<li><a href="#">Opción 3</a></li>
+			<li><a href="#">Opción 4</a></li>            
+			<li><a href="#">Opción 5</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -59,10 +61,10 @@
 			<div class="col-md-12">
 				<table class="table table-striped table-bordered">
 					<tr>
-							<th>ID</th><th>PaÃ­s</th><th>Capital</th>
+							<th>ID</th><th>País</th><th>Capital</th>
 					</tr>
 					<tr>
-							<th>1</th><th>PerÃº</th><th>Lima</th>
+							<th>1</th><th>Perú</th><th>Lima</th>
 					</tr>
 					<tr>
 							<th>2</th><th>Brasil</th><th>Brasilia</th>
@@ -117,11 +119,11 @@
 				</div>
 				
 				<div class="control-group">
-				<label class="control-label" for="select01">PaÃ­s</label>
+				<label class="control-label" for="select01">País</label>
 				<div class="controls">
 				  <select id="select01">
 				  <option>------</option>
-				  <option>PerÃº</option>
+				  <option>Perú</option>
 				  <option>Brasil</option>
 				  <option>Colombia</option>
 				  <option>Venezuela</option>
