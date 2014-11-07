@@ -5,8 +5,18 @@ public class CentroFormacion {
 	int id_CentroFormacion;
 	String nom_CentroFormacion;
 	int id_TipoCentroFormacion;
+	String ds_TipoCentroFormacion;
 	String Url_CentroFormacion;
 	
+	
+	
+	
+	public String getDs_TipoCentroFormacion() {
+		return ds_TipoCentroFormacion;
+	}
+	public void setDs_TipoCentroFormacion(String ds_TipoCentroFormacion) {
+		this.ds_TipoCentroFormacion = ds_TipoCentroFormacion;
+	}
 	public int getId_CentroFormacion() {
 		return id_CentroFormacion;
 	}
