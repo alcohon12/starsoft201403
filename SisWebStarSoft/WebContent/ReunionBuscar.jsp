@@ -1,4 +1,4 @@
-<%@ page import="java.util.ArrayList,modelo.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="java.util.*,modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -12,13 +12,16 @@
     <title>Sistema de gestión de la innovación</title>
 	
 	<script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap-3.2.0.js"></script>
+	<script src="js/bootstrap-3.2.0.js"></script>
+	<script src="js/bootstrap-datepicker.js"></script>
+	<script src="js/locales/bootstrap-datepicker.es.js"></script>
     <script src="js/Utils.js"></script>
-    <script src="js/UsuarioBuscar.js"></script>
+    <script src="js/ReunionBuscar.js"></script>
 
 	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
 	<link href="css/offcanvas.css" rel="stylesheet">	
+	<link href="css/datepicker.css" rel="stylesheet">
 	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -56,6 +59,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+				<% 
+					Date fecha_hoy = new Date();
+					String fecha_hoy_str = "";
+				
+					DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+					fecha_hoy_str = df.format(fecha_hoy);
+				%>
+			
 				<form class="form-horizontal well" method="post" action="BusquedaReunionServlet">
 					<fieldset>
 				  		<legend>Búsqueda de reuniones</legend>
@@ -63,9 +74,9 @@
 						<div class="control-group">
 							<div class="controls">
 								<label class="control-label" for="input01">Fecha inicio:</label>
-								<input type="date" id="txtFechaIni" name=""txtFechaIni" class="input-medium" style="width:80px">
+								<input type="text" id="txtFechaIni" name=""txtFechaIni" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
 								<label class="control-label" for="input01">Fecha fin:</label>
-								<input type="date" id="txtFechaFin" name=""txtFechaFin" class="input-medium" style="width:80px">
+								<input type="text" id="txtFechaFin" name=""txtFechaFin" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
 							</div>
 						</div>
 						<br>
@@ -101,7 +112,7 @@
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/icons/ic_edit.png' onclick='AbriRegistro(" + item.getId_Reunion() + ")'>");
+									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Reunion() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getObservacion_Reunion());

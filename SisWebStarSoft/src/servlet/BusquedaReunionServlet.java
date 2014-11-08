@@ -1,9 +1,8 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
+import java.text.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -41,7 +40,20 @@ public class BusquedaReunionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String FechaIni = request.getParameter("txtFechaIni");
-		String FechaFin = request.getParameter("txtFechaIni");
+		String FechaFin = request.getParameter("txtFechaFin");
+		
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+		
+		Date xFechaIni = new Date();
+		Date xFechaFin = new Date();
+		
+		try {
+			xFechaIni = df.parse(FechaIni);
+			xFechaFin = df.parse(FechaFin);
+		} 
+		catch (ParseException e) {
+			e.printStackTrace();
+		}
 		
 		ArrayList<Reunion> lst = new ArrayList<Reunion>();
 		ArrayList<Reunion> lstfiltro = new ArrayList<Reunion>();
@@ -101,6 +113,7 @@ public class BusquedaReunionServlet extends HttpServlet {
 		
 		for(Reunion item : lst)
 		{
+			if(item.getFecha_Reunion().compareTo(xFechaIni) >= 0 && item.getFecha_Reunion().compareTo(xFechaFin) <= 0)
 			lstfiltro.add(item);
 		}
 		

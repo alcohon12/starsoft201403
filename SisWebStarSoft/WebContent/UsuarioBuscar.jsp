@@ -43,7 +43,7 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Usuarios</a></li>
-            <li><a href="ReunionBuscar.jsp">Opción 2</a></li>
+            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
 			<li><a href="#">Opción 3</a></li>
 			<li><a href="#">Opción 4</a></li>            
 			<li><a href="#">Opción 5</a></li>
@@ -107,7 +107,7 @@
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/icons/ic_edit.png' onclick='AbriRegistro(" + item.getId_Usuario() + ")'>");
+									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Usuario() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getNombre_Usuario());
