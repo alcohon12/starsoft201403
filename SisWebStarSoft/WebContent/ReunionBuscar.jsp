@@ -59,14 +59,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<% 
-					Date fecha_hoy = new Date();
-					String fecha_hoy_str = "";
-				
-					DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-					fecha_hoy_str = df.format(fecha_hoy);
-				%>
-			
 				<form class="form-horizontal well" method="post" action="BusquedaReunionServlet">
 					<fieldset>
 				  		<legend>Búsqueda de reuniones</legend>
@@ -74,9 +66,9 @@
 						<div class="control-group">
 							<div class="controls">
 								<label class="control-label" for="input01">Fecha inicio:</label>
-								<input type="text" id="txtFechaIni" name=""txtFechaIni" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
+								<input type="text" id="txtFechaIni" name="txtFechaIni" class="input-medium" style="width:90px;text-align:center" required>
 								<label class="control-label" for="input01">Fecha fin:</label>
-								<input type="text" id="txtFechaFin" name=""txtFechaFin" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
+								<input type="text" id="txtFechaFin" name="txtFechaFin" class="input-medium" style="width:90px;text-align:center" required>
 							</div>
 						</div>
 						<br>
@@ -130,7 +122,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="7">Registros: 
+							<td colspan="4">Registros: 
 								<% 
 									if(lst != null) 
 										out.println(lst.size()); 

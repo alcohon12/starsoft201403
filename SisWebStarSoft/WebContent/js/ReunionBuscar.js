@@ -1,8 +1,6 @@
 $(document).ready(function () {
 	KeyPress();
 	DatePicker();
-	
-    $("#txtFechaIni").focus();
 });
 
 function DatePicker()
