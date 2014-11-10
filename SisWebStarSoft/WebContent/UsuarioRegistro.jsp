@@ -210,7 +210,6 @@
 						<br>
 						<div class="form-actions">
 							<button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
-							<button type="reset" class="btn">Cancelar</button>
 							<button type="button" class="btn" onclick="AbrirBusqueda();">Regresar</button>            
 						</div>
 					<fieldset>
