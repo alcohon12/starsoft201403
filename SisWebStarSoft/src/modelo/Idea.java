@@ -10,6 +10,7 @@ public class Idea {
 	private String palabraClave2;
 	private String palabraClave3;
 	private String palabraClave4;
+	private String estado_Idea;
 	private String extensionArchivoIdea;
 	private int id_Estado;
 	private int id_Alumno;
@@ -59,6 +60,12 @@ public class Idea {
 	}
 	public void setPalabraClave4(String palabraClave4) {
 		this.palabraClave4 = palabraClave4;
+	}
+	public String getEstado_Idea() {
+		return estado_Idea;
+	}
+	public void setEstado_Idea(String estado_Idea) {
+		this.estado_Idea = estado_Idea;
 	}
 	public String getExtensionArchivoIdea() {
 		return extensionArchivoIdea;
