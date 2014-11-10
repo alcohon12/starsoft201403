@@ -5,9 +5,9 @@
 <head>
 	<meta charset="utf-8">	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Victor Marino">
-	<meta name="keywords" content="Victor Marino">
-    <meta name="author" content="Victor Marino">
+    <meta name="description" content="Frank Chara">
+	<meta name="keywords" content="Frank Chara">
+    <meta name="author" content="Frank Chara">
 	
     <title>Sistema de gestión de la innovación</title>
 	
@@ -16,7 +16,7 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/locales/bootstrap-datepicker.es.js"></script>
     <script src="js/Utils.js"></script>
-    <script src="js/ReunionBuscar.js"></script>
+    <script src="js/IdeaBuscar.js"></script>
 
 	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
@@ -59,16 +59,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal well" method="post" action="BusquedaReunionServlet">
+				<form class="form-horizontal well" method="post" action="BusquedaIdeaServlet">
 					<fieldset>
 				  		<legend>Búsqueda de Ideas</legend>
 				  		
 						<div class="control-group">
 							<div class="controls">
-								<input type="checkbox" id="chktodas" name="chktodas" class="input-medium" style="width:10%;" required>Todas
-								<input type="checkbox" id="chkpublicadas" name="chkpublicadas" class="input-medium" style="width:10%;" required>Publicadas
-								<input type="checkbox" id="chkaprobadas" name="chkaprobadas" class="input-medium" style="width:10%;" required>Aprobadas
-								<input type="checkbox" id="chkrechazadas" name="chkrechazadas" class="input-medium" style="width:10%;" required>Rechazadas
+								<input type="radio" id="rbttodas" value="rbttodas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Todas
+								<input type="radio" id="rbtpublicadas" value="rbtpublicadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Publicadas
+								<input type="radio" id="rbtaprobadas" value="rbtaprobadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Aprobadas
+								<input type="radio" id="rbtrechazadas" value="rbtrechazadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Rechazadas
 							</div>
 							</br>
 							<div class="controls">
@@ -94,30 +94,34 @@
 					<thead>
 						<tr>
 							<th style="width:50px">Editar</th>
-							<th style="width:400px">Observaciones</th>
-							<th style="width:150px">Calificación</th>
-							<th style="width:100px">Fecha</th>
+							<th style="width:150px">Titulo</th>
+							<th style="width:400px">Descripcion</th>
+							<th style="width:150px">Palabras Clave</th>
+							<th style="width:100px">Estado</th>
 						</tr>
 					</thead>
 					<tbody>
 						<% 
-							ArrayList<Reunion> lst = (ArrayList<Reunion>) request.getAttribute("LISTADO_REUNIONES");
+							ArrayList<Idea> lst = (ArrayList<Idea>) request.getAttribute("LISTADO_IDEAS");
 							if(lst != null)
 							{
-								for(Reunion item : lst)
+								for(Idea item : lst)
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Reunion() + ")'>");
+									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getObservacion_Reunion());
+									out.println(item.getTitulo_Idea());
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getNombre_Calificacion());
+									out.println(item.getDescripcion_Idea());
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getFecha_Reunion_String());
+									out.println(item.getPalabraClave1() + "," + item.getPalabraClave2() + "," + item.getPalabraClave3()+ "," + item.getPalabraClave4());
+									out.println("</td>");
+									out.println("<td>");
+									out.println(item.getEstado_Idea());
 									out.println("</td>");
 									out.println("</tr>");
 								}
