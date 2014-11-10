@@ -9,7 +9,14 @@ public class Discusion {
 	private String comentario;
 	private int id_DiscusionPadre;
 	private Date fecha_creacion;
+	private String usuario_Comentario;
 	
+	public String getUsuario_Comentario() {
+		return usuario_Comentario;
+	}
+	public void setUsuario_Comentario(String usuario_Comentario) {
+		this.usuario_Comentario = usuario_Comentario;
+	}
 	public int getId_Discusion() {
 		return id_Discusion;
 	}
