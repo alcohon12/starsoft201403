@@ -1,3 +1,6 @@
+<%@page import="java.util.Date"%>
+<%@page import="sun.util.calendar.BaseCalendar.Date"%>
+<%@page import="com.sun.org.apache.bcel.internal.generic.LSTORE"%>
 <%@ page import="java.util.*,modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -59,88 +62,112 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+			<% 
+					
+					ArrayList<Idea> lst = new ArrayList<Idea>();
+					ArrayList<Discusion> lstDiscusion = new ArrayList<Discusion>();
+					String CodigoIdea = request.getParameter("CodigoIdea");
+					String Titulo = "";
+					String Descripcion = "";
+					String Estrellas = "";
+					if(CodigoIdea != null)
+					{
+						int xCodigoIdea = Integer.parseInt(CodigoIdea);
+						
+						Idea obj1 = new Idea();
+						obj1.setId_Idea(1);
+						obj1.setTitulo_Idea("Idea 1 prueba");
+						obj1.setDescripcion_Idea("Esta es la primera idea");
+						obj1.setPalabraClave1("palabraidea1");
+						obj1.setPalabraClave2("palabraidea2");
+						obj1.setPalabraClave3("palabraidea3");
+						obj1.setPalabraClave4("palabraidea4");
+						obj1.setEstado_Idea("APROBADA");
+						lst.add(obj1);
+						
+						Discusion objD1 = new Discusion();
+						objD1.setId_Idea(1);
+						objD1.setComentario("Es una muy buena idea aunque me gustaria agregar algunas cosas");
+						objD1.setFecha_creacion(new Date());
+						objD1.setUsuario_Comentario("fchara");
+						lstDiscusion.add(objD1);
+						
+						Idea obj2 = new Idea();
+						obj2.setId_Idea(2);
+						obj2.setTitulo_Idea("Idea 2 prueba");
+						obj2.setDescripcion_Idea("Esta es la segunda idea");
+						obj2.setPalabraClave1("palabraidea1");
+						obj2.setPalabraClave2("palabraidea2");
+						obj2.setPalabraClave3("palabraidea3");
+						obj2.setPalabraClave4("palabraidea4");
+						obj2.setEstado_Idea("RECHAZADA");
+						lst.add(obj2);
+						
+						Idea obj3 = new Idea();
+						obj3.setId_Idea(3);
+						obj3.setTitulo_Idea("Idea 3 prueba");
+						obj3.setDescripcion_Idea("Esta es la tercera idea");
+						obj3.setPalabraClave1("palabraidea1");
+						obj3.setPalabraClave2("palabraidea2");
+						obj3.setPalabraClave3("palabraidea3");
+						obj3.setPalabraClave4("palabraidea4");
+						obj3.setEstado_Idea("PUBLICADA");
+						lst.add(obj3);
+						
+						Idea obj4 = new Idea();
+						obj4.setId_Idea(4);
+						obj4.setTitulo_Idea("Idea 4 prueba");
+						obj4.setDescripcion_Idea("Esta es la cuarta idea");
+						obj4.setPalabraClave1("palabraidea1");
+						obj4.setPalabraClave2("palabraidea2");
+						obj4.setPalabraClave3("palabraidea3");
+						obj4.setPalabraClave4("palabraidea4");
+						obj4.setEstado_Idea("APROBADA");
+						lst.add(obj4);
+						
+						for(Idea item : lst)
+						{
+							if(item.getId_Idea() == xCodigoIdea)
+							{
+								Titulo = item.getTitulo_Idea();
+								Descripcion = item.getDescripcion_Idea();
+							}
+						}
+					}
+				%>
 				<form class="form-horizontal well" method="post" action="BusquedaIdeaServlet">
 					<fieldset>
-				  		<legend>Búsqueda de Ideas</legend>
-				  		
-						<div class="control-group">
-							<div class="controls">
-								<input type="radio" id="rbttodas" value="rbttodas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Todas
-								<input type="radio" id="rbtpublicadas" value="rbtpublicadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Publicadas
-								<input type="radio" id="rbtaprobadas" value="rbtaprobadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Aprobadas
-								<input type="radio" id="rbtrechazadas" value="rbtrechazadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Rechazadas
-							</div>
-							</br>
-							<div class="controls">
-								<input type="text" id="txtfiltro" name="txtfiltro" class="input-medium" style="width:70%;">
-							</div>
-						</div>
+				  		<legend><% out.println(Titulo); %></legend>
+				  		Votar 
+				  		<img id="ImgStar1" src="img/Iconos/StarD.png" alt="star icon">
+				  		<img id="ImgStar2" src="img/Iconos/StarD.png" alt="star icon">
+				  		<img id="ImgStar3" src="img/Iconos/StarD.png" alt="star icon">
+				  		<img id="ImgStar4" src="img/Iconos/StarD.png" alt="star icon">
+				  		<img id="ImgStar5" src="img/Iconos/StarD.png" alt="star icon">
+				  		<br><% out.println(Descripcion); %>				
+						<br><br><br>
+						
+						<%
+							for(Discusion item : lstDiscusion){
+								out.println("Fecha de Comentario:" +  item.getFecha_creacion());
+								out.println("<div class='form-horizontal well'>");
+								out.println(item.getComentario());
+								out.println("</div>");
+							}
+						%>
 						<br>
-						<div class="form-actions">
-							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
+						<div class="form-horizontal well"></div>
+							<input type="text" id="txtComent" name="txtComent" class="input-medium" style="width:70%;">
 						</div>
-					<fieldset>
+						
+					</fieldset>
 				</form>
 			</div>
-			
+					
 			<div class="col-md-12">
 				<div class="form-actions">
 					<button type="button" class="btn btn-primary" onclick="AbriRegistro();">Agregar</button>
 				</div>
-			</div>
-			
-			<div class="col-md-12">
-				<table class="table table-striped table-bordered">
-					<thead>
-						<tr>
-							<th style="width:50px">Editar</th>
-							<th style="width:150px">Titulo</th>
-							<th style="width:400px">Descripcion</th>
-							<th style="width:150px">Palabras Clave</th>
-							<th style="width:100px">Estado</th>
-						</tr>
-					</thead>
-					<tbody>
-						<% 
-							ArrayList<Idea> lst = (ArrayList<Idea>) request.getAttribute("LISTADO_IDEAS");
-							if(lst != null)
-							{
-								for(Idea item : lst)
-								{
-									out.println("<tr>");
-									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
-									out.println("</td>");
-									out.println("<td>");
-									out.println(item.getTitulo_Idea());
-									out.println("</td>");
-									out.println("<td>");
-									out.println(item.getDescripcion_Idea());
-									out.println("</td>");
-									out.println("<td>");
-									out.println(item.getPalabraClave1() + "," + item.getPalabraClave2() + "," + item.getPalabraClave3()+ "," + item.getPalabraClave4());
-									out.println("</td>");
-									out.println("<td>");
-									out.println(item.getEstado_Idea());
-									out.println("</td>");
-									out.println("</tr>");
-								}
-							}
-						%>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="4">Registros: 
-								<% 
-									if(lst != null) 
-										out.println(lst.size()); 
-									else 
-										out.println(0); 
-								%>
-							</td>
-						</tr>
-					</tfoot>
-				</table>
 			</div>
 		</div>
 
