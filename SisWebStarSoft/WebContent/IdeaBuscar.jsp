@@ -72,13 +72,11 @@
 							</div>
 							</br>
 							<div class="controls">
-								<input type="text" id="txtfiltro" name="txtfiltro" class="input-medium" style="width:70%;">
+								<input type="text" id="txtfiltro" name="txtfiltro" class="input-medium" style="width:70%;">      <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
 							</div>
 						</div>
-						<br>
-						<div class="form-actions">
-							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
-						</div>
+						
+						
 					<fieldset>
 				</form>
 			</div>
