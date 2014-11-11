@@ -69,6 +69,7 @@
 					String Titulo = "";
 					String Descripcion = "";
 					String Estrellas = "";
+					int IdIdea =0;
 					if(CodigoIdea != null)
 					{
 						int xCodigoIdea = Integer.parseInt(CodigoIdea);
@@ -128,6 +129,7 @@
 						{
 							if(item.getId_Idea() == xCodigoIdea)
 							{
+								IdIdea = item.getId_Idea();
 								Titulo = item.getTitulo_Idea();
 								Descripcion = item.getDescripcion_Idea();
 							}
@@ -136,32 +138,48 @@
 				%>
 				<form class="form-horizontal well" method="post" action="RegistroDiscusionServlet">
 					<fieldset>
-				  		<legend><% out.println(Titulo); %></legend>
-				  		Votar 
-				  		<img id="ImgStar1" src="img/Iconos/StarD.png" alt="star icon">
-				  		<img id="ImgStar2" src="img/Iconos/StarD.png" alt="star icon">
-				  		<img id="ImgStar3" src="img/Iconos/StarD.png" alt="star icon">
-				  		<img id="ImgStar4" src="img/Iconos/StarD.png" alt="star icon">
-				  		<img id="ImgStar5" src="img/Iconos/StarD.png" alt="star icon">
+				  		<legend align="center"><% out.println(Titulo); %></legend>
+				  		<div align="center">
+					  		Votar 
+					  		<img id="ImgStar1" src="img/Iconos/Star.png" alt="star icon">
+					  		<img id="ImgStar2" src="img/Iconos/Star.png" alt="star icon">
+					  		<img id="ImgStar3" src="img/Iconos/Star.png" alt="star icon">
+					  		<img id="ImgStar4" src="img/Iconos/Star.png" alt="star icon">
+					  		<img id="ImgStar5" src="img/Iconos/Star.png" alt="star icon">
+				  		</div>
 				  		<br><% out.println(Descripcion); %>				
 						<br><br><br>
 						
 						<%
 							for(Discusion item : lstDiscusion){
-								out.println("Fecha de Comentario:" +  item.getFecha_creacion());
-								out.println("<div class='form-horizontal well'>");
-								out.println(item.getComentario());
-								out.println("</div>");
+								if(item.getId_Idea() == IdIdea){
+									String b = new String("");
+									SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+									b = format.format(item.getFecha_creacion());
+									out.println("Usuario: " + item.getUsuario_Comentario() + "    Fecha de Comentario: " +  b);
+									out.println("<div class='form-horizontal well2'>");
+									out.println(item.getComentario());
+									out.println("</div>");
+								}
+							}
+						
+							ArrayList<Discusion> lstServ = (ArrayList<Discusion>) request.getAttribute("LISTADO_DISCUSION");
+							if(lstServ != null){
+								for(Discusion item : lstServ){
+									out.println("Fecha de Comentario:" +  item.getFecha_creacion());
+									out.println("<div class='form-horizontal well'>");
+									out.println(item.getComentario());
+									out.println("</div>");
+								}
 							}
 						%>
-						<br>
-						<div class="form-horizontal well"></div>
-							<input type="text" id="txtComent" name="txtComent" class="input-medium" style="width:70%;">
-							<div class="col-md-12">
-								<div class="form-actions">
-									<button type="submit" class="btn btn-primary" id="btnResponder">Responder</button>
+						<div class="controls">
+							Escribe tu comentario:
+							<textarea id="txtComent" name="txtComent" rows="4" required style="width: 100%"></textarea>
+							<div class="form-actions">
+									<br>
+									<button type="submit" class="btn btn-primary" id="btnResponder">Comentar</button>
 								</div>
-							</div>
 						</div>
 					</fieldset>
 				</form>
