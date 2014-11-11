@@ -13,11 +13,9 @@
 	
 	<script src="js/jquery-1.10.2.js"></script>
 	<script src="js/bootstrap-3.2.0.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/locales/bootstrap-datepicker.es.js"></script>
     <script src="js/Utils.js"></script>
-    <script src="js/IdeaBuscar.js"></script>
-
+    <script src="js/InvitacionIdea.js"></script>
+    
 	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
 	<link href="css/offcanvas.css" rel="stylesheet">	
@@ -91,7 +89,7 @@
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
+									out.println("<img src='img/Iconos/Coment.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getTitulo_Idea());
