@@ -19,6 +19,7 @@
 	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
 	<link href="css/offcanvas.css" rel="stylesheet">	
+	<link href="css/datepicker.css" rel="stylesheet">
 	
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
