@@ -87,10 +87,8 @@
 					<thead>
 						<tr>
 							<th style="width:50px">Id</th>
-							<th style="width:100px">Nombre</th>
+							<th style="width:300px">Nombre</th>
 							<th style="width:200px">Tipo</th>
-							<th style="width:250px">Total Ideas</th>
-							<th style="width:250px">Porcentaje SaaS</th>
 							<th style="width:250px">Pago</th>			
 							
 						</tr>
@@ -105,7 +103,8 @@
                         		for(CentroFormacion c: Centros){
                         			out.println("<td> "  + c.getId_CentroFormacion() +  "  </td>");
                         			out.println("<td> "  + c.getNom_CentroFormacion() +  "  </td>");
-                        			out.println("<td> "  + c.getDs_TipoCentroFormacion() +  "  </td>");         					
+                        			out.println("<td> "  + c.getDs_TipoCentroFormacion() +  "  </td>");
+                        			out.println("<td> "  + c.getSs_Pago() + "  </td>");
                         			out.println("</tr>");
                         		}
                         	}

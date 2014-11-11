@@ -44,7 +44,7 @@ public class ListarCentroPorCobranzaServlet extends HttpServlet {
 		
 		ArrayList<CentroFormacion> Centros=new ArrayList<CentroFormacion>();
 		CentroFormacion Centro=null;
-		ArrayList<Idea> lst = new ArrayList<Idea>();
+		ArrayList<CentroFormacion> CentrosP = new ArrayList<CentroFormacion>();
 		
 		
 		for(int x=1;x<=10;x++){
@@ -52,6 +52,7 @@ public class ListarCentroPorCobranzaServlet extends HttpServlet {
 			Centro=new CentroFormacion();
 			Centro.setId_CentroFormacion(x);
 			Centro.setNom_CentroFormacion("Centro Formacion Nro " + x);
+			Centro.setSs_Pago(1500/x);
 			if(x%5==0)
 				Centro.setDs_TipoCentroFormacion("Universidad");
 			else
@@ -59,7 +60,7 @@ public class ListarCentroPorCobranzaServlet extends HttpServlet {
 			Centros.add(Centro);
 		}
 		
-
+		
 		request.setAttribute("Centros", Centros);
 		//request.setAttribute("value", "Hola mundo");
 		

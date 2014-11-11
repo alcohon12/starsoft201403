@@ -7,10 +7,15 @@ public class CentroFormacion {
 	int id_TipoCentroFormacion;
 	String ds_TipoCentroFormacion;
 	String Url_CentroFormacion;
+	double Ss_Pago;
 	
 	
-	
-	
+	public double getSs_Pago() {
+		return Ss_Pago;
+	}
+	public void setSs_Pago(double ss_Pago) {
+		Ss_Pago = ss_Pago;
+	}
 	public String getDs_TipoCentroFormacion() {
 		return ds_TipoCentroFormacion;
 	}
