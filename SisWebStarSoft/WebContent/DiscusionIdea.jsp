@@ -1,5 +1,4 @@
 <%@page import="java.util.Date"%>
-<%@page import="sun.util.calendar.BaseCalendar.Date"%>
 <%@page import="com.sun.org.apache.bcel.internal.generic.LSTORE"%>
 <%@ page import="java.util.*,modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -135,7 +134,7 @@
 						}
 					}
 				%>
-				<form class="form-horizontal well" method="post" action="BusquedaIdeaServlet">
+				<form class="form-horizontal well" method="post" action="RegistroDiscusionServlet">
 					<fieldset>
 				  		<legend><% out.println(Titulo); %></legend>
 				  		Votar 
@@ -158,16 +157,14 @@
 						<br>
 						<div class="form-horizontal well"></div>
 							<input type="text" id="txtComent" name="txtComent" class="input-medium" style="width:70%;">
+							<div class="col-md-12">
+								<div class="form-actions">
+									<button type="submit" class="btn btn-primary" id="btnResponder">Responder</button>
+								</div>
+							</div>
 						</div>
-						
 					</fieldset>
 				</form>
-			</div>
-					
-			<div class="col-md-12">
-				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="AbriRegistro();">Agregar</button>
-				</div>
 			</div>
 		</div>
 
