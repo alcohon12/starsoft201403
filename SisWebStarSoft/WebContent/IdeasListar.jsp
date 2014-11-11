@@ -45,8 +45,8 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Ideas</a></li>
-            <li><a href="IdeasListar.jsp">Reportes</a></li>
+            <li class="active"><a href="#">Reporte de Ideas</a></li>
+            <li><a href="IdeasListar.jsp">Cobranza</a></li>
 			<li><a href="#">Opción 3</a></li>
 			<li><a href="#">Opción 4</a></li>            
 			<li><a href="#">Opción 5</a></li>
@@ -68,19 +68,20 @@
 				%>
 
 			
-				<form class="form-horizontal well" method="post" action="ListarCentroPorCobranzaServlet">
+				<form class="form-horizontal well" method="post" action="ListarIdeasServlet">
 					<fieldset>
-				  		<legend>Módulo de Cobranza</legend>
-						<br>
-	
-		int id_CentroFormacion;
-	String nom_CentroFormacion;
-	int id_TipoCentroFormacion;
-	String ds_TipoCentroFormacion;
-	String Url_CentroFormacion;
-	
-						
-						<label>Elegir Centro de Formación:</label>
+				  		<legend>REPORTE DE IDEAS</legend>
+						<div class="control-group">
+							<div class="controls">
+								<label class="control-label" for="input01">Fecha inicio:</label>
+								<input type="text" id="txtFechaIni" name=""txtFechaIni" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
+								<label class="control-label" for="input01">Fecha fin:</label>
+								<input type="text" id="txtFechaFin" name=""txtFechaFin" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
+							</div>
+						</div>
+									<br>
+									
+						<label>Status idea:</label>
 						<br>
 						
 						<input type="radio" name="status" value="aprobada">Aprobada
@@ -89,7 +90,7 @@
 						<br>
 						
 							<div class="control-group">
-							<label class="control-label" for="input01">Elegir Centro de Formación:</label>
+							<label class="control-label" for="input01">Elegir criterio de búsqueda:</label>
 							<div class="controls">
 								<select id="ddlCampo" name="ddlCampo">
 									<option value="1" selected>Título</option>
@@ -98,7 +99,6 @@
 									<option value="4">Palabra clave 2</option>
 									<option value="5">Palabra clave 3</option>
 									<option value="6">Palabra clave 4</option>
-				
 								</select>
 								<input type="text" id="txtFiltro" name="txtFiltro" class="input-medium" style="width:150px">
 								<p class="help-block">Ingrese los criterios de búsqueda</p>
