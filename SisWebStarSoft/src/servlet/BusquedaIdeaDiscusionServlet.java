@@ -53,7 +53,7 @@ public class BusquedaIdeaDiscusionServlet extends HttpServlet {
 		lst.add(obj1);
 		
 		Idea obj2 = new Idea();
-		obj2.setId_Idea(1);
+		obj2.setId_Idea(2);
 		obj2.setTitulo_Idea("Idea 2 prueba");
 		obj2.setDescripcion_Idea("Esta es la segunda idea");
 		obj2.setPalabraClave1("palabraidea1");
@@ -64,7 +64,7 @@ public class BusquedaIdeaDiscusionServlet extends HttpServlet {
 		lst.add(obj2);
 		
 		Idea obj3 = new Idea();
-		obj3.setId_Idea(1);
+		obj3.setId_Idea(3);
 		obj3.setTitulo_Idea("Idea 3 prueba");
 		obj3.setDescripcion_Idea("Esta es la tercera idea");
 		obj3.setPalabraClave1("palabraidea1");
@@ -75,7 +75,7 @@ public class BusquedaIdeaDiscusionServlet extends HttpServlet {
 		lst.add(obj3);
 		
 		Idea obj4 = new Idea();
-		obj4.setId_Idea(1);
+		obj4.setId_Idea(4);
 		obj4.setTitulo_Idea("Idea 4 prueba");
 		obj4.setDescripcion_Idea("Esta es la cuarta idea");
 		obj4.setPalabraClave1("palabraidea1");
