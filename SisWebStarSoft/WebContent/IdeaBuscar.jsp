@@ -70,7 +70,7 @@
 								<input type="radio" id="rbtaprobadas" value="rbtaprobadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Aprobadas
 								<input type="radio" id="rbtrechazadas" value="rbtrechazadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Rechazadas
 							</div>
-							</br>
+							<br>
 							<div class="controls">
 								<input type="text" id="txtfiltro" name="txtfiltro" class="input-medium" style="width:70%;">      <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
 							</div>
