@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.Idea;
 
@@ -84,6 +85,7 @@ public class BusquedaIdeaDiscusionServlet extends HttpServlet {
 		obj4.setPalabraClave4("palabraidea4");
 		obj4.setEstado_Idea("APROBADA");
 		lst.add(obj4);
+		
 		
 		request.setAttribute("LISTADO_IDEAS_DISCUSION", lst);
 		RequestDispatcher rd = request.getRequestDispatcher("InvitacionIdea.jsp");

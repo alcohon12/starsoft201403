@@ -81,17 +81,19 @@
 				</form>
 			</div>
 			
+			<!-- 
 			<div class="col-md-12">
 				<div class="form-actions">
 					<button type="button" class="btn btn-primary" onclick="AbriRegistro();">Agregar</button>
 				</div>
 			</div>
-			
+			 -->
+			 
 			<div class="col-md-12">
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th style="width:50px">Editar</th>
+							<!--<th style="width:50px">Editar</th>-->
 							<th style="width:150px">Titulo</th>
 							<th style="width:400px">Descripcion</th>
 							<th style="width:150px">Palabras Clave</th>
@@ -106,9 +108,9 @@
 								for(Idea item : lst)
 								{
 									out.println("<tr>");
-									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
-									out.println("</td>");
+									//out.println("<td style='text-align:center;cursor:pointer'>");
+									//out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
+									//out.println("</td>");
 									out.println("<td>");
 									out.println(item.getTitulo_Idea());
 									out.println("</td>");
