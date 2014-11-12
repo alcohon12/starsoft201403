@@ -83,7 +83,7 @@
 			
 			
 										<div class="control-group">
-							<label class="control-label" for="input01">Elegir criterio de búsqueda:</label>
+							<label class="control-label" for="input01">Elegir mes:</label>
 							<div class="controls">
 								<select id="ddlCampo" name="ddlCampo">
 									<option value="1" selected>Enero</option>
