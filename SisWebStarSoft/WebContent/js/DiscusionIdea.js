@@ -1,16 +1,38 @@
-$(document).ready(function () {
-	KeyPress();
-	DatePicker();
-    $("#txtfiltro").focus();
-});
-
-function KeyPress(){
-	//fncUtil_Enter("#ddlCampo","#txtFiltro");
-	fncUtil_Enter("#txtfiltro","#btnBuscar");
-}
-
-function AgregarVotacion(pCodigoUsuario,imgSel)
+function AgregarVotacion(pCodigoUsuario)
 {
-	document.getElementById(imgSel).src = "../img/Iconos/Star.png";
 	document.getElementById("txtVotacion").value=pCodigoUsuario;
+	if(pCodigoUsuario == "1"){
+		document.getElementById("ImgStar1").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar2").src = "img/Iconos/StarD.png";
+		document.getElementById("ImgStar3").src = "img/Iconos/StarD.png";
+		document.getElementById("ImgStar4").src = "img/Iconos/StarD.png";
+		document.getElementById("ImgStar5").src = "img/Iconos/StarD.png";
+	}else if(pCodigoUsuario == "2"){
+		document.getElementById("ImgStar1").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar2").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar3").src = "img/Iconos/StarD.png";
+		document.getElementById("ImgStar4").src = "img/Iconos/StarD.png";
+		document.getElementById("ImgStar5").src = "img/Iconos/StarD.png";
+	}else if(pCodigoUsuario == "3"){
+		document.getElementById("ImgStar1").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar2").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar3").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar4").src = "img/Iconos/StarD.png";
+		document.getElementById("ImgStar5").src = "img/Iconos/StarD.png";
+	}else if(pCodigoUsuario == "4"){
+		document.getElementById("ImgStar1").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar2").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar3").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar4").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar5").src = "img/Iconos/StarD.png";
+	}else if(pCodigoUsuario == "5"){
+		document.getElementById("ImgStar1").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar2").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar3").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar4").src = "img/Iconos/Star.png";
+		document.getElementById("ImgStar5").src = "img/Iconos/Star.png";
+	}
+	//document.frmDiscusionIdea.funcion.value='';
+    document.forms['frmDiscusionIdea'].action = 'RegistroVotacionServlet'; 
+    document.forms['frmDiscusionIdea'].submit();
 }
