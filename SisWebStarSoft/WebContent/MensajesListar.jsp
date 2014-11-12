@@ -167,6 +167,7 @@
 					class="text ui-widget-content ui-corner-all">
 				
 				</textarea>
+
 				<label>Tipo</label> <select id="cboTipo">
 					<option value="opt1" selected="selected">Activo</option>
 					<option value="opt2">Inactivo</option>
