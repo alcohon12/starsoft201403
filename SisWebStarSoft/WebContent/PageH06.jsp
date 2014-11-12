@@ -15,6 +15,12 @@
 <script src="js/jquery-1.10.2.js"></script>
 <script src="js/bootstrap-3.2.0.js"></script>
 
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<link rel="stylesheet"
+	href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <link href="css/bootstrap-3.2.0.css" rel="stylesheet">
 <link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
 <link href="css/offcanvas.css" rel="stylesheet">
@@ -37,8 +43,8 @@
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
 					data-target=".navbar-collapse">
 					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span>
+						class="icon-bar"></span><span class="icon-bar"></span><span
+						class="icon-bar"></span><span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.php">Logo</a>
 			</div>
@@ -62,25 +68,50 @@
 
 		<div class="row">
 			<div class="col-md-12">
-				<div class="hero-unit">
+				<form class="form-horizontal well" method="post"
+					action="CentroFormacionServlet">
+					<fieldset>
+						<legend>Búsqueda de Centro Formación</legend>
 
-					<p class="btn btn-primary btn-large">Listado Centro de
-						Formacion</p>
-					<br /> <br />
+						<div class="control-group">
+							<div class="controls">
+
+								<input type="text" id="txtBusqueda" name="txtBusqueda"
+									class="input-medium" style="width: 240px; text-align: left;">
+
+							</div>
+						</div>
+						<br>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
+						</div>
+						<fieldset>
+				</form>
+			</div>
+
+			<div class="col-md-12">
+
+				<div class="form-actions">
+					<button type="button" id="btnAgregar" class="btn btn-primary">Agregar</button>
 				</div>
-				<table class="table table-striped table-bordered">
-					<tr>
-						<th></th>
-						<th></th>
-						<th>Centro Formacion</th>
-						<th>Tipo</th>
-						<th>URL</th>
-					</tr>
+			</div>
 
+			<div class="col-md-12">
 
+				<table id="TablaList" class="table table-striped table-bordered">
+					<thead>
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Centro Formacion</th>
+							<th>Tipo</th>
+							<th>URL</th>
+						</tr>
+					</thead>
+					<tbody>
 
-					<%@page import="java.util.*,modelo.CentroFormacion"%>
-					<%
+						<%@page import="java.util.*,modelo.CentroFormacion"%>
+						<%
                         
                         	ArrayList<CentroFormacion> Centros=(ArrayList<CentroFormacion>) request.getAttribute("Centros");
                         
@@ -89,8 +120,8 @@
                         		
                         		for(CentroFormacion c: Centros){
                         			out.println("<tr id=" + c.getId_CentroFormacion()  +  "> ");
-                        			out.println("<td align='center' valign='middle'> <input type='image'  title='Editar Registro' src='img/Iconos/EditFile.png'>");
-                        			out.println("<td align='center' valign='middle'> <input type='image'  title='Eliminar Registro' src='img/Iconos/Delete.png'>");
+                        			out.println("<td align='center' valign='middle'> <input type='image'  title='Editar Registro' src='img/Iconos/EditFile.png'> </td>");
+                        			out.println("<td align='center' valign='middle'> <input type='image'  title='Eliminar Registro' src='img/Iconos/Delete.png'> </td>");
                         			out.println("<td> "  + c.getNom_CentroFormacion() +  "  </td>");
                         			out.println("<td> "  + c.getDs_TipoCentroFormacion() +  "  </td>");
                         			out.println("<td> "  + c.getUrl_CentroFormacion() +  "  </td>");
@@ -107,18 +138,24 @@
        
                         	
                         %>
-
-
+					</tbody>
+					<tfoot>
+						<tr>
+							<td colspan="5">Registros: <% 
+									if(Centros != null) 
+										out.println(Centros.size()); 
+									else 
+										out.println(0); 
+								%>
+							</td>
+						</tr>
+					</tfoot>
 
 				</table>
 			</div>
 
 		</div>
-		<form method="post" action="CentroFormacionServlet">
-			<p>
-				<input type="submit" value="Listar" />
-			</p>
-		</form>
+
 		<footer>
 			<p>&copy; Company 2014</p>
 		</footer>
@@ -129,43 +166,32 @@
 
 
 
-
-
-
-
-	<div id="dialogMnt01" title="">
-
-		<input type="hidden" id="id_Centro_Informacion" value="" /> <input
-			type="hidden" id="EntityState" value="" />
-
-		<table style="width: 100%" border="0">
-			<tr>
-				<td>&nbsp;</td>
-				<td style="width: 100px;">Usuario</td>
-				<td>&nbsp;</td>
-				<td><input id="nombre_Centro_Informacion" style="width: 150px"></td>
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td style="width: 100px;">Password</td>
-				<td>&nbsp;</td>
-				<td><input id="id_Tipo_Centro" style="width: 150px"></td>
-				@*combo box*@
-				<td>&nbsp;</td>
-			</tr>
-			<tr>
-				<td>&nbsp;</td>
-				<td style="width: 100px;">Nombres</td>
-				<td>&nbsp;</td>
-				<td><input id="url_Centro_Informacion" type="url" value=""
-					style="width: 150px"></td>
-				<td>&nbsp;</td>
-			</tr>
-
-		</table>
-		<p id="dlgError" style="font-style: normal; color: red"></p>
+	<div id="dialog-form" title=" - ">
+		<p class="validateTips"></p>
+		<form>
+			<input type="hidden" id="id_Centro_Informacion" value="" /> <input
+				type="hidden" id="EntityState" value="" />
+			<fieldset>
+				<label>Centro Formacion</label> <input type="text" name="nombre"
+					id="nombre" class="text ui-widget-content ui-corner-all">
+					 <label>Tipo</label>
+					
+					<select id="cboTipo">
+					  <option value="opt1" selected="selected">Universidad</option>
+					  <option value="opt2">Instituto</option>
+					
+					</select>
+				 <label>URL</label>
+				<input type="url" name="url" id="url"
+					class="text ui-widget-content ui-corner-all"> <input
+					type="submit" tabindex="-1"
+					style="position: absolute; top: -1000px">
+			</fieldset>
+		</form>
 	</div>
+
+
+
 
 
 </body>
@@ -174,94 +200,131 @@
 
 
 </html>
+
 <style>
-#dialogMnt {
-	font: 65.5% "Trebuchet MS", sans-serif;
-	font-size: 12px;
-	color: black;
+#dialog-form {
+	font-size: 11px;
+	font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana",
+		"sans-serif";
 }
 
-#dialogMnt input:focus, select:focus {
-	color: black;
+label, input {
+	display: block;
 }
 
-#dialogMnt table td {
-	height: 30px;
+input.text {
+	margin-bottom: 12px;
+	width: 95%;
+	padding: .4em;
 }
 
-#dialogMnt input, select {
-	height: 16px;
+fieldset {
+	padding: 0;
+	border: 0;
+	margin-top: 25px;
+}
+
+.ui-dialog .ui-state-error {
+	padding: .3em;
+}
+
+.validateTips {
+	border: 1px solid transparent;
+	padding: 0.3em;
 }
 </style>
 
 <script>
-$(function () {
-	
+    $(function () {
 
-$("#dialogMnt").dialog({
-    autoOpen: false,
-    modal: true,
-    resizable: false,
-    closeOnEscape: true,
-    height: 400,
-    width: 350,
-    open: function () {
-        if ($("#txtIdProfesor").val() == "")
-            $("#pIdProfesor").hide();
-        else
-            $("#pIdProfesor").show();
-    },
-    close: function () {
-        $("#dialogMnt input").attr("value", "");
-        $("#dialogMnt p").html("");
-        $("#stActivo").attr('checked', false);
-        $('#dialogMnt input,select').prop('disabled', false);
-    },
-    buttons: {
-        "Guardar": function () {
-            var IdUsuario = $("#IdUsuario").val();
-            var NombreUsuario = $("#NombreUsuario").val();
-            var Nombres = $("#Nombres").val();
-            var Apellidos = $("#Apellidos").val();
-            var FechaNacimiento = $("#FechaNacimiento").val();
-            var Telefono = $("#Telefono").val();
-
-            var EstadoCivil = $("#EstadoCivil").val();
-            var Role = $("#Role").val();
-            var stActivo = false;
-            if ($("#stActivo").is(':checked')) stActivo = true;
-            var EntityState = $("#EntityState").val();
-            var Password = $("#Password").val();
-            //Add = 1 Update = 2 Delete = 3
-            debugger;
-            var jsonData = {
-                "IdUsuario": IdUsuario,
-                "NombreUsuario": NombreUsuario,
-                "Nombres": Nombres,
-                "Apellidos": Apellidos,
-                "FechaNacimiento": FechaNacimiento,
-                "Telefono": Telefono,
-                "stActivo": stActivo,
-                "EstadoCivil": EstadoCivil,
-                "Role": Role,
-                "Password": Password
-            };
-            if (EntityState == "1") {
-                delete jsonData["IdUsuario"];
-                Usuario.SaveUsuario(jsonData);
-            } else if (EntityState == "2") {
-                Usuario.UpdateUsuario(jsonData);
-            } else if (EntityState == "3") {
-                Usuario.DeleteUsuario(jsonData);
-            }
-        },
-        "Cerrar": function () {
-            $(this).dialog("close");
+        var urlRegex = /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/,
+        tips = $(".validateTips");
+        function updateTips(t) {
+            tips
+            .text(t)
+            .addClass("ui-state-highlight");
+            setTimeout(function () {
+                tips.removeClass("ui-state-highlight", 1500);
+            }, 500);
         }
-    }
-})
-});
+        function checkLength(o, n, min, max) {
+            if (o.val().length > max || o.val().length < min) {
+                o.addClass("ui-state-error");
+                updateTips("Longitud del " + n + " debe estar entre  " +
+                min + " y " + max + ".");
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function checkRegexp(o, regexp, n) {
+            if (!(regexp.test(o.val()))) {
+                o.addClass("ui-state-error");
+                updateTips(n);
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        dialog = $("#dialog-form").dialog({
+            autoOpen: false,
+            height: 350,
+            width: 350,
+            modal: true,
+            close: function () {
+                $("#dialog-form input").attr("value", "");
+                $("#dialog-form p").html("");
+            },
+            buttons: {
+                "Guardar": function () {
+                    var valid = true;
+                   
+                    var nombre = $("#nombre");
+                    var url = $("#url");
+
+                    // allFields.removeClass("ui-state-error");
+                    valid = valid && checkLength(nombre, "nombre", 1, 80);
+                    valid = valid && checkLength(url, "url", 3, 250);
+
+                    valid = valid && checkRegexp(nombre, /^[a-z]([0-9a-z_\s])+$/i, "Ingese un nombre valido.");
+                    valid = valid && checkRegexp(url, urlRegex, "Ingrese una URL valida");
+
+                    if (valid) {
+                    	
+                        $("#TablaList tbody").append("<tr>" +
+                        "<td align='center' valign='middle'>  <input type='image'  title='Editar Registro' src='img/Iconos/EditFile.png'> </td>" +
+                        "<td align='center' valign='middle'>  <input type='image'  title='Editar Registro' src='img/Iconos/Delete.png'> </td>" +
+                        "<td>" + nombre.val() + "</td>" +
+                        "<td>" + $( "#cboTipo option:selected" ).text() + "</td>" +
+                        "<td>" + url.val() + "</td>" +
+                        "</tr>");
+                        dialog.dialog("close");
+                    	
+                    
+                    
+                    }
+
+                },
+                "Cerrar": function () {
+                    allFields.removeClass("ui-state-error");
+                    $(this).dialog("close");
+                }
+            }
+        })
+
+
+        $("#btnAgregar").button().on("click", function () {
+            dialog.dialog("open");
+        });
+
+
+
+    });
 </script>
+
+
+
 
 
 

@@ -77,7 +77,7 @@
 			</div>
 			
 			<div class="col-md-12">
-				<table class="table table-striped table-bordered">
+				<table id="TablaList" class="table table-striped table-bordered">
 					<thead>
 						<tr>
 							<th style="width:50px">Editar</th>
@@ -130,5 +130,160 @@
       </footer>
 
     </div> <!-- /container -->
+    
+
+
+	<div id="dialog-form" title=" Registro ">
+		<p class="validateTips"></p>
+		<form>
+			<input type="hidden" id="id_Centro_Informacion" value="" /> <input
+				type="hidden" id="EntityState" value="" />
+			<fieldset>
+				<label>Centro Formacion</label> <input type="text" name="nombre"
+					id="nombre" class="text ui-widget-content ui-corner-all">
+					 <label>Tipo</label>
+					
+					<select id="cboTipo">
+					  <option value="opt1" selected="selected">Universidad</option>
+					  <option value="opt2">Instituto</option>
+					
+					</select>
+				 <label>URL</label>
+				<input type="url" name="url" id="url"
+					class="text ui-widget-content ui-corner-all"> <input
+					type="submit" tabindex="-1"
+					style="position: absolute; top: -1000px">
+			</fieldset>
+		</form>
+	</div>
+
+
+    
 </body>
 </html>
+
+
+<style>
+#dialog-form {
+	font-size: 11px;
+	font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana",
+		"sans-serif";
+}
+
+label, input {
+	display: block;
+}
+
+input.text {
+	margin-bottom: 12px;
+	width: 95%;
+	padding: .4em;
+}
+
+fieldset {
+	padding: 0;
+	border: 0;
+	margin-top: 25px;
+}
+
+.ui-dialog .ui-state-error {
+	padding: .3em;
+}
+
+.validateTips {
+	border: 1px solid transparent;
+	padding: 0.3em;
+}
+</style>
+
+<script>
+    $(function () {
+
+        var urlRegex = /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|COM|ORG|NET|MIL|EDU)$/,
+        tips = $(".validateTips");
+        function updateTips(t) {
+            tips
+            .text(t)
+            .addClass("ui-state-highlight");
+            setTimeout(function () {
+                tips.removeClass("ui-state-highlight", 1500);
+            }, 500);
+        }
+        function checkLength(o, n, min, max) {
+            if (o.val().length > max || o.val().length < min) {
+                o.addClass("ui-state-error");
+                updateTips("Longitud del " + n + " debe estar entre  " +
+                min + " y " + max + ".");
+                return false;
+            } else {
+                return true;
+            }
+        }
+        function checkRegexp(o, regexp, n) {
+            if (!(regexp.test(o.val()))) {
+                o.addClass("ui-state-error");
+                updateTips(n);
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        dialog = $("#dialog-form").dialog({
+            autoOpen: false,
+            height: 350,
+            width: 350,
+            modal: true,
+            close: function () {
+                $("#dialog-form input").attr("value", "");
+                $("#dialog-form p").html("");
+            },
+            buttons: {
+                "Guardar": function () {
+                    var valid = true;
+                   
+                    var nombre = $("#nombre");
+                    var url = $("#url");
+
+                    // allFields.removeClass("ui-state-error");
+                    valid = valid && checkLength(nombre, "nombre", 1, 80);
+                    valid = valid && checkLength(url, "url", 3, 250);
+
+                    valid = valid && checkRegexp(nombre, /^[a-z]([0-9a-z_\s])+$/i, "Ingese un nombre valido.");
+                    valid = valid && checkRegexp(url, urlRegex, "Ingrese una URL valida");
+
+                    if (valid) {
+                    	
+                        $("#TablaList tbody").append("<tr>" +
+                        "<td align='center' valign='middle'>  <input type='image'  title='Editar Registro' src='img/Iconos/EditFile.png'> </td>" +
+                        "<td align='center' valign='middle'>  <input type='image'  title='Editar Registro' src='img/Iconos/Delete.png'> </td>" +
+                        "<td>" + nombre.val() + "</td>" +
+                        "<td>" + $( "#cboTipo option:selected" ).text() + "</td>" +
+                        "<td>" + url.val() + "</td>" +
+                        "</tr>");
+                        dialog.dialog("close");
+                    	
+                    
+                    
+                    }
+
+                },
+                "Cerrar": function () {
+                    allFields.removeClass("ui-state-error");
+                    $(this).dialog("close");
+                }
+            }
+        })
+
+
+        $("#btnAgregar").button().on("click", function () {
+            dialog.dialog("open");
+        });
+
+
+
+    });
+</script>
+
+
+
