@@ -18,7 +18,7 @@
 	<script src="js/bootstrap-datepicker.js"></script>
 	<script src="js/locales/bootstrap-datepicker.es.js"></script>
     <script src="js/Utils.js"></script>
-    <script src="js/IdeaBuscar.js"></script>
+    <script src="js/DiscusionIdea.js"></script>
 
 	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
@@ -136,16 +136,50 @@
 						}
 					}
 				%>
-				<form class="form-horizontal well" method="post" action="RegistroDiscusionServlet">
+				<form id="frmDiscusionIdea" class="form-horizontal well" method="post" action="RegistroDiscusionServlet">
+				<input type="text" id="txtIdea" style="display: none;" name="txtIdea"  value ="<% out.println(CodigoIdea); %>">
 					<fieldset>
 				  		<legend align="center"><% out.println(Titulo); %></legend>
-				  		<div align="center">
-					  		Votar 
-					  		<img id="ImgStar1" src="img/Iconos/Star.png" alt="star icon">
-					  		<img id="ImgStar2" src="img/Iconos/Star.png" alt="star icon">
-					  		<img id="ImgStar3" src="img/Iconos/Star.png" alt="star icon">
-					  		<img id="ImgStar4" src="img/Iconos/Star.png" alt="star icon">
-					  		<img id="ImgStar5" src="img/Iconos/Star.png" alt="star icon">
+				  		<div align="center" >
+				  		<input type="text" id="txtVotacion" style="display: none;" name="txtVotacion">
+				  		<%
+					  		HttpSession SesionComent = request.getSession();
+				  			int con =0;
+							if(SesionComent.getAttribute("Votacion") != null){
+								ArrayList<Permiso>  permisoList = (ArrayList<Permiso>)SesionComent.getAttribute("Votacion");
+								for(Permiso item : permisoList){
+									if(item.getId_Idea() == Integer.parseInt(CodigoIdea)){
+										for(int i = 1; i <= item.getVotacion_Permiso() ;i++ ){
+									    	out.println("<img id='ImgStar1' src='img/Iconos/Star.png' alt='star icon'>");
+									    }
+										con ++;
+									}
+								}
+								
+							}
+				  		
+				  			//String NumEstrellas = request.getParameter("NumEstrellas");
+						    //if(NumEstrellas != null && NumEstrellas != ""){
+						    	//for(int i = 1; i <= Integer.parseInt(NumEstrellas) ;i++ ){
+							    	//out.println("<img id='ImgStar1' src='img/Iconos/Star.png' alt='star icon'>");
+							    //}
+						    //}else
+						    if(con==0){
+						    	out.println("Votar : ");
+						    	out.println("<img id='ImgStar1' class='imgStar' onclick='AgregarVotacion(1);' src='img/Iconos/StarD.png' alt='star icon'>");
+						    	out.println("<img id='ImgStar2' class='imgStar' onclick='AgregarVotacion(2);' src='img/Iconos/StarD.png' alt='star icon'>");
+						    	out.println("<img id='ImgStar3' class='imgStar' onclick='AgregarVotacion(3);' src='img/Iconos/StarD.png' alt='star icon'>");
+						    	out.println("<img id='ImgStar4' class='imgStar' onclick='AgregarVotacion(4);' src='img/Iconos/StarD.png' alt='star icon'>");
+						    	out.println("<img id='ImgStar5' class='imgStar' onclick='AgregarVotacion(5);' src='img/Iconos/StarD.png' alt='star icon'>");
+						    	//out.println("<button type='hidden' class='btn btn-primary' id='btnResponder' value='votar' name='accion'>Votar</button>");
+						    }
+					    %>
+					  		<!-- Votar :
+					  		<img id="ImgStar1" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
+					  		<img id="ImgStar2" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
+					  		<img id="ImgStar3" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
+					  		<img id="ImgStar4" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
+					  		<img id="ImgStar5" class="imgStar" src="img/Iconos/StarD.png" alt="star icon"> -->
 				  		</div>
 				  		<br><% out.println(Descripcion); %>				
 						<br><br><br>
@@ -163,38 +197,41 @@
 								//}
 							//}
 						
-						    HttpSession SesionComent = request.getSession();
+						    //HttpSession SesionComent = request.getSession();
+						    ArrayList<Discusion> lstSession = (ArrayList<Discusion>) SesionComent.getAttribute("ComentariosS");
 							ArrayList<Discusion> lstServ = (ArrayList<Discusion>) request.getAttribute("LISTADO_DISCUSION");
 							
-								ArrayList<Discusion> lstSession = (ArrayList<Discusion>) SesionComent.getAttribute("ComentariosS");
-								if(lstSession != null && lstServ != null){
-									for(Discusion item : lstSession){
-										Discusion objD1 = new Discusion();
-										objD1.setId_Idea(item.getId_Idea());
-										objD1.setComentario(item.getComentario());
-										objD1.setFecha_creacion(item.getFecha_creacion());
-										objD1.setUsuario_Comentario(item.getUsuario_Comentario());
-										lstServ.add(objD1);
-									}
-								}
-								
+							if(lstSession == null) lstSession = new ArrayList<Discusion>();
+							
 							if(lstServ != null){
 								for(Discusion item : lstServ){
-									String b = new String("");
-									SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
-									b = format.format(new Date());
-									out.println("Usuario: " + item.getUsuario_Comentario() + "&nbsp;&nbsp;&nbsp;Fecha de Comentario: " +  b);
-									out.println("<div class='form-horizontal well2'>");
-									out.println(item.getComentario());
-									out.println("</div>");
-									
-									SesionComent.setAttribute("ComentariosS", lstServ);
+									Discusion objD1 = new Discusion();
+									objD1.setId_Idea(item.getId_Idea());
+									objD1.setComentario(item.getComentario());
+									objD1.setFecha_creacion(item.getFecha_creacion());
+									objD1.setUsuario_Comentario(item.getUsuario_Comentario());
+									lstSession.add(objD1);
 								}
+							}
+								
+							if(lstSession != null){
+								for(Discusion item : lstSession){
+									if(item.getId_Idea() == Integer.parseInt(CodigoIdea)){
+										String b = new String("");
+										SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+										b = format.format(new Date());
+										out.println("Usuario: " + item.getUsuario_Comentario() + "&nbsp;&nbsp;&nbsp;Fecha de Comentario: " +  b);
+										out.println("<div class='form-horizontal well2'>");
+										out.println(item.getComentario());
+										out.println("</div>");
+									}
+								}
+								SesionComent.setAttribute("ComentariosS", lstSession);
 							}
 						%>
 						<div class="controls">
 							Escribe tu comentario:
-							<textarea id="txtComent" name="txtComent" rows="4" required style="width: 100%"></textarea>
+							<textarea id="txtComent" name="txtComent" rows="4" style="width: 100%" required></textarea>
 							<div class="form-actions">
 									<br>
 									<button type="submit" class="btn btn-primary" id="btnResponder">Comentar</button>

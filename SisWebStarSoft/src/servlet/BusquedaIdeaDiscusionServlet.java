@@ -77,26 +77,14 @@ public class BusquedaIdeaDiscusionServlet extends HttpServlet {
 		
 		Idea obj4 = new Idea();
 		obj4.setId_Idea(4);
-		obj4.setTitulo_Idea("Idea 4 pruebaaaaaaa");
+		obj4.setTitulo_Idea("Idea 4 prueba");
 		obj4.setDescripcion_Idea("Esta es la cuarta idea");
 		obj4.setPalabraClave1("palabraidea1");
 		obj4.setPalabraClave2("palabraidea2");
 		obj4.setPalabraClave3("palabraidea3");
 		obj4.setPalabraClave4("palabraidea4");
 		obj4.setEstado_Idea("APROBADA");
-		lst.add(obj4);
-		
-		Idea obj5 = new Idea();
-		obj5.setId_Idea(5);
-		obj5.setTitulo_Idea("Idea 5 prueba");
-		obj5.setDescripcion_Idea("Esta es la quinta idea");
-		obj5.setPalabraClave1("palabraidea1");
-		obj5.setPalabraClave2("palabraidea2");
-		obj5.setPalabraClave3("palabraidea3");
-		obj5.setPalabraClave4("palabraidea4");
-		obj5.setEstado_Idea("APROBADA");
-		lst.add(obj5);
-		
+		lst.add(obj4);		
 		
 		request.setAttribute("LISTADO_IDEAS_DISCUSION", lst);
 		RequestDispatcher rd = request.getRequestDispatcher("InvitacionIdea.jsp");
