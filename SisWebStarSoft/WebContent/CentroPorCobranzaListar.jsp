@@ -80,6 +80,28 @@
 						</div>
 					<fieldset>
 			</div>
+			
+			
+										<div class="control-group">
+							<label class="control-label" for="input01">Elegir criterio de búsqueda:</label>
+							<div class="controls">
+								<select id="ddlCampo" name="ddlCampo">
+									<option value="1" selected>Enero</option>
+									<option value="2">Febrero</option>
+									<option value="3">Marzo</option>
+									<option value="4">Abril</option>
+									<option value="5">Mayo</option>
+									<option value="6">Junio</option>
+									<option value="7">Julio</option>
+									<option value="8">Agosto</option>
+									<option value="9">Septiembre</option>
+									<option value="10">Octubre</option>
+									<option value="11">Noviembre</option>
+									<option value="12">Diciembre</option>
+								</select>
+								<p class="help-block">Ingrese los criterios de búsqueda</p>
+							</div>
+						</div>
 
 			<div class="col-md-12">
 				<table class="table table-striped table-bordered">

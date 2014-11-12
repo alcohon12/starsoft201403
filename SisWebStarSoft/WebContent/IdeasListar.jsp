@@ -120,7 +120,7 @@
 
 					<thead>
 						<tr>
-							<th style="width:50px">Id</th>
+							//<th style="width:50px">Id</th>
 							<th style="width:100px">Título</th>
 							<th style="width:200px">Descripción</th>
 							<th style="width:250px">Palabra clave 1</th>
