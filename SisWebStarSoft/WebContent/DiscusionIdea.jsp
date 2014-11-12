@@ -85,12 +85,12 @@
 						obj1.setEstado_Idea("APROBADA");
 						lst.add(obj1);
 						
-						Discusion objD1 = new Discusion();
-						objD1.setId_Idea(1);
-						objD1.setComentario("Es una muy buena idea aunque me gustaria agregar algunas cosas");
-						objD1.setFecha_creacion(new Date());
-						objD1.setUsuario_Comentario("fchara");
-						lstDiscusion.add(objD1);
+						//Discusion objD1 = new Discusion();
+						//objD1.setId_Idea(1);
+						//objD1.setComentario("Es una muy buena idea aunque me gustaria agregar algunas cosas");
+						//objD1.setFecha_creacion(new Date());
+						//objD1.setUsuario_Comentario("fchara");
+						//lstDiscusion.add(objD1);
 						
 						Idea obj2 = new Idea();
 						obj2.setId_Idea(2);
@@ -151,25 +151,45 @@
 						<br><br><br>
 						
 						<%
-							for(Discusion item : lstDiscusion){
-								if(item.getId_Idea() == IdIdea){
+							//for(Discusion item : lstDiscusion){
+								//if(item.getId_Idea() == IdIdea){
+									//String b = new String("");
+									//SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+									//b = format.format(item.getFecha_creacion());
+									//out.println("Usuario: " + item.getUsuario_Comentario() + "&nbsp;&nbsp;&nbsp;Fecha de Comentario: " +  b);
+									//out.println("<div class='form-horizontal well2'>");
+									//out.println(item.getComentario());
+									//out.println("</div>");
+								//}
+							//}
+						
+						    HttpSession SesionComent = request.getSession();
+							ArrayList<Discusion> lstServ = (ArrayList<Discusion>) request.getAttribute("LISTADO_DISCUSION");
+							
+								ArrayList<Discusion> lstSession = (ArrayList<Discusion>) SesionComent.getAttribute("ComentariosS");
+								if(lstSession != null && lstServ != null){
+									for(Discusion item : lstSession){
+										Discusion objD1 = new Discusion();
+										objD1.setId_Idea(item.getId_Idea());
+										objD1.setComentario(item.getComentario());
+										objD1.setFecha_creacion(item.getFecha_creacion());
+										objD1.setUsuario_Comentario(item.getUsuario_Comentario());
+										lstServ.add(objD1);
+									}
+								}
+								
+							if(lstServ != null){
+								
+								for(Discusion item : lstServ){
 									String b = new String("");
 									SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
-									b = format.format(item.getFecha_creacion());
-									out.println("Usuario: " + item.getUsuario_Comentario() + "    Fecha de Comentario: " +  b);
+									b = format.format(new Date());
+									out.println("Usuario: " + item.getUsuario_Comentario() + "&nbsp;&nbsp;&nbsp;Fecha de Comentario: " +  b);
 									out.println("<div class='form-horizontal well2'>");
 									out.println(item.getComentario());
 									out.println("</div>");
-								}
-							}
-						
-							ArrayList<Discusion> lstServ = (ArrayList<Discusion>) request.getAttribute("LISTADO_DISCUSION");
-							if(lstServ != null){
-								for(Discusion item : lstServ){
-									out.println("Fecha de Comentario:" +  item.getFecha_creacion());
-									out.println("<div class='form-horizontal well'>");
-									out.println(item.getComentario());
-									out.println("</div>");
+									
+									SesionComent.setAttribute("ComentariosS", lstServ);
 								}
 							}
 						%>
@@ -179,6 +199,7 @@
 							<div class="form-actions">
 									<br>
 									<button type="submit" class="btn btn-primary" id="btnResponder">Comentar</button>
+									<button class="btn btn-primary" id="btnRegresar" onclick = "window.location = ('InvitacionIdea.jsp');">Regresar</button>
 								</div>
 						</div>
 					</fieldset>

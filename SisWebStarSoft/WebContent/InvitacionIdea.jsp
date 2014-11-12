@@ -82,6 +82,9 @@
 					</thead>
 					<tbody>
 						<% 
+							HttpSession SesionComent = request.getSession();
+							ArrayList<Discusion> lstServ = new ArrayList<Discusion>();
+						    SesionComent.setAttribute("ComentariosS", lstServ);
 							ArrayList<Idea> lst = (ArrayList<Idea>) request.getAttribute("LISTADO_IDEAS_DISCUSION");
 							if(lst != null)
 							{
