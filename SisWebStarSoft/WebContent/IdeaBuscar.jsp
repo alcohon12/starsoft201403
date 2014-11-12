@@ -65,7 +65,7 @@
 				  		
 						<div class="control-group">
 							<div class="controls">
-								<input type="radio" id="rbttodas" value="rbttodas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Todas
+								<input type="radio" checked="checked" id="rbttodas" value="rbttodas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Todas
 								<input type="radio" id="rbtpublicadas" value="rbtpublicadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Publicadas
 								<input type="radio" id="rbtaprobadas" value="rbtaprobadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Aprobadas
 								<input type="radio" id="rbtrechazadas" value="rbtrechazadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Rechazadas
