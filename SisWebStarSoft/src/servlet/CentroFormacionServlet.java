@@ -43,7 +43,7 @@ public class CentroFormacionServlet extends HttpServlet {
 		ArrayList<CentroFormacion> Centros=new ArrayList<CentroFormacion>();
 		
 		CentroFormacion Centro=null;
-		for(int x=1;x<=100;x++){
+		for(int x=1;x<=7;x++){
 			Centro=new CentroFormacion();
 			Centro.setId_CentroFormacion(x);
 			Centro.setNom_CentroFormacion("Centro Formacion Nro " + x);
