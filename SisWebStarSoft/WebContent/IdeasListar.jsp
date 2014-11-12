@@ -74,9 +74,10 @@
 						<div class="control-group">
 							<div class="controls">
 								<label class="control-label" for="input01">Fecha inicio:</label>
-								<input type="text" id="txtFechaIni" name=""txtFechaIni" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
+								<input type="text" id="txtFechaIni" name="txtFechaIni" class="input-medium" style="width:90px;text-align:center" required>
+								
 								<label class="control-label" for="input01">Fecha fin:</label>
-								<input type="text" id="txtFechaFin" name=""txtFechaFin" class="input-medium" style="width:90px;text-align:center" required value="<%=fecha_hoy_str%>">
+								<input type="text" id="txtFechaFin" name="txtFechaFin" class="input-medium" style="width:90px;text-align:center" required>
 							</div>
 						</div>
 									<br>
@@ -120,7 +121,7 @@
 
 					<thead>
 						<tr>
-							//<th style="width:50px">Id</th>
+							<th style="width:50px">Id</th>
 							<th style="width:100px">Título</th>
 							<th style="width:200px">Descripción</th>
 							<th style="width:250px">Palabra clave 1</th>
@@ -162,7 +163,7 @@
 									out.println(item.getPalabraClave4());
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getFecha_creacion());
+									out.println(item.getFecha_creacionCorta());
 									out.println("</td>");
 									out.println("</td>");
 									out.println(item.getId_Alumno());
