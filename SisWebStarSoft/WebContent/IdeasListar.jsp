@@ -190,7 +190,7 @@
 		</div>
 
       <footer>
-        <p>&copy; StarSoft 2014</p>
+        <p>&copy; StarSoft 2014--</p>
       </footer>
 
     </div> <!-- /container -->
