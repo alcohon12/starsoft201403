@@ -95,6 +95,7 @@ public class ListarIdeasServlet extends HttpServlet {
 		dato1.setPalabraClave4("palabraidea4");
 		dato1.setId_Estado(1);
 		dato1.setFecha_creacion(myDate);
+		
 		dato1.setId_Alumno(2);
 		lista.add(dato1);
 
