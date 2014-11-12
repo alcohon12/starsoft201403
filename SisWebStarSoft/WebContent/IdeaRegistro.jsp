@@ -59,32 +59,60 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal well" method="post" action="RegistroIdeaServlet">
+				<form class="form-horizontal well" method="post" action="RegistroIdeaServlet" enctype="application/x-www-form-urlencoded">
 					<fieldset>
 				  		<legend>Registro de ideas:</legend>
-							</br>
-							<div class="controls">
-							
-								Título:<input type="text" id="txttitulo" name="txttitulo" class="input-medium" style="width:150px">
-								</br>
-								Descripción:<input type="text" id="txtdescripcion" name="txtdecripcion" class="input-medium" style="width:70%;">      
-								</br>
-								Palabra clave 1:<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
-								</br>
-								Palabra clave 2:<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
-								</br>
-								Palabra clave 3:<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
-								</br>
-								Palabra clave 4:<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
-								</br>
+							<div class="control-group">
+								<label class="control-label">Título:</label>
+								<div class="controls">
+									<input type="text" id="txttitulo" name="txttitulo" class="input-medium" style="width:150px">
+								</div>
+							</div>			
+
+							<div class="control-group">
+								<label class="control-label">Descripción:</label>
+								<div class="controls">
+									<input type="text" id="txtdescripcion" name="txtdecripcion" class="input-medium" style="width:70%;">      
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label">Archivo:</label>
+								<div class="controls">
+									<input type="file" id="txtarchivo" name="txtarchivo" class="input-small" style="width:70%;">      
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label">Palabra clave 1:</label>
+								<div class="controls">
+									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label">Palabra clave 2:</label>
+								<div class="controls">
+									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label">Palabra clave 3:</label>
+								<div class="controls">
+									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
+								</div>
+							</div>	
+							<div class="control-group">
+								<label class="control-label">Palabra clave 4:</label>
+								<div class="controls">
+									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
+								</div>
+							</div>	
+							<br />
+							<div class="form-actions">
 								<button type="submit" class="btn btn-primary" id="btnBuscar">Agregar</button>
 								<button type="submit" class="btn btn-primary" id="btnBuscar">Editar</button>
 							
-							</div>
-						</div>						
-					<fieldset>
+							</div>					
+					</fieldset>
 				</form>
-
       <footer>
         <p>&copy; StarSoft 2014</p>
       </footer>
