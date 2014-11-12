@@ -46,6 +46,7 @@ public class RegistroDiscusionServlet extends HttpServlet {
 		//String idIdea = "1";
 		
 		Discusion objD1 = new Discusion();
+		objD1.setId_Idea(1);
 		objD1.setComentario(comentario);
 		objD1.setFecha_creacion(new Date());
 		objD1.setUsuario_Comentario("fchara");
