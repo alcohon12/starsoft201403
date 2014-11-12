@@ -179,7 +179,6 @@
 								}
 								
 							if(lstServ != null){
-								
 								for(Discusion item : lstServ){
 									String b = new String("");
 									SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
