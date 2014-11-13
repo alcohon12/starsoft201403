@@ -51,10 +51,14 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-					<li class="active"><a href="#">Reuniones</a></li>
-					<li><a href="#">Opci√≥n 3</a></li>
-					<li><a href="#">Opci√≥n 4</a></li>
-					<li><a href="#">Opci√≥n 5</a></li>
+		            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
+					<li><a href="IdeaBuscar.jsp">Ideas</a></li>
+					<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
+					<li><a href="PageH06.jsp">Centro de informaciÛn</a></li>
+					<li><a href="ParametrosListar.jsp">Par·metros</a></li>
+					<li class="active"><a href="MensajesListar.jsp">Mensajes</a></li>
+					<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
+					<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
 				</ul>
 			</div>
 			<!-- /.nav-collapse -->
