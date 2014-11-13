@@ -51,10 +51,10 @@
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-		            <li class="active"><a href="ReunionBuscar.jsp">Reuniones</a></li>
+		            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
 					<li><a href="IdeaBuscar.jsp">Ideas</a></li>
 					<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-					<li><a href="PageH06.jsp">Centro de información</a></li>
+					<li class="active"><a href="PageH06.jsp">Centro de información</a></li>
 					<li><a href="ParametrosListar.jsp">Parámetros</a></li>
 					<li><a href="MensajesListar.jsp">Mensajes</a></li>
 					<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
