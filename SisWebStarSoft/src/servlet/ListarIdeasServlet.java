@@ -136,7 +136,7 @@ public class ListarIdeasServlet extends HttpServlet {
 		lista.add(dato3);
 
 		cal = Calendar.getInstance();
-		cal.set(Calendar.MONTH, 25);
+		cal.set(Calendar.MONTH, 10);
 		cal.set(Calendar.DATE, 10);
 		cal.set(Calendar.YEAR, 2014);
 		myDate = cal.getTime();
