@@ -124,7 +124,7 @@
 						<div class="form-actions">
 							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
 						</div>
-					<fieldset>
+					</fieldset>
 				</form>
 			</div>
 
@@ -156,6 +156,7 @@
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
 									out.println("<img src='img/Iconos/EditFile.png' onclick='AbrirDialog()'>");
+									out.println("<img src='img/Iconos/Coment.png' onclick='location.href = \'IdeaPublicar.jsp\''>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getTitulo_Idea());
@@ -176,7 +177,7 @@
 									out.println(item.getPalabraClave4());
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getFecha_creacionCorta());
+									out.println(item.getFecha_creacion());
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getId_Alumno());

@@ -45,15 +45,11 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
-			<li><a href="IdeaBuscar.jsp">Ideas</a></li>
-			<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-			<li><a href="PageH06.jsp">Centro de información</a></li>
-			<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-			<li><a href="MensajesListar.jsp">Mensajes</a></li>
-			<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-			<li class="active"><a href="IdeasListar.jsp">Listado de Ideas</a></li>
+            <li><a href="Idea Registro.jsp">Registro Ideas</a></li>
+            <li class="active"><a href="#">Reuniones</a></li>
+			<li><a href="#">Opción 3</a></li>
+			<li><a href="#">Opción 4</a></li>            
+			<li><a href="#">Opción 5</a></li>
           </ul>
         </div><!-- /.nav-collapse -->
       </div><!-- /.container -->
@@ -65,54 +61,36 @@
 			<div class="col-md-12">
 				<form class="form-horizontal well" method="post" action="RegistroIdeaServlet" enctype="multipart/form-data">
 					<fieldset>
-				  		<legend>Registro de ideas:</legend>
+				  		<legend>Publicar ideas:</legend>
 							<div class="control-group">
 								<label class="control-label">Título:</label>
 								<div class="controls">
-									<input type="text" id="txttitulo" name="txttitulo" class="input-medium" style="width:150px">
+									<input type="text" id="txttitulo" name="txttitulo" class="input-medium" style="width:150px" readonly="readonly" value="Idea 1">
 								</div>
 							</div>			
 
 							<div class="control-group">
 								<label class="control-label">Descripción:</label>
 								<div class="controls">
-									<input type="text" id="txtdescripcion" name="txtdecripcion" class="input-medium" style="width:70%;" value="Esta es la primera idea">      
+									<input type="text" id="txtdescripcion" name="txtdecripcion" class="input-medium" style="width:70%;" readonly="readonly">      
 								</div>
 							</div>	
+							
 							<div class="control-group">
-								<label class="control-label">Archivo:</label>
+								<label class="control-label">Usuarios:</label>
 								<div class="controls">
-									<input type="file" id="txtarchivo" name="txtarchivo" class="input-small" style="width:70%;">      
+									<select id="txtusuarios" name="txtusuarios" class="input-medium" style="width:70%;" readonly="readonly" multiple="multiple">
+										<option>Victor</option>
+									</select>      
 								</div>
 							</div>	
-							<div class="control-group">
-								<label class="control-label">Palabra clave 1:</label>
-								<div class="controls">
-									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
-								</div>
-							</div>	
-							<div class="control-group">
-								<label class="control-label">Palabra clave 2:</label>
-								<div class="controls">
-									<input type="text" id="txtclave2" name="txtclave2" class="input-medium" style="width:70%;">      
-								</div>
-							</div>	
-							<div class="control-group">
-								<label class="control-label">Palabra clave 3:</label>
-								<div class="controls">
-									<input type="text" id="txtclave3" name="txtclave3" class="input-medium" style="width:70%;">      
-								</div>
-							</div>	
-							<div class="control-group">
-								<label class="control-label">Palabra clave 4:</label>
-								<div class="controls">
-									<input type="text" id="txtclave4" name="txtclave4" class="input-medium" style="width:70%;">      
-								</div>
-							</div>	
+							<a href="IdeaBuscarUsuario.jsp" target="popup" onClick="window.open(this.href, this.target, 'width=700,height=400'); return false;" class="button">
+							Agregar Usuario</a>
+							
 							<br />
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary" id="btnBuscar">Agregar</button>
-								<button type="submit" class="btn btn-primary" id="btnBuscar">Editar</button>
+								<button type="submit" class="btn btn-primary" id="btnPublicar">Publicar</button>
+								<button type="button" class="btn btn-primary" id="btnCancelar" onclick="location.href = 'IdeasListar.jsp'">Cancelar</button>
 							
 							</div>					
 					</fieldset>
