@@ -100,7 +100,10 @@
 							<!--<th style="width:50px">Editar</th>-->
 							<th style="width:150px">Titulo</th>
 							<th style="width:400px">Descripcion</th>
-							<th style="width:150px">Palabras Clave</th>
+							<th style="width:150px">Palabra Clave 1</th>
+							<th style="width:150px">Palabra Clave 2</th>
+							<th style="width:150px">Palabra Clave 3</th>
+							<th style="width:150px">Palabra Clave 4</th>
 							<th style="width:100px">Estado</th>
 						</tr>
 					</thead>
@@ -122,7 +125,16 @@
 									out.println(item.getDescripcion_Idea());
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getPalabraClave1() + "," + item.getPalabraClave2() + "," + item.getPalabraClave3()+ "," + item.getPalabraClave4());
+									out.println(item.getPalabraClave1());
+									out.println("</td>");
+									out.println("<td>");
+									out.println(item.getPalabraClave2());
+									out.println("</td>");
+									out.println("<td>");
+									out.println(item.getPalabraClave3());
+									out.println("</td>");
+									out.println("<td>");
+									out.println(item.getPalabraClave4());
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getEstado_Idea());
@@ -134,7 +146,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="4">Registros: 
+							<td colspan="7">Registros: 
 								<% 
 									if(lst != null) 
 										out.println(lst.size()); 
