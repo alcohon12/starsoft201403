@@ -88,7 +88,7 @@ public class Idea {
 		this.id_Alumno = id_Alumno;
 	}
 	public String getFecha_creacionCorta() {
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		DateFormat df = new SimpleDateFormat("dd MM  yyyy");
 		return df.format(fecha_creacion);
 		
 	}
