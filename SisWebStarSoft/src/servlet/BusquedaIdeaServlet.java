@@ -107,6 +107,7 @@ public class BusquedaIdeaServlet extends HttpServlet {
 			case "rbtpublicadas":
 				if((item.getTitulo_Idea().toUpperCase().contains(filtro) || item.getDescripcion_Idea().toUpperCase().contains(filtro) || item.getPalabraClave1().toUpperCase().contains(filtro) || item.getPalabraClave2().toUpperCase().contains(filtro) || item.getPalabraClave3().toUpperCase().contains(filtro) || item.getPalabraClave4().toUpperCase().contains(filtro)) && item.getEstado_Idea().toUpperCase().equals("PUBLICADA"))
 					lstfiltro.add(item);
+				break;
 			case "rbtaprobadas":
 				if((item.getTitulo_Idea().toUpperCase().contains(filtro) || item.getDescripcion_Idea().toUpperCase().contains(filtro) || item.getPalabraClave1().toUpperCase().contains(filtro) || item.getPalabraClave2().toUpperCase().contains(filtro) || item.getPalabraClave3().toUpperCase().contains(filtro) || item.getPalabraClave4().toUpperCase().contains(filtro)) && item.getEstado_Idea().toUpperCase().equals("APROBADA"))
 					lstfiltro.add(item);

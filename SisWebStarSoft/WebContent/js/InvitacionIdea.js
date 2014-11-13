@@ -6,3 +6,8 @@ function AbriRegistro(pCodigoIdea)
 	else
 		window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea);
 }
+
+//function ListarIdeas(){ 
+	//document.forms['frmInvitacionIdea'].action = 'BusquedaIdeaDiscusionServlet'; 
+    //document.forms['frmInvitacionIdea'].submit();
+//} 

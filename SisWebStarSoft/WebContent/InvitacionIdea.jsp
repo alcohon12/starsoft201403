@@ -61,9 +61,9 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal well" method="post" action="BusquedaIdeaDiscusionServlet">
+				<form id="frmInvitacionIdea" class="form-horizontal well" method="post" action="BusquedaIdeaDiscusionServlet">
 					<fieldset>
-				  		<legend>Lista de Ideas Invitadas</legend>
+				  		<legend>Lista de Ideas a las que estoy invitado</legend>
 				  		
 						<div class="control-group">
 							<div class="controls">
@@ -71,8 +71,7 @@
 							</div>
 						</div>
 						
-						
-					<fieldset>
+					</fieldset>
 				</form>
 			</div>
 			
@@ -80,7 +79,7 @@
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
-							<th style="width:50px">Responder</th>
+							<th style="width:50px">Comentar</th>
 							<th style="width:350px">Idea</th>
 						</tr>
 					</thead>
@@ -105,7 +104,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="4">Registros: 
+							<td colspan="2">Registros: 
 								<% 
 									if(lst != null) 
 										out.println(lst.size()); 
