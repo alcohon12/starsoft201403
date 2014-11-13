@@ -76,7 +76,7 @@
 			
 			<div class="col-md-12">
 				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="AbriRegistro();">Agregar</button>
+					<button type="button" class="btn btn-primary" onclick="">Agregar</button>
 				</div>
 			</div>
 			
@@ -137,30 +137,7 @@
     
 
 
-	<div id="dialog-form" title=" Registro ">
-		<p class="validateTips"></p>
-		<form>
-			<input type="hidden" id="id_Centro_Informacion" value="" /> <input
-				type="hidden" id="EntityState" value="" />
-			<fieldset>
-				<label>Centro Formacion</label> <input type="text" name="nombre"
-					id="nombre" class="text ui-widget-content ui-corner-all">
-					 <label>Tipo</label>
-					
-					<select id="cboTipo">
-					  <option value="opt1" selected="selected">Universidad</option>
-					  <option value="opt2">Instituto</option>
-					
-					</select>
-				 <label>URL</label>
-				<input type="url" name="url" id="url"
-					class="text ui-widget-content ui-corner-all"> <input
-					type="submit" tabindex="-1"
-					style="position: absolute; top: -1000px">
-			</fieldset>
-		</form>
-	</div>
-
+	
 
     
 </body>
