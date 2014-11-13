@@ -238,7 +238,7 @@
 							<div class="form-actions">
 									<br>
 									<button type="submit" class="btn btn-primary" id="btnResponder">Comentar</button>
-									<button class="btn btn-success" id="btnRegresar" onclick = "window.location = ('InvitacionIdea.jsp');">Regresar</button>
+									<button type="button" class="btn btn-success" id="btnRegresar" onclick = "window.location = ('InvitacionIdea.jsp');">Regresar</button>
 								</div>
 						</div>
 					</fieldset>
