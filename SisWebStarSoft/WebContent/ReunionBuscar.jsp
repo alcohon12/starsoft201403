@@ -3,62 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Victor Marino">
-	<meta name="keywords" content="Victor Marino">
-    <meta name="author" content="Victor Marino">
-	
-    <title>Sistema de gestión de la innovación</title>
-	
-	<script src="js/jquery-1.10.2.js"></script>
-	<script src="js/bootstrap-3.2.0.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/locales/bootstrap-datepicker.es.js"></script>
-    <script src="js/Utils.js"></script>
+	<%@ include file="CabeceraPagina.jsp" %>
     <script src="js/ReunionBuscar.js"></script>
-
-	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-	<link href="css/offcanvas.css" rel="stylesheet">	
-	<link href="css/datepicker.css" rel="stylesheet">
-	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
-    <!-- INICIO DEL MENU PRINCIPAL -->
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-			<span class="icon-bar"></span>			
-          </button>
-          <a class="navbar-brand" href="index.php">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-            <li class="active"><a href="ReunionBuscar.jsp">Reuniones</a></li>
-			<li><a href="IdeaBuscar.jsp">Ideas</a></li>
-			<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-			<li><a href="PageH06.jsp">Centro de información</a></li>
-			<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-			<li><a href="MensajesListar.jsp">Mensajes</a></li>
-			<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-			<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-	<!-- FIN DEL MENU PRINCIPAL -->
+    <%@ include file="MenuPagina.jsp" %>
 	
 	<div class="container">
 		<div class="row">
@@ -67,19 +16,19 @@
 					<fieldset>
 				  		<legend>Búsqueda de reuniones</legend>
 				  		
-						<div class="control-group">
-							<div class="controls">
-								<label class="control-label" for="input01">Fecha inicio:</label>
-								<input type="text" id="txtFechaIni" name="txtFechaIni" class="input-medium" style="width:90px;text-align:center" required>
-								<label class="control-label" for="input01">Fecha fin:</label>
-								<input type="text" id="txtFechaFin" name="txtFechaFin" class="input-medium" style="width:90px;text-align:center" required>
-							</div>
+				  		<label class="control-label" for="input01">Fecha inicio:</label>
+				  		<div class="input-append date">
+						  <input id="txtFechaIni" name="txtFechaIni" class="span2" size="16" type="text" value="">
+						</div>
+						<label class="control-label" for="input01">Fecha fin:</label>
+						<div class="input-append date">
+						  <input id="txtFechaFin" name="txtFechaFin" class="span2" size="16" type="text" value="">
 						</div>
 						<br>
 						<div class="form-actions">
 							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
 						</div>
-					<fieldset>
+					</fieldset>
 				</form>
 			</div>
 			
@@ -141,7 +90,7 @@
 		</div>
 
       <footer>
-        <p>&copy; StarSoft 2014</p>
+        <%@ include file="PiePagina.jsp" %>
       </footer>
 
     </div> <!-- /container -->
