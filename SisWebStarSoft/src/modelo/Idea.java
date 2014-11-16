@@ -87,16 +87,20 @@ public class Idea {
 	public void setId_Alumno(int id_Alumno) {
 		this.id_Alumno = id_Alumno;
 	}
-	public String getFecha_creacionCorta() {
-		DateFormat df = new SimpleDateFormat("dd MM  yyyy");
-		return df.format(fecha_creacion);
-		
-	}
+
 	
 	public Date getFecha_creacion() {
 		return fecha_creacion;
 	}
+	public String getFecha_creacionCorta() {
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		return df.format(fecha_creacion);
+		
+	
+	}
 	public void setFecha_creacion(Date fecha_creacion) {
+		
+		
 		this.fecha_creacion = fecha_creacion;
 	}
 	public Date getFecha_modificacion() {
