@@ -3,60 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Victor Marino">
-	<meta name="keywords" content="Victor Marino">
-    <meta name="author" content="Victor Marino">
-	
-    <title>Sistema de gestión de la innovación</title>
-	
-	<script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap-3.2.0.js"></script>
-    <script src="js/Utils.js"></script>
-    <script src="js/UsuarioBuscar.js"></script>
-
-	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-	<link href="css/offcanvas.css" rel="stylesheet">	
-	<link href="css/datepicker.css" rel="stylesheet">
-	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+	<%@ include file="CabeceraPagina.jsp" %>
+	<script src="js/UsuarioBuscar.js"></script>
 </head>
 <body>
-	<!-- INICIO DEL MENU PRINCIPAL -->
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-			<span class="icon-bar"></span>			
-          </button>
-          <a class="navbar-brand" href="index.php">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
-			<li><a href="IdeaBuscar.jsp">Ideas</a></li>
-			<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-			<li><a href="PageH06.jsp">Centro de información</a></li>
-			<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-			<li><a href="MensajesListar.jsp">Mensajes</a></li>
-			<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-			<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-	<!-- FIN DEL MENU PRINCIPAL -->
+	<%@ include file="MenuPagina.jsp" %>
 	
 	<div class="container">
 		<div class="row">
@@ -73,21 +24,20 @@
 									<option value="2">Apellido Paterno</option>
 									<option value="3">Apellido Materno</option>
 								</select>
-								<input type="text" id="txtFiltro" name="txtFiltro" class="input-medium" style="width:150px">
-								<p class="help-block">Ingrese los criterios de búsqueda</p>
+								<input type="text" id="txtFiltro" name="txtFiltro" class="input-medium" style="width:250px" placeholder="Ingrese el filtro">
 							</div>
 						</div>
 						<br>
 						<div class="form-actions">
 							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
 						</div>
-					<fieldset>
+					</fieldset>
 				</form>
 			</div>
 			
 			<div class="col-md-12">
 				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="AbriRegistro();">Agregar</button>
+					<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
 				</div>
 			</div>
 			
@@ -150,8 +100,132 @@
 			</div>
 		</div>
 
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Registro de usuarios</h4>
+		      </div>
+		      <form class="form-horizontal well" method="post" action="RegistroUsuariosServlet">
+		      	<div class="modal-body">
+					<fieldset>
+						<table>
+							<tr>
+								<td>
+									<label class="control-label" for="input01">Nombres:</label>
+									<div class="controls">
+										<input type="text" id="txtNombres" name="txtNombres" class="input-medium" style="width:200px" required value="">
+									</div>
+								</td>
+								<td style="width:20px"></td>
+								<td>
+									<label class="control-label" for="input01">Ape.Pat.:</label>
+									<div class="controls">
+										<input type="text" id="txtPaterno" name="txtPaterno" class="input-medium" style="width:200px" required value="">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Ape.Mat.:</label>
+									<div class="controls">
+										<input type="text" id="txtMaterno" name="txtMaterno" class="input-medium" style="width:200px" required value="">
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Genero:</label>
+									<div class="controls">
+										<select id="ddlGenero" name="ddlGenero">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">Masculino</option>
+											<option value="2">Femenino</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Tipo Doc.:</label>
+									<div class="controls">
+										<select id="ddlTipoDoc" name="ddlTipoDoc">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">DNI</option>
+											<option value="2">CE</option>
+											<option value="3">PAS</option>
+										</select>
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Nro.Doc.:</label>
+									<div class="controls">
+										<input type="text" id="txtNroDoc" name="txtNroDoc" class="input-medium" style="width:150px">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Correo:</label>
+									<div class="controls">
+										<input type="email" id="txtCorreo" name="txtCorreo" class="input-medium" style="width:200px" required value="">
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Celular:</label>
+									<div class="controls">
+										<input type="text" id="txtCelular" name="txtCelular" class="input-medium" style="width:150px">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Contraseña:</label>
+									<div class="controls">
+										<input type="password" id="txtContrasena" name="txtContrasena" class="input-medium" style="width:150px" required>
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Tipo Usuario:</label>
+									<div class="controls">
+										<select id="ddlTipoUsuario" name="ddlTipoUsuario">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">Estudiante</option>
+											<option value="2">Asesor</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Centro de Información:</label>
+									<div class="controls">
+										<select id="ddlCentroInfo" name="ddlCentroInfo">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">UPC</option>
+											<option value="2">CIBERTEC</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+		      	</div>
+				<div class="modal-footer">
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				  <button type="submit" class="btn btn-primary">Registrar</button>
+				</div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
+		
       <footer>
-        <p>&copy; StarSoft 2014</p>
+        <%@ include file="PiePagina.jsp" %>
       </footer>
 
     </div> <!-- /container -->

@@ -11,8 +11,9 @@ function KeyPress(){
 
 function AbriRegistro(pCodigoUsuario)
 {
-	if(pCodigoUsuario == null)
-		window.location = ("UsuarioRegistro.jsp");
-	else
-		window.location = ("UsuarioRegistro.jsp?CodigoUsuario=" + pCodigoUsuario);
+	$("#btnAgregar").click();
+	//if(pCodigoUsuario == null)
+		//window.location = ("UsuarioRegistro.jsp");
+	//else
+		//window.location = ("UsuarioRegistro.jsp?CodigoUsuario=" + pCodigoUsuario);
 }
