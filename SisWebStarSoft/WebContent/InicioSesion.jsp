@@ -1,41 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 	<%@ include file="CabeceraPagina.jsp" %>
+	<link href="css/signin.css" rel="stylesheet">
 	<script src="js/InicioSesion.js"></script>
 </head>
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<form class="form-horizontal well" method="post" action="InicioSesionServlet">
-					<fieldset>
-				  		<legend>Inicio de sesión</legend>
-						<div class="control-group">
-							<label class="control-label" for="input01">Correo:</label>
-							<div class="controls">
-								<input type="email" id="txtCorreo" name="txtCorreo" class="input-medium" style="width:200px" required placeholder="Ingrese el correo">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="input01">Contraseña:</label>
-							<div class="controls">
-								<input type="password" id="txtContrasena" name="txtContrasena" class="input-medium" style="width:200px" required placeholder="Ingrese la contraseña">
-							</div>
-						</div>
-						<br>
-						<div class="form-actions">
-							<button type="submit" class="btn btn-primary" id="btnIngresar">Ingresar</button>
-						</div>
-					</fieldset>
-				</form>
+		<form class="form-signin" role="form" method="post" action="InicioSesionServlet">
+			<h2 class="form-signin-heading">Inicio de sesión</h2>
+			<div class="input-group">
+				<span class="input-group-addon">
+			        <i class="glyphicon glyphicon-envelope"></i>
+			    </span>
+				<input type="email" id="txtCorreo" name="txtCorreo" class="form-control" required placeholder="Ingrese el correo" autofocus>
 			</div>
-		</div>
-      <footer>
-        <%@ include file="PiePagina.jsp" %>
-      </footer>
+			<div class="input-group">
+				<span class="input-group-addon">
+			        <i class="glyphicon glyphicon-pushpin"></i>
+			    </span>
+			    <input type="password" id="txtContrasena" name="txtContrasena" class="form-control" required placeholder="Ingrese la contraseña">
+			</div>
+			<div class="checkbox">
+				<label>
+				  <input type="checkbox" value="remember-me"> Remember me
+				</label>
+		    </div>
+		    <div class="form-actions">
+				<button type="submit" class="btn btn-lg btn-primary btn-block" id="btnIngresar">Ingresar</button>
+			</div>
+		</form>
     </div> <!-- /container -->
 </body>
 </html>

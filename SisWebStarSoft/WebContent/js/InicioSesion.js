@@ -1,7 +1,5 @@
 $(document).ready(function () {
 	KeyPress();
-	
-    $("#txtCorreo").focus();
 });
 
 function KeyPress(){
