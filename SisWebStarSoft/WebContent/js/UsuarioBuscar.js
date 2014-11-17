@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	KeyPress();
 	
-    $("#ddlCampo").focus();
+	$('.selectpicker').selectpicker();
 });
 
 function KeyPress(){

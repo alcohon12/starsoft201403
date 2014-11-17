@@ -14,10 +14,12 @@
 <script src="js/bootstrap-3.2.0.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/locales/bootstrap-datepicker.es.js"></script>
+<script src="js/bootstrap-select.js"></script>
 <script src="js/Utils.js"></script>
 
 <link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 <link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
+<link href="css/bootstrap-select.css" rel="stylesheet">
 <link href="css/offcanvas.css" rel="stylesheet">	
 <link href="css/datepicker.css" rel="stylesheet">
 

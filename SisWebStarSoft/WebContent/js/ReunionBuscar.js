@@ -17,6 +17,12 @@ function DatePicker()
         autoclose:true,
         language: 'es'
     });
+	$("#txtFecha").datepicker({
+		isRTL: false,
+        format: 'dd/mm/yyyy',
+        autoclose:true,
+        language: 'es'
+    });
 }
 
 function KeyPress(){
@@ -24,10 +30,11 @@ function KeyPress(){
 	fncUtil_Enter("#txtFechaFin","#btnBuscar");
 }
 
-function AbriRegistro(pCodigoUsuario)
+function AbriRegistro(pCodigoReunion)
 {
-	if(pCodigoUsuario == null)
-		window.location = ("ReunionRegistro.jsp");
-	else
-		window.location = ("ReunionRegistro.jsp?CodigoReunion=" + pCodigoUsuario);
+	$("#btnAgregar").click();
+	//if(pCodigoUsuario == null)
+		//window.location = ("ReunionRegistro.jsp");
+	//else
+		//window.location = ("ReunionRegistro.jsp?CodigoReunion=" + pCodigoUsuario);
 }
