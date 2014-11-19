@@ -4,17 +4,16 @@
 <html lang="es">
 <head>
 	<%@ include file="CabeceraPagina.jsp" %>
+	<script src="js/IdeaBuscar.js"></script>
 </head>
 <body>
 <%@ include file="MenuPagina.jsp" %>
-	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
 				<form class="form-horizontal well" method="post" action="BusquedaIdeaServlet">
 					<fieldset>
 				  		<legend>Búsqueda de Ideas</legend>
-				  		
 						<div class="control-group">
 							<table>
 								<tr>
