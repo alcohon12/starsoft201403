@@ -1,64 +1,12 @@
 <%@ page import="java.util.*,modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Frank Chara">
-	<meta name="keywords" content="Frank Chara">
-    <meta name="author" content="Frank Chara">
-	
-    <title>Sistema de gestión de la innovación</title>
-	
-	<script src="js/jquery-1.10.2.js"></script>
-	<script src="js/bootstrap-3.2.0.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/locales/bootstrap-datepicker.es.js"></script>
-    <script src="js/Utils.js"></script>
-    <script src="js/IdeaBuscar.js"></script>
-
-	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-	<link href="css/offcanvas.css" rel="stylesheet">	
-	<link href="css/datepicker.css" rel="stylesheet">
-	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+	<%@ include file="CabeceraPagina.jsp" %>
 </head>
 <body>
-    <!-- INICIO DEL MENU PRINCIPAL -->
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-			<span class="icon-bar"></span>			
-          </button>
-          <a class="navbar-brand" href="index.php">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
-			<li class="active"><a href="IdeaBuscar.jsp">Ideas</a></li>
-			<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-			<li><a href="PageH06.jsp">Centro de información</a></li>
-			<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-			<li><a href="MensajesListar.jsp">Mensajes</a></li>
-			<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-			<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-	<!-- FIN DEL MENU PRINCIPAL -->
+<%@ include file="MenuPagina.jsp" %>
 	
 	<div class="container">
 		<div class="row">
@@ -68,30 +16,35 @@
 				  		<legend>Búsqueda de Ideas</legend>
 				  		
 						<div class="control-group">
-							<div class="controls">
-								<input type="radio" checked="checked" id="rbttodas" value="rbttodas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Todas
-								<input type="radio" id="rbtpublicadas" value="rbtpublicadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Publicadas
-								<input type="radio" id="rbtaprobadas" value="rbtaprobadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Aprobadas
-								<input type="radio" id="rbtrechazadas" value="rbtrechazadas" name="rbtfiltro" class="input-medium" style="width:10%;" required>Rechazadas
-							</div>
+							<table>
+								<tr>
+									<td width="450px">
+										<div class="radio">
+											<label><input type="radio" checked="checked" id="rbttodas" value="rbttodas" name="rbtfiltro" required>Todas</label>
+											<label><input type="radio" id="rbtpublicadas" value="rbtpublicadas" name="rbtfiltro" required>Publicadas</label>
+											<label><input type="radio" id="rbtaprobadas" value="rbtaprobadas" name="rbtfiltro" required>Aprobadas</label>
+											<label><input type="radio" id="rbtrechazadas" value="rbtrechazadas" name="rbtfiltro" required>Rechazadas</label>
+										</div>
+									</td>
+								</tr>
+							</table>
 							<br>
-							<div class="controls">
-								<input type="text" id="txtfiltro" name="txtfiltro" class="input-medium" style="width:70%;">      <button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
-							</div>
+							<table>
+								<tr>
+									<td>
+										<div  class="input-group">
+											<input type="text" id="txtfiltro" name="txtfiltro" class="form-control" style="width:400px" placeholder="Buscar por titulo, descripción o palabras clave" title="Buscar por titulo, descripción o palabras clave">      
+											<span class="input-group-addon">
+												<i class="glyphicon glyphicon-search"></i>
+											</span>									
+										</div>
+									</td>
+								</tr>
+							</table>
 						</div>
-						
-						
-					<fieldset>
+					</fieldset>
 				</form>
 			</div>
-			
-			<!-- 
-			<div class="col-md-12">
-				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="AbriRegistro();">Agregar</button>
-				</div>
-			</div>
-			 -->
 			 
 			<div class="col-md-12">
 				<table class="table table-striped table-bordered">
@@ -161,9 +114,8 @@
 		</div>
 
       <footer>
-        <p>&copy; StarSoft 2014</p>
+        <%@ include file="PiePagina.jsp" %>
       </footer>
-
     </div> <!-- /container -->
 </body>
 </html>
