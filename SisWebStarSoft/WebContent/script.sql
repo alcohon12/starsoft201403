@@ -19,10 +19,10 @@ CREATE TABLE IF NOT EXISTS `Starsoft`.`Parametro` (
   `nombre_Tabla` VARCHAR(100) NULL,
   `fecha_Creacion` DATETIME NOT NULL,
   `fecha_Modificacion` DATETIME NULL,
-  PRIMARY KEY (`id_Parametro`),
-  UNIQUE INDEX `id_Tabla_UNIQUE` (`id_Tabla` ASC))
+  PRIMARY KEY (`id_Parametro`)
+  )
 ENGINE = InnoDB;
-
+ 
 
 -- -----------------------------------------------------
 -- Table `Starsoft`.`Centro_Informacion`
