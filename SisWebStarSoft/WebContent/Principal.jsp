@@ -6,7 +6,12 @@
 	<%@ include file="CabeceraPagina.jsp" %>
 </head>
 <body>
+	
 	<%@ include file="MenuPagina.jsp" %>
+	
+	
 	<%@ include file="PiePagina.jsp" %>
+	
+	
 </body>
 </html>

@@ -41,11 +41,17 @@
 								</tr>
 							</table>
 						</div>
+						<br>
+						<div class="form-actions">
+							<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
+						</div>
 					</fieldset>
 				</form>
 			</div>
 			 
 			<div class="col-md-12">
+			
+				<!--  <table class="table table-striped table-bordered">-->
 				<table class="table table-striped table-bordered">
 					<thead>
 						<tr>
