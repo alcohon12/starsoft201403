@@ -170,7 +170,8 @@
 										String b = new String("");
 										SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
 										b = format.format(new Date());
-										out.println("<div class='panel panel-success'>");
+										//out.println("<div class='panel panel-success'>");
+										out.println("<div class='panel panel-primary'>");
 										out.println("<div class='panel-heading'>");
 										out.println("<h3 class='panel-title' style='font-size: 12px;'>Usuario: " + item.getUsuario_Comentario() + "&nbsp;&nbsp;&nbsp;Fecha de Comentario: " +  b + "</h3>");
 										out.println("</div>");
@@ -189,7 +190,7 @@
 							<div class="form-actions">
 									<br>
 									<button type="submit" class="btn btn-primary" id="btnResponder">Comentar</button>
-									<button type="button" class="btn btn-success" id="btnRegresar" onclick = "window.location = ('InvitacionIdea.jsp');">Regresar</button>
+									<button type="button" class="btn btn-default" id="btnRegresar" onclick = "window.location = ('InvitacionIdea.jsp');">Regresar</button>
 								</div>
 						</div>
 					</fieldset>
