@@ -30,11 +30,9 @@
 <![endif]-->
 <style>
 body{
-background-image: url("img/body-java.png") ;
+/*background-image: url("img/body-java.png") ;
 background-repeat: no-repeat;
-background-position: center;
-
-
+background-position: center;*/
 }
 
 </style>

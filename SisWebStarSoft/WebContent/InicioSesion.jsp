@@ -32,6 +32,15 @@
 				<button type="submit" class="btn btn-lg btn-primary btn-block" id="btnIngresar">Ingresar</button>
 			</div>
 		</form>
+		<% 
+			String mensaje = (String) request.getAttribute("MENSAJE");
+			if(mensaje != null)
+			{
+				out.println("<center><div style='color:red'>");
+				out.println(mensaje);
+				out.println("</div></center>");
+			}
+		%>
     </div> <!-- /container -->
 </body>
 </html>

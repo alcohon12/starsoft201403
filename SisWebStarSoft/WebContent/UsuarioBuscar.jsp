@@ -1,4 +1,4 @@
-<%@ page import="java.util.ArrayList,modelo.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="java.util.ArrayList,starsoft.modelo.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es">

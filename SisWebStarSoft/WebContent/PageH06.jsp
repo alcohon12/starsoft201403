@@ -114,7 +114,7 @@
 					</thead>
 					<tbody>
 
-						<%@page import="java.util.*,modelo.CentroFormacion"%>
+						<%@page import="java.util.*,starsoft.modelo.CentroFormacion"%>
 						<%
                         
                         	ArrayList<CentroFormacion> Centros=(ArrayList<CentroFormacion>) request.getAttribute("Centros");

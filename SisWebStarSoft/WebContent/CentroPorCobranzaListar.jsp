@@ -1,4 +1,4 @@
-<%@ page import="java.util.*,modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="java.util.*,starsoft.modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
@@ -121,7 +121,7 @@
 					</thead>
 					<tbody>
 
-                        <%@page import="java.util.*,modelo.CentroFormacion" %>
+                        <%@page import="java.util.*,starsoft.modelo.CentroFormacion" %>
                         <%
                         
                         	ArrayList<CentroFormacion> Centros=(ArrayList<CentroFormacion>) request.getAttribute("Centros");
