@@ -8,6 +8,12 @@ LIMIT 0, 1000
 INSERT INTO `parametro` (`id_Parametro`,`descripcion_Parametro`,`id_Tabla`,`nombre_Tabla`,`fecha_Creacion`,`fecha_Modificacion`) VALUES (1,'Universidad',1,'Tipo Centro Informacion','19/11/2014',NULL);
 INSERT INTO `parametro` (`id_Parametro`,`descripcion_Parametro`,`id_Tabla`,`nombre_Tabla`,`fecha_Creacion`,`fecha_Modificacion`) VALUES (2,'Intituto',1,'Tipo Centro Informacion','19/11/2014',NULL);
 --*************************************************************
+
+--TABLA GENERO*************************************************
+INSERT INTO PARAMETRO VALUES (1,'Masculino',2,'Genero',CURDATE(),NULL);
+INSERT INTO PARAMETRO VALUES (2,'Femenino',2,'Genero',CURDATE(),NULL)
+--*************************************************************
+
 --TABLA CENTRO INFORMACION*****************************************
 INSERT INTO `centro_informacion` (`id_Centro_Informacion`,`nombre_Centro_Informacion`,`id_Tipo_Centro`,`url_Centro_Informacion`,`extensionLogo_Centro_Informacion`,`monto_Pago`,`servicio_Pago`,`fecha_creacion`,`fecha_modificacion`) VALUES (1,'Univeridad Peruana de Ciencias',1,'http://www.upc.edu.pe','jpg',1500,1,'19/11/2014',NULL);
 INSERT INTO `centro_informacion` (`id_Centro_Informacion`,`nombre_Centro_Informacion`,`id_Tipo_Centro`,`url_Centro_Informacion`,`extensionLogo_Centro_Informacion`,`monto_Pago`,`servicio_Pago`,`fecha_creacion`,`fecha_modificacion`) VALUES (2,'Cibertec',2,'http://www.cibertec.edu.pe','jpg',2500,1,'19/11/2014',null);
