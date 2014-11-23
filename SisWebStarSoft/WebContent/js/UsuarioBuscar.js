@@ -1,6 +1,8 @@
 $(document).ready(function () {
 	KeyPress();
 	
+	$('#tblUsuario').dataTable();
+	
 	$('.selectpicker').selectpicker();
 });
 

@@ -109,4 +109,9 @@ public class Usuario {
 	public void setNombre_Tipo_Usuario(String nombre_Tipo_Usuario) {
 		this.nombre_Tipo_Usuario = nombre_Tipo_Usuario;
 	}
+	
+	public String getNombreCompleto_Usuario()
+	{
+		return this.nombre_Usuario + " " + this.paterno_Usuario + " " + this.materno_Usuario;
+	}
 }

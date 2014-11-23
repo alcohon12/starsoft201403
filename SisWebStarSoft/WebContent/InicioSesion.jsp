@@ -6,6 +6,7 @@
 	<%@ include file="CabeceraPagina.jsp" %>
 	<link href="css/signin.css" rel="stylesheet">
 	<script src="js/InicioSesion.js"></script>
+	<script src="js/jquery.cookie.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -25,7 +26,7 @@
 			</div>
 			<div class="checkbox">
 				<label>
-				  <input type="checkbox" value="remember-me"> Remember me
+				  <input type="checkbox" value="remember-me" id="chkRecordar"> Recordar datos
 				</label>
 		    </div>
 		    <div class="form-actions">

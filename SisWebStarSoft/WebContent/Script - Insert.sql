@@ -28,3 +28,5 @@ INSERT INTO centro_informacion VALUES (7,'Instituto SISE',2,'http://www.sise.edu
 INSERT INTO centro_informacion VALUES (8,'USIL',1,'http://www.usil.edu.pe','jpg',3500,1,CURDATE(),NULL);
 INSERT INTO centro_informacion VALUES (9,'ESAN',1,'http://www.esan.edu.pe','jpg',1350,1,CURDATE(),NULL);
 INSERT INTO centro_informacion VALUES (10,'TECSUP ',2,'http://www.tecsup.edu.pe','jpg',2540,1,CURDATE(),NULL);
+
+INSERT INTO usuario VALUES (1,'Estudiante','Prueba','01',3,5,'123456','estudiante@prueba.com','','123',8,1,CURDATE(),NULL);

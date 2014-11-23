@@ -48,7 +48,7 @@ public class InicioSesionServlet extends HttpServlet {
 		GestionUsuario negocio = new GestionUsuario();
 
 		try {
-			Usuario vo = negocio.validarUsuario(Correo, Contrasena);
+			Usuario vo = negocio.validar(Correo, Contrasena);
 			
 			HttpSession session = request.getSession();
 			session.setAttribute("USUARIO_ACTUAL", vo);
