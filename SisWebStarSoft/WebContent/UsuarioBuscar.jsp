@@ -29,7 +29,7 @@
 									<td style="width:5px"></td>
 									<td>
 										<div class="input-group">
-											<input type="text" id="txtFiltro" name="txtFiltro" class="form-control" style="width:350px" placeholder="Ingrese el filtro">
+											<input type="text" id="txtFiltro" name="txtFiltro" class="form-control" style="width:350px" maxlength="50" placeholder="Ingrese el filtro">
 											<span class="input-group-addon">
 										        <i class="glyphicon glyphicon-search"></i>
 										    </span>				
@@ -53,7 +53,7 @@
 			</div>
 			
 			<div class="col-md-12">
-				<table class="table table-striped table-bordered">
+				<table id="tblUsuario" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th style="width:50px">Editar</th>
@@ -97,14 +97,15 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="7">Registros: 
+							<th colspan="7">
+								Registros: 
 								<% 
 									if(lst != null) 
 										out.println(lst.size()); 
 									else 
 										out.println(0); 
 								%>
-							</td>
+							</th>
 						</tr>
 					</tfoot>
 				</table>
@@ -227,8 +228,8 @@
 					</fieldset>
 		      	</div>
 				<div class="modal-footer">
-				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				  <button type="submit" class="btn btn-primary">Registrar</button>
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 				</div>
 		      </form>
 		    </div>
