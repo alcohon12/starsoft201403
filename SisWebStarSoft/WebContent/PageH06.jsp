@@ -1,74 +1,16 @@
+<%@ page import="java.util.ArrayList,starsoft.modelo.*" language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="David Rodr&iacute;guez Condezo">
-<meta name="keywords"
-	content="David Rodriguez Condezo Rodr&iacute;guez Curriculum Hoja de vida consultoria ti">
-<meta name="author" content="David Rodr&iacute;guez Condezo">
-
-<link href="img/favicon.ico" rel="icon" type="image/x-icon" />
-
-<title>StarSoft</title>
-
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap-3.2.0.js"></script>
-
-
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link href="css/bootstrap-3.2.0.css" rel="stylesheet">
-<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-<link href="css/offcanvas.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
+	<%@ include file="CabeceraPagina.jsp" %>
+	<script src="js/UsuarioBuscar.js"></script>
 </head>
-
 <body>
-
-
-	<!-- INICIO DEL MENU PRINCIPAL -->
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span><span class="icon-bar"></span><span
-						class="icon-bar"></span><span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.php">Logo</a>
-			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-		            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
-					<li><a href="IdeaBuscar.jsp">Ideas</a></li>
-					<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-					<li class="active"><a href="PageH06.jsp">Centro de información</a></li>
-					<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-					<li><a href="MensajesListar.jsp">Mensajes</a></li>
-					<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-					<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
-				</ul>
-			</div>
-			<!-- /.nav-collapse -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /.navbar -->
-	<!-- FIN DEL MENU PRINCIPAL -->
+	<%@ include file="MenuPagina.jsp" %>
 
 	<div class="container">
+
 
 		<div class="row">
 			<div class="col-md-12">
@@ -94,9 +36,8 @@
 			</div>
 
 			<div class="col-md-12">
-
 				<div class="form-actions">
-					<button type="button" id="btnAgregar" class="btn btn-primary">Agregar</button>
+					<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
 				</div>
 			</div>
 
@@ -160,17 +101,18 @@
 
 		</div>
 
-		<footer>
-			<p>&copy; Company 2014</p>
-		</footer>
 
-	</div>
-	<!-- /container -->
+	 <footer>
+        <%@ include file="PiePagina.jsp" %>
+      </footer>
 
-
-
-
-	<div id="dialog-form" title=" - ">
+    </div> <!-- /container -->
+    
+    
+    
+    
+    
+<div id="dialog-form" title=" - ">
 		<p class="validateTips"></p>
 		<form>
 			<input type="hidden" id="id_Centro_Informacion" value="" /> <input
@@ -193,17 +135,142 @@
 			</fieldset>
 		</form>
 	</div>
+    
+    
+    
+    
+<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		        <h4 class="modal-title" id="myModalLabel">Registro Centro Información</h4>
+		      </div>
+		      <form class="form-horizontal well" method="post" action="RegistroUsuariosServlet">
+		      	<div class="modal-body">
+					<fieldset>
+						<table>
+							<tr>
+								<td>
+									<label class="control-label" for="input01">Centro Formacion:</label>
+									<div class="controls">
+										<input type="text" id="txtNombres" name="txtNombres" class="form-control" style="width:200px" required value="">
+									</div>
+								</td>
+								<td style="width:20px"></td>
+								<td>
+									<label class="control-label" for="input01">Foto:</label>
+									<div class="controls">
+										<input type="text" id="txtPaterno" name="txtPaterno" class="form-control" style="width:200px" required value="">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Ape.Mat.:</label>
+									<div class="controls">
+										<input type="text" id="txtMaterno" name="txtMaterno" class="form-control" style="width:200px" required value="">
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Genero:</label>
+									<div class="controls">
+										<select id="ddlGenero" name="ddlGenero" class="selectpicker" data-style="btn-primary" style="display:none">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">Masculino</option>
+											<option value="2">Femenino</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Tipo Doc.:</label>
+									<div class="controls">
+										<select id="ddlTipoDoc" name="ddlTipoDoc" class="selectpicker" data-style="btn-primary" style="display:none">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">DNI</option>
+											<option value="2">CE</option>
+											<option value="3">PAS</option>
+										</select>
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Nro.Doc.:</label>
+									<div class="controls">
+										<input type="text" id="txtNroDoc" name="txtNroDoc" class="form-control" style="width:150px">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Correo:</label>
+									<div class="controls">
+										<input type="email" id="txtCorreo" name="txtCorreo" class="form-control" style="width:200px" required value="">
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Celular:</label>
+									<div class="controls">
+										<input type="text" id="txtCelular" name="txtCelular" class="form-control" style="width:150px">
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Contraseña:</label>
+									<div class="controls">
+										<input type="password" id="txtContrasena" name="txtContrasena" class="form-control" style="width:150px" required>
+									</div>
+								</td>
+								<td></td>
+								<td class="control-group">
+									<label class="control-label" for="input01">Tipo Usuario:</label>
+									<div class="controls">
+										<select id="ddlTipoUsuario" name="ddlTipoUsuario" class="selectpicker" data-style="btn-primary" style="display:none">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">Estudiante</option>
+											<option value="2">Asesor</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td class="control-group">
+									<label class="control-label" for="input01">Centro de Información:</label>
+									<div class="controls">
+										<select id="ddlCentroInfo" name="ddlCentroInfo" class="selectpicker" data-style="btn-primary" style="display:none">
+											<option value="0" selected>[Seleccione]</option>
+											<option value="1">UPC</option>
+											<option value="2">CIBERTEC</option>
+										</select>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</fieldset>
+		      	</div>
+				<div class="modal-footer">
+				  <button type="submit" class="btn btn-primary">Registrar</button>
+				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				</div>
+		      </form>
+		    </div>
+		  </div>
+		</div>
+		
+<!-- Fin Modal -->    
 
-
-
-
-
+    
+    
 </body>
 
 
 
-
-</html>
 
 <style>
 #dialog-form {
@@ -327,7 +394,7 @@ fieldset {
     });
 </script>
 
-
+</html>
 
 
 
