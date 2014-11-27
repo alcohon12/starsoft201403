@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import starsoft.excepcion.DAOExcepcion;
 import starsoft.modelo.Reunion;
 import starsoft.modelo.Usuario;
+import starsoft.negocio.GestionReunion;
 
 /**
  * Servlet implementation class RegistroReunionServlet
@@ -41,27 +43,26 @@ public class RegistroReunionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String Observaciones = request.getParameter("txtObservaciones");
 		int Calificacion = Integer.parseInt(request.getParameter("ddlCalificacion"));
 		String Fecha = request.getParameter("txtFecha");
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		
 		Reunion obj = new Reunion();
 		obj.setObservacion_Reunion(Observaciones);
 		obj.setId_Calificacion(Calificacion);
+		obj.setFecha_Reunion_String(Fecha);
+		
+		GestionReunion negocio = new GestionReunion(); 
 		
 		try
 		{
-			obj.setFecha_Reunion(df.parse(Fecha));
+			negocio.insertar(obj);
 		}
-		catch(ParseException e)
-		{
-			
+		catch (DAOExcepcion e) {
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
 		}
 		
-		request.setAttribute("REGISTRO_REUNION", obj);
+		//request.setAttribute("REGISTRO_REUNION", obj);
 		RequestDispatcher rd = request.getRequestDispatcher("ReunionBuscar.jsp");
 		rd.forward(request, response);
 	}

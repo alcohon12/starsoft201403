@@ -1,21 +1,29 @@
 $(document).ready(function () {
-	KeyPress();
+	//KeyPress();
 	
 	$('#tblUsuario').dataTable();
+	$("#tblUsuario_filter").css("visibility","hidden");
+	
+	$("#btnAgregar").click(function()
+	{
+		AbriRegistro(0);
+	});
 	
 	$('.selectpicker').selectpicker();
 });
 
+/*
 function KeyPress(){
 	fncUtil_Enter("#ddlCampo","#txtFiltro");
 	fncUtil_Enter("#txtFiltro","#btnBuscar");
 }
+*/
 
 function AbriRegistro(pCodigoUsuario)
 {
-	$("#btnAgregar").click();
-	//if(pCodigoUsuario == null)
-		//window.location = ("UsuarioRegistro.jsp");
-	//else
-		//window.location = ("UsuarioRegistro.jsp?CodigoUsuario=" + pCodigoUsuario);
+	$("#frmRegistro").attr("src", "");
+	
+	$("#frmRegistro").attr("src", "UsuarioRegistro.jsp?CodigoUsuario=" + pCodigoUsuario);
+	
+	$("#myModal").modal("show");
 }

@@ -2,7 +2,6 @@ package starsoft.servlet;
 
 import java.io.IOException;
 import java.util.*;
-import java.text.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import starsoft.excepcion.DAOExcepcion;
+import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Reunion;
+import starsoft.negocio.GestionReunion;
 
 /**
  * Servlet implementation class BusquedaReunionServlet
@@ -42,86 +44,21 @@ public class BusquedaReunionServlet extends HttpServlet {
 		String FechaIni = request.getParameter("txtFechaIni");
 		String FechaFin = request.getParameter("txtFechaFin");
 		
-		DateFormat df = new SimpleDateFormat("dd/MM/yyyy"); 
+		Collection<Reunion> lst = new ArrayList<Reunion>();
 		
-		Date xFechaIni = new Date();
-		Date xFechaFin = new Date();
+		GestionReunion negocio = new GestionReunion();
 		
-		try {
-			xFechaIni = df.parse(FechaIni);
-			xFechaFin = df.parse(FechaFin);
-		} 
-		catch (ParseException e) {
-			//e.printStackTrace();
-		}
-		
-		ArrayList<Reunion> lst = new ArrayList<Reunion>();
-		ArrayList<Reunion> lstfiltro = new ArrayList<Reunion>();
-		
-		Date myDate;
-        Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, 10);
-        cal.set(Calendar.DATE, 1);
-        cal.set(Calendar.YEAR, 2014);
-        myDate = cal.getTime();
-		
-		Reunion obj1 = new Reunion();
-		obj1.setId_Reunion(1);
-		obj1.setObservacion_Reunion("Observacion 01");
-		obj1.setId_Calificacion(1);
-		obj1.setNombre_Calificacion("Bueno");
-		obj1.setFecha_Reunion(myDate);
-		lst.add(obj1);
-		
-		cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, 10);
-        cal.set(Calendar.DATE, 5);
-        cal.set(Calendar.YEAR, 2014);
-        myDate = cal.getTime();
-		
-		Reunion obj2 = new Reunion();
-		obj2.setId_Reunion(2);
-		obj2.setObservacion_Reunion("Observacion 02");
-		obj2.setId_Calificacion(2);
-		obj2.setNombre_Calificacion("Medio");
-		obj2.setFecha_Reunion(myDate);
-		lst.add(obj2);
-		
-		cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, 10);
-        cal.set(Calendar.DATE, 10);
-        cal.set(Calendar.YEAR, 2014);
-        myDate = cal.getTime();
-		
-		Reunion obj3 = new Reunion();
-		obj3.setId_Reunion(3);
-		obj3.setObservacion_Reunion("Observacion 03");
-		obj3.setId_Calificacion(3);
-		obj3.setNombre_Calificacion("Mejorar");
-		obj3.setFecha_Reunion(myDate);
-		lst.add(obj3);
-		
-		cal = Calendar.getInstance();
-        cal.set(Calendar.MONTH, 10);
-        cal.set(Calendar.DATE, 15);
-        cal.set(Calendar.YEAR, 2014);
-        myDate = cal.getTime();
-		
-		Reunion obj4 = new Reunion();
-		obj4.setId_Reunion(4);
-		obj4.setObservacion_Reunion("Observacion 04");
-		obj4.setId_Calificacion(1);
-		obj4.setNombre_Calificacion("Bueno");
-		obj4.setFecha_Reunion(myDate);
-		lst.add(obj4);
-		
-		for(Reunion item : lst)
+		try
 		{
-			if(item.getFecha_Reunion().compareTo(xFechaIni) >= 0 && item.getFecha_Reunion().compareTo(xFechaFin) <= 0)
-			lstfiltro.add(item);
+			lst = negocio.obtener(FechaIni, FechaFin);
+		}
+		catch (DAOExcepcion e) {
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+		} catch (LoginExcepcion e) {			
+			request.setAttribute("MENSAJE", e.getMessage());
 		}
 		
-		request.setAttribute("LISTADO_REUNIONES", lstfiltro);
+		request.setAttribute("LISTADO_REUNIONES", lst);
 		RequestDispatcher rd = request.getRequestDispatcher("ReunionBuscar.jsp");
 		rd.forward(request, response);
 	}

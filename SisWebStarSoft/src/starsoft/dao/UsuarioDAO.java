@@ -39,7 +39,7 @@ public class UsuarioDAO extends BaseDAO {
 			throw new DAOExcepcion(e.getMessage());
 		} finally {
 			this.cerrarResultSet(rs);
-			this.cerrarStatement(stmt);
+			this.cerrarCallable(stmt);
 			this.cerrarConexion(con);
 		}
 		return vo;
@@ -58,8 +58,9 @@ public class UsuarioDAO extends BaseDAO {
 			stmt.setInt(1, campo);
 			stmt.setString(2, filtro);
 			rs = stmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				Usuario vo = new Usuario();
+				vo.setId_Usuario(rs.getInt("id_Usuario"));
 				vo.setNombre_Usuario(rs.getString("nombre_Usuario"));
 				vo.setPaterno_Usuario(rs.getString("paterno_Usuario"));
 				vo.setMaterno_Usuario(rs.getString("materno_Usuario"));
@@ -67,9 +68,6 @@ public class UsuarioDAO extends BaseDAO {
 				vo.setCorreo_Usuario(rs.getString("correo_Usuario"));
 				
 				lst.add(vo);
-			}
-			else {
-				throw new LoginExcepcion("No se encontraron coincidencias");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

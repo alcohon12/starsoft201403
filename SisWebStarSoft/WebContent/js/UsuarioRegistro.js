@@ -1,10 +1,15 @@
 $(document).ready(function () {
-	KeyPress();
+	//KeyPress();
+	
+	$("#btnCerrar").click(function()
+	{
+		parent.$("#myModal").modal("hide");
+	});
 	
     $("#txtNombres").focus();
 });
 
-function KeyPress()
+/*function KeyPress()
 {
 	fncUtil_Enter("#txtNombres","#txtPaterno");
 	fncUtil_Enter("#txtPaterno","#txtMaterno");
@@ -17,9 +22,4 @@ function KeyPress()
 	fncUtil_Enter("#txtContrasena","#ddlTipoUsuario");
 	fncUtil_Enter("#ddlTipoUsuario","#ddlCentroInfo");
 	fncUtil_Enter("#ddlCentroInfo","#btnGuardar");
-}
-
-function AbrirBusqueda()
-{
-	window.location = ("UsuarioBuscar.jsp");
-}
+}*/

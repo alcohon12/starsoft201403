@@ -13,6 +13,7 @@ public class Reunion {
 	private Date fecha_creacion;
 	private Date fecha_modificacion;
 	
+	
 	public int getId_Reunion() {
 		return id_Reunion;
 	}
@@ -45,6 +46,18 @@ public class Reunion {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		return df.format(fecha_Reunion);
 	}
+	
+	public void setFecha_Reunion_String(String Fecha)
+	{
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		try {
+			fecha_Reunion = df.parse(Fecha);
+		} 
+		catch (ParseException e) {
+			
+		}
+	}
+	
 	public void setFecha_Reunion(Date fecha_Reunion) {
 		this.fecha_Reunion = fecha_Reunion;
 	}
