@@ -62,7 +62,6 @@ public class ListarCentroPorCobranzaServlet extends HttpServlet {
 		
 		
 		request.setAttribute("Centros", Centros);
-		//request.setAttribute("value", "Hola mundo");
 		
 		RequestDispatcher rd=request.getRequestDispatcher("CentroPorCobranzaListar.jsp");
 		rd.forward(request, response);
