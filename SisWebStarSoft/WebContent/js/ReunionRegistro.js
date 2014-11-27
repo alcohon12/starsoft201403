@@ -1,6 +1,11 @@
 $(document).ready(function () {
-	KeyPress();
+	//KeyPress();
 	DatePicker();
+	
+	$("#btnCerrar").click(function()
+	{
+		parent.$("#myModal").modal("hide");
+	});
 	
     $("#txtObservaciones").focus();
 });
@@ -15,12 +20,14 @@ function DatePicker()
     });
 }
 
+/*
 function KeyPress()
 {
 	fncUtil_Enter("#txtObservaciones","#ddlCalificacion");
 	fncUtil_Enter("#ddlCalificacion","#txtFecha");
 	fncUtil_Enter("#txtFecha","#btnGuardar");
 }
+*/
 
 function AbrirBusqueda()
 {

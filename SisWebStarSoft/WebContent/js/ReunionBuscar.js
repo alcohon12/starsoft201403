@@ -1,6 +1,14 @@
 $(document).ready(function () {
 	KeyPress();
 	DatePicker();
+	
+	$('#tblReunion').dataTable();
+	$("#tblReunion_filter").css("visibility","hidden");
+	
+	$("#btnAgregar").click(function()
+	{
+		AbriRegistro(0);
+	});
 });
 
 function DatePicker()
@@ -32,9 +40,9 @@ function KeyPress(){
 
 function AbriRegistro(pCodigoReunion)
 {
-	$("#btnAgregar").click();
-	//if(pCodigoUsuario == null)
-		//window.location = ("ReunionRegistro.jsp");
-	//else
-		//window.location = ("ReunionRegistro.jsp?CodigoReunion=" + pCodigoUsuario);
+	$("#frmRegistro").attr("src", "");
+	
+	$("#frmRegistro").attr("src", "ReunionRegistro.jsp?CodigoReunion=" + pCodigoReunion);
+	
+	$("#myModal").modal("show");
 }

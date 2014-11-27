@@ -48,7 +48,9 @@
 			
 			<div class="col-md-12">
 				<div class="form-actions">
-					<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+					<button id="btnAgregar" type="button" class="btn btn-primary">Agregar</button>
+					<br>
+					<br>
 				</div>
 			</div>
 			
@@ -64,9 +66,24 @@
 							<th style="width:200px">Correo</th>
 						</tr>
 					</thead>
+					<tfoot>
+						<tr>
+							<th colspan="6">
+								Registros: 
+								<% 
+									ArrayList<Usuario> lst = (ArrayList<Usuario>) request.getAttribute("LISTADO_USUARIOS");
+								
+									if(lst != null) 
+										out.println(lst.size()); 
+									else 
+										out.println(0); 
+								%>
+							</th>
+						</tr>
+					</tfoot>
 					<tbody>
 						<% 
-							ArrayList<Usuario> lst = (ArrayList<Usuario>) request.getAttribute("LISTADO_USUARIOS");
+							
 							if(lst != null)
 							{
 								for(Usuario item : lst)
@@ -95,19 +112,6 @@
 							}
 						%>
 					</tbody>
-					<tfoot>
-						<tr>
-							<th colspan="7">
-								Registros: 
-								<% 
-									if(lst != null) 
-										out.println(lst.size()); 
-									else 
-										out.println(0); 
-								%>
-							</th>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 		</div>
@@ -116,122 +120,13 @@
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Registro de usuarios</h4>
-		      </div>
-		      <form class="form-horizontal well" method="post" action="RegistroUsuariosServlet">
-		      	<div class="modal-body">
-					<fieldset>
-						<table>
-							<tr>
-								<td>
-									<label class="control-label" for="input01">Nombres:</label>
-									<div class="controls">
-										<input type="text" id="txtNombres" name="txtNombres" class="form-control" style="width:200px" required value="">
-									</div>
-								</td>
-								<td style="width:20px"></td>
-								<td>
-									<label class="control-label" for="input01">Ape.Pat.:</label>
-									<div class="controls">
-										<input type="text" id="txtPaterno" name="txtPaterno" class="form-control" style="width:200px" required value="">
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="control-group">
-									<label class="control-label" for="input01">Ape.Mat.:</label>
-									<div class="controls">
-										<input type="text" id="txtMaterno" name="txtMaterno" class="form-control" style="width:200px" required value="">
-									</div>
-								</td>
-								<td></td>
-								<td class="control-group">
-									<label class="control-label" for="input01">Genero:</label>
-									<div class="controls">
-										<select id="ddlGenero" name="ddlGenero" class="selectpicker" data-style="btn-primary" style="display:none">
-											<option value="0" selected>[Seleccione]</option>
-											<option value="1">Masculino</option>
-											<option value="2">Femenino</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="control-group">
-									<label class="control-label" for="input01">Tipo Doc.:</label>
-									<div class="controls">
-										<select id="ddlTipoDoc" name="ddlTipoDoc" class="selectpicker" data-style="btn-primary" style="display:none">
-											<option value="0" selected>[Seleccione]</option>
-											<option value="1">DNI</option>
-											<option value="2">CE</option>
-											<option value="3">PAS</option>
-										</select>
-									</div>
-								</td>
-								<td></td>
-								<td class="control-group">
-									<label class="control-label" for="input01">Nro.Doc.:</label>
-									<div class="controls">
-										<input type="text" id="txtNroDoc" name="txtNroDoc" class="form-control" style="width:150px">
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="control-group">
-									<label class="control-label" for="input01">Correo:</label>
-									<div class="controls">
-										<input type="email" id="txtCorreo" name="txtCorreo" class="form-control" style="width:200px" required value="">
-									</div>
-								</td>
-								<td></td>
-								<td class="control-group">
-									<label class="control-label" for="input01">Celular:</label>
-									<div class="controls">
-										<input type="text" id="txtCelular" name="txtCelular" class="form-control" style="width:150px">
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="control-group">
-									<label class="control-label" for="input01">Contraseña:</label>
-									<div class="controls">
-										<input type="password" id="txtContrasena" name="txtContrasena" class="form-control" style="width:150px" required>
-									</div>
-								</td>
-								<td></td>
-								<td class="control-group">
-									<label class="control-label" for="input01">Tipo Usuario:</label>
-									<div class="controls">
-										<select id="ddlTipoUsuario" name="ddlTipoUsuario" class="selectpicker" data-style="btn-primary" style="display:none">
-											<option value="0" selected>[Seleccione]</option>
-											<option value="1">Estudiante</option>
-											<option value="2">Asesor</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td class="control-group">
-									<label class="control-label" for="input01">Centro de Información:</label>
-									<div class="controls">
-										<select id="ddlCentroInfo" name="ddlCentroInfo" class="selectpicker" data-style="btn-primary" style="display:none">
-											<option value="0" selected>[Seleccione]</option>
-											<option value="1">UPC</option>
-											<option value="2">CIBERTEC</option>
-										</select>
-									</div>
-								</td>
-							</tr>
-						</table>
-					</fieldset>
-		      	</div>
-				<div class="modal-footer">
-				  <button type="submit" class="btn btn-primary">Registrar</button>
-				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				  <h4 class="modal-title" id="myModalLabel">Registro de usuarios</h4>
 				</div>
-		      </form>
+				<center>
+					<iframe id="frmRegistro" width="590" height="510" scrolling="yes" frameBorder="0"></iframe>
+				</center>
 		    </div>
 		  </div>
 		</div>

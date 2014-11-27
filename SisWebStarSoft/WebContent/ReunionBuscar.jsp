@@ -51,12 +51,14 @@
 			
 			<div class="col-md-12">
 				<div class="form-actions">
-					<button id="btnAgregar" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Agregar</button>
+					<button id="btnAgregar" type="button" class="btn btn-primary">Agregar</button>
+					<br>
+					<br>
 				</div>
 			</div>
 			
 			<div class="col-md-12">
-				<table class="table table-striped table-bordered">
+				<table id="tblReunion" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th style="width:50px">Editar</th>
@@ -65,9 +67,21 @@
 							<th style="width:100px">Fecha</th>
 						</tr>
 					</thead>
+					<tfoot>
+						<tr>
+							<th colspan="4">Registros: 
+								<% 
+									ArrayList<Reunion> lst = (ArrayList<Reunion>) request.getAttribute("LISTADO_REUNIONES");
+									if(lst != null) 
+										out.println(lst.size()); 
+									else 
+										out.println(0); 
+								%>
+							</th>
+						</tr>
+					</tfoot>
 					<tbody>
 						<% 
-							ArrayList<Reunion> lst = (ArrayList<Reunion>) request.getAttribute("LISTADO_REUNIONES");
 							if(lst != null)
 							{
 								for(Reunion item : lst)
@@ -90,18 +104,6 @@
 							}
 						%>
 					</tbody>
-					<tfoot>
-						<tr>
-							<td colspan="4">Registros: 
-								<% 
-									if(lst != null) 
-										out.println(lst.size()); 
-									else 
-										out.println(0); 
-								%>
-							</td>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 		</div>
@@ -110,54 +112,13 @@
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
 		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-		        <h4 class="modal-title" id="myModalLabel">Registro de reuniones</h4>
-		      </div>
-		      <form class="form-horizontal well" method="post" action="RegistroUsuariosServlet">
-		      	<div class="modal-body">
-					<fieldset>
-						<table>
-							<tr>
-								<td>
-									<label class="control-label" for="input01">Observaciones:</label>
-									<div class="controls">
-										<textarea id="txtObservaciones" name="txtObservaciones" class="input-medium" style="width:300px;height:80px" required></textarea>
-									</div>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label class="control-label" for="input01">Calificación:</label>
-									<div class="controls">
-										<select id="ddlCalificacion" name="ddlCalificacion" class="selectpicker" data-style="btn-primary" style="display:none">
-											<option value="0" selected>[Seleccione]</option>
-											<option value="1">Bueno</option>
-											<option value="2">Medio</option>
-											<option value="3">Mejorar</option>
-										</select>
-									</div>	
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<label class="control-label" for="input01">Fecha:</label>
-									<div class="input-append date input-group">
-										<input type="text" id="txtFecha" name="txtFecha" class="form-control" size="16" required value="">
-										<span class="input-group-addon">
-									        <i class="glyphicon glyphicon-calendar"></i>
-									    </span>
-									</div>
-								</td>
-							</tr>
-						</table>
-					</fieldset>
-		      	</div>
-				<div class="modal-footer">
-				  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-				  <button type="submit" class="btn btn-primary">Registrar</button>
+				<div class="modal-header">
+				  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				  <h4 class="modal-title" id="myModalLabel">Registro de reuniones</h4>
 				</div>
-		      </form>
+				<center>
+					<iframe id="frmRegistro" width="590" height="410" scrolling="yes" frameBorder="0"></iframe>
+				</center>
 		    </div>
 		  </div>
 		</div>
