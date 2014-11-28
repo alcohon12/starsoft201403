@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `StarSoft`.`Idea` (
   `fecha_creacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   `fecha_modificacion` DATETIME NULL,
   `fecha_aprobacion` DATETIME NULL,
-  `id_Asesor` INT NOT NULL,
+  `id_Asesor` INT NULL,
   PRIMARY KEY (`id_Idea`),
   UNIQUE INDEX `titulo_Idea_UNIQUE` (`titulo_Idea` ASC),
   INDEX `fk_Idea_Usuario1` (`id_Alumno` ASC),
