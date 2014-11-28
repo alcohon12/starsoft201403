@@ -7,7 +7,7 @@ $(document).ready(function () {
 	
 	$("#btnAgregar").click(function()
 	{
-		AbriRegistro(0);
+		AbrirRegistro(0);
 	});
 });
 
@@ -38,11 +38,22 @@ function KeyPress(){
 	fncUtil_Enter("#txtFechaFin","#btnBuscar");
 }
 
-function AbriRegistro(pCodigoReunion)
+function AbrirRegistro(pCodigoReunion)
 {
 	$("#frmRegistro").attr("src", "");
 	
 	$("#frmRegistro").attr("src", "ReunionRegistro.jsp?CodigoReunion=" + pCodigoReunion);
 	
 	$("#myModal").modal("show");
+}
+
+function EliminarRegistro(pCodigoReunion)
+{
+	bootbox.confirm("Esta seguro de eliminar el registro?", function(result) {
+	  if(result)
+	  {
+		  $("#txtIdReunion").val(pCodigoReunion);
+		  $("#btnEliminar").click();
+	  }
+	}); 
 }

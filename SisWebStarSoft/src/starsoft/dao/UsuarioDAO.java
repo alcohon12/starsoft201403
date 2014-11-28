@@ -27,6 +27,7 @@ public class UsuarioDAO extends BaseDAO {
 			stmt.setString(2, contrasena);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
+				vo.setId_Usuario(rs.getInt("id_Usuario"));
 				vo.setNombre_Usuario(rs.getString("nombre_Usuario"));
 				vo.setPaterno_Usuario(rs.getString("paterno_Usuario"));
 				vo.setMaterno_Usuario(rs.getString("materno_Usuario"));

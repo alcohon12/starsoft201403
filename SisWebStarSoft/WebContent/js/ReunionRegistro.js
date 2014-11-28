@@ -28,8 +28,3 @@ function KeyPress()
 	fncUtil_Enter("#txtFecha","#btnGuardar");
 }
 */
-
-function AbrirBusqueda()
-{
-	window.location = ("ReunionBuscar.jsp");
-}

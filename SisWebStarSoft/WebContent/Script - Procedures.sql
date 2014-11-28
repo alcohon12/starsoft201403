@@ -4,6 +4,7 @@ CREATE PROCEDURE SP_ValidarUsuario
 	pi_password_Usuario VARCHAR(1000)
 )
 	SELECT 
+		id_Usuario,
 		nombre_Usuario,
 		paterno_Usuario,
 		materno_Usuario 
@@ -32,8 +33,8 @@ CREATE PROCEDURE SP_ListarUsuario
 	
 CREATE PROCEDURE SP_ListarReunion
 (
-	pi_FechaDesde VARCHAR(10),
-	pi_FechaHasta VARCHAR(10)
+	pi_FechaDesde DATETIME,
+	pi_FechaHasta DATETIME
 )
 	SELECT
 		RE.id_Reunion,
@@ -45,7 +46,7 @@ CREATE PROCEDURE SP_ListarReunion
 	FROM reunion RE
 	INNER JOIN parametro PAR
 	ON PAR.id_Parametro = RE.id_Calificacion
-	WHERE RE.fecha_Reunion BETWEEN CAST(pi_FechaDesde AS DATETIME) AND CAST(pi_FechaHasta AS DATETIME);
+	WHERE RE.fecha_Reunion BETWEEN pi_FechaDesde AND pi_FechaHasta;
 	
 CREATE PROCEDURE SP_ListarParametro
 (
@@ -62,9 +63,48 @@ CREATE PROCEDURE SP_InsertarReunion
 	pi_observacion_Reunion VARCHAR(500),
 	pi_id_Calificacion INT,
 	pi_id_Asesor INT,
-	pi_fecha_Reunion VARCHAR(10)
+	pi_fecha_Reunion DATETIME
 )
 	INSERT INTO reunion 
-		(observacion_Reunion, id_Calificacion, id_Asesor, fecha_Reunion, fecha_creacion)
+		(observacion_Reunion, id_Calificacion, id_Asesor, fecha_Reunion)
 	VALUES
-		(pi_observacion_Reunion, pi_id_Calificacion, pi_id_Asesor, CAST(pi_fecha_Reunion AS DATETIME), CURDATE());
+		(pi_observacion_Reunion, pi_id_Calificacion, pi_id_Asesor, pi_fecha_Reunion);
+		
+CREATE PROCEDURE SP_ActualizarReunion
+(
+	pi_id_Reunion INT,
+	pi_observacion_Reunion VARCHAR(500),
+	pi_id_Calificacion INT,
+	pi_id_Asesor INT,
+	pi_fecha_Reunion DATETIME
+)
+	UPDATE reunion 
+	SET observacion_Reunion = pi_observacion_Reunion,
+		id_Calificacion = pi_id_Calificacion,
+		id_Asesor = pi_id_Asesor,
+		fecha_Reunion = pi_fecha_Reunion,
+		fecha_modificacion = NOW()
+	WHERE id_Reunion = pi_id_Reunion;
+	
+CREATE PROCEDURE SP_ObtenerReunion
+(
+	pi_id_Reunion INT
+)
+	SELECT
+		RE.id_Reunion,
+		RE.observacion_Reunion,
+		RE.id_Calificacion,
+		PAR.descripcion_Parametro AS nombre_Calificacion,
+		RE.id_Asesor,
+		RE.fecha_Reunion
+	FROM reunion RE
+	INNER JOIN parametro PAR
+	ON PAR.id_Parametro = RE.id_Calificacion
+	WHERE RE.id_Reunion = pi_id_Reunion;
+	
+CREATE PROCEDURE SP_EliminarReunion
+(
+	pi_id_Reunion INT
+)
+	DELETE FROM reunion 
+	WHERE id_Reunion = pi_id_Reunion;
