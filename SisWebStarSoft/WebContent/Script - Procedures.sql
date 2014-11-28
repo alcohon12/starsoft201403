@@ -1,3 +1,83 @@
+------------- martel  -----------
+create PROCEDURE SP_ListarCentroInformacion
+(
+	Nombre VARCHAR(200)
+)
+	SELECT
+		a.id_Centro_Informacion,
+        a.nombre_Centro_Informacion,
+        a.id_Tipo_Centro,
+        PAR.descripcion_Parametro,
+        a.url_Centro_Informacion,
+        a.monto_Pago
+        
+	FROM centro_informacion a    
+	INNER JOIN parametro PAR
+	ON PAR.id_Parametro = a.id_Tipo_Centro
+	WHERE a.nombre_Centro_Informacion LIKE CONCAT('%',Nombre,'%');
+    
+
+create PROCEDURE SP_ObtenerCentroInformacion
+(
+	pi_id_Centro_Informacion INT
+)
+	SELECT
+		a.id_Centro_Informacion,
+        a.nombre_Centro_Informacion,
+        a.id_Tipo_Centro,
+        PAR.descripcion_Parametro,
+        a.url_Centro_Informacion,
+        a.monto_Pago
+        
+	FROM centro_informacion a    
+	INNER JOIN parametro PAR
+	ON PAR.id_Parametro = a.id_Tipo_Centro
+	where id_Centro_Informacion=pi_id_Centro_Informacion ;
+ 
+    	
+CREATE PROCEDURE SP_InsertarCentroInformacion
+(
+	pi_nombre_Centro_Informacion VARCHAR(500),
+	pi_id_Tipo_Centro INT,
+	pi_url_Centro_Informacion VARCHAR(500),
+	pi_monto_Pago DECIMAL(10,0)
+)
+	INSERT INTO centro_informacion 
+		(nombre_Centro_Informacion, id_Tipo_Centro, url_Centro_Informacion, monto_Pago)
+	VALUES
+		(pi_nombre_Centro_Informacion, pi_id_Tipo_Centro, pi_url_Centro_Informacion, pi_monto_Pago);
+        
+    	
+CREATE PROCEDURE SP_ActualizarCentroInformacion
+(
+	
+	pi_nombre_Centro_Informacion VARCHAR(500),
+	pi_id_Tipo_Centro INT,
+	pi_url_Centro_Informacion VARCHAR(500),
+	pi_monto_Pago DECIMAL(10,0),
+    pi_id_Centro_Informacion INT
+)
+	UPDATE centro_informacion  SET 
+		nombre_Centro_Informacion=pi_nombre_Centro_Informacion,id_Tipo_Centro=pi_id_Tipo_Centro, 
+        url_Centro_Informacion=pi_url_Centro_Informacion, monto_Pago=pi_monto_Pago
+	where id_Centro_Informacion=pi_id_Centro_Informacion ;
+        
+
+    	
+CREATE PROCEDURE SP_EliminarCentroInformacion
+(
+	pi_id_Centro_Informacion INT
+
+)
+	DELETE FROM centro_informacion  
+	where id_Centro_Informacion=pi_id_Centro_Informacion ;
+    
+
+    
+    
+
+
+----------- martel ------------
 CREATE PROCEDURE SP_ValidarUsuario
 (
 	pi_correo_Usuario VARCHAR(100),
