@@ -108,3 +108,21 @@ CREATE PROCEDURE SP_EliminarReunion
 )
 	DELETE FROM reunion 
 	WHERE id_Reunion = pi_id_Reunion;
+	
+CREATE PROCEDURE SP_ListarIdea
+(
+)
+	SELECT 
+		IDE.id_Idea,
+        IDE.titulo_Idea,
+        IDE.descripcion_Idea,
+		IDE.palabrasClave1,
+        IDE.palabrasClave2,
+        IDE.palabrasClave3,
+        IDE.palabrasClave4,
+        IDE.extensionArchivo_Idea,
+        IDE.id_Estado,
+        TIDE.descripcion_Parametro
+	FROM idea IDE
+	INNER JOIN parametro TIDE
+	ON IDE.id_Estado = TIDE.id_Parametro
