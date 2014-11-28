@@ -16,6 +16,10 @@ INSERT INTO parametro VALUES (11,'Bueno',5,'Tipo Calificacion',CURDATE(),NULL);
 INSERT INTO parametro VALUES (12,'Medio',5,'Tipo Calificacion',CURDATE(),NULL);
 INSERT INTO parametro VALUES (13,'Mejorar',5,'Tipo Calificacion',CURDATE(),NULL);
 
+INSERT INTO parametro VALUES (14,'Publicada',6,'Idea',CURDATE(),NULL);
+INSERT INTO parametro VALUES (15,'Aprobada',6,'Idea',CURDATE(),NULL);
+INSERT INTO parametro VALUES (16,'Rechazada',6,'Idea',CURDATE(),NULL);
+
 INSERT INTO centro_informacion VALUES (1,'Univeridad Peruana de Ciencias',1,'http://www.upc.edu.pe','jpg',1500,1,CURDATE(),NULL);
 INSERT INTO centro_informacion VALUES (2,'Cibertec',2,'http://www.cibertec.edu.pe','jpg',2500,1,CURDATE(),null);
 INSERT INTO centro_informacion VALUES (3,'Universidad Tecnológica del Perú',1,'http://www.utp.edu.pe','jpg',1500,1,CURDATE(),NULL);
