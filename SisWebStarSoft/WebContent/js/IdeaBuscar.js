@@ -2,6 +2,8 @@ $(document).ready(function () {
 	KeyPress();
 
     $("#txtfiltro").focus();
+    $('#tblIdea').dataTable();
+	$("#tblIdea_filter").css("visibility","hidden");
 });
 
 function KeyPress(){
