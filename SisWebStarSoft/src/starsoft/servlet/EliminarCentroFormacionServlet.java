@@ -10,26 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import starsoft.excepcion.DAOExcepcion;
-import starsoft.excepcion.LoginExcepcion;
-import starsoft.modelo.*;
 import starsoft.negocio.GestionCentroFormacion;
-import starsoft.negocio.GestionReunion;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+
 /**
- * Servlet implementation class CentroFormacionServlet
+ * Servlet implementation class EliminarCentroFormacionServlet
  */
-@WebServlet("/CentroFormacionServlet")
-public class CentroFormacionServlet extends HttpServlet {
+@WebServlet("/EliminarCentroFormacionServlet")
+public class EliminarCentroFormacionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CentroFormacionServlet() {
+    public EliminarCentroFormacionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,32 +39,20 @@ public class CentroFormacionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		
-		String nombre = request.getParameter("nombre");
-		
-		
-		Collection<CentroFormacion> lst = new ArrayList<CentroFormacion>();
-		
+		// int idReunion = Integer.parseInt(request.getParameter("txtIdReunion"));
+		int id_Centro_Informacion = Integer.parseInt(request.getParameter("txtIdCentro"));
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 		
 		try
 		{
-			lst = negocio.Listar(nombre);
+			negocio.eliminar(id_Centro_Informacion);
 		}
 		catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
-		} catch (LoginExcepcion e) {			
-			request.setAttribute("MENSAJE", e.getMessage());
-		} 
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
+		}
 		
-		request.setAttribute("Centros", lst);
 		RequestDispatcher rd = request.getRequestDispatcher("PageH06.jsp");
 		rd.forward(request, response);
-		
-		
-		
 	}
 
 }

@@ -8,12 +8,17 @@ public class CentroFormacion {
 	String ds_TipoCentroFormacion;
 	String Url_CentroFormacion;
 	double Ss_Pago;
+	String Ss_Pago_String;
 	
 	
 	public double getSs_Pago() {
 		return Ss_Pago;
 	}
+	public String getSs_Pago_String() {
+		return Ss_Pago_String;
+	}
 	public void setSs_Pago(double ss_Pago) {
+		Ss_Pago_String=Double.toString(ss_Pago);
 		Ss_Pago = ss_Pago;
 	}
 	public String getDs_TipoCentroFormacion() {
