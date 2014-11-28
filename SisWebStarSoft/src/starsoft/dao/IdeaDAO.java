@@ -24,7 +24,7 @@ public class IdeaDAO extends BaseDAO {
 			con = ConexionBD.obtenerConexion();
 			stmt = con.prepareCall(query);
 			rs = stmt.executeQuery();
-			if (rs.next()) {
+			while (rs.next()) {
 				Idea vo = new Idea();
 				vo.setId_Idea(rs.getInt("id_Idea"));
 				vo.setTitulo_Idea(rs.getString("titulo_Idea"));
@@ -34,10 +34,8 @@ public class IdeaDAO extends BaseDAO {
 				vo.setPalabraClave3(rs.getString("palabrasClave3"));
 				vo.setPalabraClave4(rs.getString("palabrasClave4"));
 				vo.setExtensionArchivoIdea(rs.getString("extensionArchivo_Idea"));
+				vo.setEstado_Idea(rs.getString("descripcion_Parametro"));
 				lst.add(vo);
-			}
-			else {
-				throw new LoginExcepcion("No se encontraron coincidencias");
 			}
 		} catch (SQLException e) {
 			System.err.println(e.getMessage());

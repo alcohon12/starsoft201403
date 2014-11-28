@@ -31,4 +31,9 @@ INSERT INTO centro_informacion VALUES (8,'USIL',1,'http://www.usil.edu.pe','jpg'
 INSERT INTO centro_informacion VALUES (9,'ESAN',1,'http://www.esan.edu.pe','jpg',1350,1,CURDATE(),NULL);
 INSERT INTO centro_informacion VALUES (10,'TECSUP ',2,'http://www.tecsup.edu.pe','jpg',2540,1,CURDATE(),NULL);
 
+INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave1`, `palabrasClave2`, `palabrasClave3`, `palabrasClave4`, `extensionArchivo_Idea`, `id_Estado`, `id_Alumno`, `id_Asesor`) VALUES ('Idea de prueba', 'Esta es la primera idea de prueba', 'palabra1', 'palabra2', 'palabra3', 'palabra4', 'jpg', '15', '1', '1');
+INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave1`, `palabrasClave2`, `palabrasClave3`, `palabrasClave4`, `extensionArchivo_Idea`, `id_Estado`, `id_Alumno`, `id_Asesor`) VALUES ('Idea de prueba 2', 'Esta es la segunda idea de prueba', 'palabra1', 'palabra2', 'palabra3', 'palabra4', 'png', '14', '1', '1');
+INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave1`, `palabrasClave2`, `palabrasClave3`, `palabrasClave4`, `extensionArchivo_Idea`, `id_Estado`, `id_Alumno`, `id_Asesor`) VALUES ('Idea de prueba 3', 'Esta es la tercera idea de prueba', 'palabra1', 'palabra2', 'palabra3', 'palabra4', 'png', '16', '1', '1');
+
+
 INSERT INTO usuario VALUES (1,'Estudiante','Prueba','01',3,5,'123456','estudiante@prueba.com','','123',8,1,CURDATE(),NULL);

@@ -52,7 +52,7 @@
 			<div class="col-md-12">
 			
 				<!--  <table class="table table-striped table-bordered">-->
-				<table class="table table-striped table-bordered">
+				<table id="tblReunion" class="table table-striped table-bordered" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<!--<th style="width:50px">Editar</th>-->
@@ -117,7 +117,6 @@
 				</table>
 			</div>
 		</div>
-
       <footer>
         <%@ include file="PiePagina.jsp" %>
       </footer>
