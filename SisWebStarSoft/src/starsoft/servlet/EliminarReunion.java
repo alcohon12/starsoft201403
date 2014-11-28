@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,21 +13,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import starsoft.excepcion.DAOExcepcion;
-import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Reunion;
 import starsoft.negocio.GestionReunion;
 
 /**
- * Servlet implementation class BusquedaReunionServlet
+ * Servlet implementation class EliminarReunion
  */
-@WebServlet("/BusquedaReunionServlet")
-public class BusquedaReunionServlet extends HttpServlet {
+@WebServlet("/EliminarReunion")
+public class EliminarReunion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BusquedaReunionServlet() {
+    public EliminarReunion() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,33 +42,18 @@ public class BusquedaReunionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String FechaIni = request.getParameter("txtFechaIni");
-		String FechaFin = request.getParameter("txtFechaFin");
-		Date dFechaIni = new Date();
-		Date dFechaFin = new Date();
-		
-		Collection<Reunion> lst = new ArrayList<Reunion>();
+		int idReunion = Integer.parseInt(request.getParameter("txtIdReunion"));
 		
 		GestionReunion negocio = new GestionReunion();
 		
 		try
 		{
-			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-			dFechaIni = df.parse(FechaIni);
-			dFechaFin = df.parse(FechaFin);
-			
-			lst = negocio.obtener(dFechaIni, dFechaFin);
+			negocio.eliminar(idReunion);
 		}
 		catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
-		} catch (LoginExcepcion e) {			
-			request.setAttribute("MENSAJE", e.getMessage());
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
 		}
 		
-		request.setAttribute("LISTADO_REUNIONES", lst);
 		RequestDispatcher rd = request.getRequestDispatcher("ReunionBuscar.jsp");
 		rd.forward(request, response);
 	}

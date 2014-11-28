@@ -8,7 +8,6 @@
 </head>
 <body>
     <%@ include file="MenuPagina.jsp" %>
-	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -62,6 +61,7 @@
 					<thead>
 						<tr>
 							<th style="width:50px">Editar</th>
+							<th style="width:50px">Eliminar</th>
 							<th style="width:400px">Observaciones</th>
 							<th style="width:150px">Calificación</th>
 							<th style="width:100px">Fecha</th>
@@ -69,7 +69,7 @@
 					</thead>
 					<tfoot>
 						<tr>
-							<th colspan="4">Registros: 
+							<th colspan="5">Registros: 
 								<% 
 									ArrayList<Reunion> lst = (ArrayList<Reunion>) request.getAttribute("LISTADO_REUNIONES");
 									if(lst != null) 
@@ -88,7 +88,10 @@
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Reunion() + ")'>");
+									out.println("<img src='img/Iconos/EditFile.png' onclick='AbrirRegistro(" + item.getId_Reunion() + ")'>");
+									out.println("</td>");
+									out.println("<td style='text-align:center;cursor:pointer'>");
+									out.println("<img src='img/Iconos/Delete.png' onclick='EliminarRegistro(" + item.getId_Reunion() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getObservacion_Reunion());
@@ -107,6 +110,22 @@
 				</table>
 			</div>
 		</div>
+
+		<form method="post" action="EliminarReunion">
+			<input type="text" id="txtIdReunion" name="txtIdReunion" style="display:none">
+			<button type="submit" id="btnEliminar" style="display:none">Buscar</button>
+			
+			<%
+				String mensaje = (String) request.getAttribute("MENSAJE");
+			
+				if(mensaje != null)
+				{
+					out.println("<div style='color:red'>");
+					out.println(mensaje);
+					out.println("</div>");
+				}
+			%>
+		</form>
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

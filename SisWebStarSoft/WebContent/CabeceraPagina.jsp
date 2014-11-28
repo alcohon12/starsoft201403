@@ -17,6 +17,7 @@
 <script src="js/Utils.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/dataTables.bootstrap.js"></script>
+<script src="js/bootbox.min.js"></script>
 
 <link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
 <link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">

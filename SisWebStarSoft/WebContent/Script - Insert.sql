@@ -1,9 +1,3 @@
-/*
--- Query: select * From centro_informacion
-LIMIT 0, 1000
-
--- Date: 2014-11-19 15:50
-*/
 INSERT INTO parametro VALUES (1,'Universidad',1,'Tipo Centro Informacion',CURDATE(),NULL);
 INSERT INTO parametro VALUES (2,'Intituto',1,'Tipo Centro Informacion',CURDATE(),NULL);
 

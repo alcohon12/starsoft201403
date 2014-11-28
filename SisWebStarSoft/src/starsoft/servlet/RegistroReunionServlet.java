@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import starsoft.excepcion.DAOExcepcion;
 import starsoft.modelo.Reunion;
@@ -43,27 +44,42 @@ public class RegistroReunionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id_Reunion = Integer.parseInt(request.getParameter("txtIdReunion"));
 		String Observaciones = request.getParameter("txtObservaciones");
 		int Calificacion = Integer.parseInt(request.getParameter("ddlCalificacion"));
 		String Fecha = request.getParameter("txtFecha");
 		
-		Reunion obj = new Reunion();
-		obj.setObservacion_Reunion(Observaciones);
-		obj.setId_Calificacion(Calificacion);
-		obj.setFecha_Reunion_String(Fecha);
+		HttpSession session = request.getSession(true);
+		Usuario user = (Usuario)session.getAttribute("USUARIO_ACTUAL");
+		int id_Asesor = user.getId_Usuario();
 		
 		GestionReunion negocio = new GestionReunion(); 
 		
 		try
 		{
-			negocio.insertar(obj);
+			Reunion obj = new Reunion();
+			obj.setId_Reunion(id_Reunion);
+			obj.setObservacion_Reunion(Observaciones);
+			obj.setId_Calificacion(Calificacion);
+			obj.setId_Asesor(id_Asesor);
+			
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			obj.setFecha_Reunion(df.parse(Fecha));
+			
+			if(id_Reunion == 0)
+				negocio.insertar(obj);
+			else
+				negocio.actualizar(obj);
+			
+			request.setAttribute("MENSAJE", "");
 		}
 		catch (DAOExcepcion e) {
 			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
+		} catch (ParseException e) {
+			e.printStackTrace();
 		}
 		
-		//request.setAttribute("REGISTRO_REUNION", obj);
-		RequestDispatcher rd = request.getRequestDispatcher("ReunionBuscar.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("ReunionRegistro.jsp?CodigoReunion=" + id_Reunion);
 		rd.forward(request, response);
 	}
 
