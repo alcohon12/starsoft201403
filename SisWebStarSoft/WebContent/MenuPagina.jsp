@@ -18,6 +18,7 @@
         		<ul class="dropdown-menu" role="menu">
         			<li><a href="IdeaBuscar.jsp">Buscar Ideas</a></li>
         			<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
+        			<li><a href="IdeaRegistro.jsp">Registro de Ideas</a></li>
         			<li class="divider"></li>
         			<li><a href="InvitacionIdea.jsp">Discusión de Ideas</a></li>
         		</ul>
