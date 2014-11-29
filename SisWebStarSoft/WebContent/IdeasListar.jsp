@@ -1,74 +1,13 @@
 <%@ page import="java.util.*,starsoft.modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Starsoft">
-	<meta name="keywords" content="Starsoft">
-    <meta name="author" content="Starsoft">
-	
-    <title>Sistema de gestión de la innovación</title>
-	
-	<script src="js/jquery-1.10.2.js"></script>
-	<script src="js/bootstrap-3.2.0.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/locales/bootstrap-datepicker.es.js"></script>
-    <script src="js/Utils.js"></script>
-    <script src="js/IdeasListar.js"></script>
-
-
-
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-
-
-	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-	<link href="css/offcanvas.css" rel="stylesheet">	
-	<link href="css/datepicker.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+	<%@ include file="CabeceraPagina.jsp" %>
+	<script src="js/IdeaBuscar.js"></script>
 </head>
 <body>
-    <!-- INICIO DEL MENU PRINCIPAL -->
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-			<span class="icon-bar"></span>			
-          </button>
-          <a class="navbar-brand" href="index.php">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
-			<li><a href="IdeaBuscar.jsp">Ideas</a></li>
-			<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-			<li><a href="PageH06.jsp">Centro de información</a></li>
-			<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-			<li><a href="MensajesListar.jsp">Mensajes</a></li>
-			<li><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-			<li class="active"><a href="IdeasListar.jsp">Listado de Ideas</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-	<!-- FIN DEL MENU PRINCIPAL -->
-	
+<%@ include file="MenuPagina.jsp" %>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
@@ -87,23 +26,20 @@
 						<div class="control-group">
 							<div class="controls">
 								<label class="control-label" for="input01">Fecha inicio:</label>
-								<input type="text" id="txtFechaIni" name="txtFechaIni" class="input-medium" style="width:90px;text-align:center" required>
-								
+								<input type="date" id="txtFechaIni" name="txtFechaIni" class="input-medium" required>
 								<label class="control-label" for="input01">Fecha fin:</label>
-								<input type="text" id="txtFechaFin" name="txtFechaFin" class="input-medium" style="width:90px;text-align:center" required>
+								<input type="date" id="txtFechaFin" name="txtFechaFin" class="input-medium" required>
 							</div>
 						</div>
 									<br>
 									
 						<label>Status idea:</label>
-						<br>
-						
-						<input type="radio" name="status" value="aprobada">Aprobada
-						<input type="radio" name="status" value="rechazada">Rechazada
+						<input type="radio" name="status" value="15" required="required">Aprobada
+						<input type="radio" name="status" value="16" required="required">Rechazada
 						
 						<br>
 						
-							<div class="control-group">
+							<div class="control-group" style="display: none;">
 							<label class="control-label" for="input01">Elegir criterio de búsqueda:</label>
 							<div class="controls">
 								<select id="ddlCampo" name="ddlCampo">
@@ -115,7 +51,6 @@
 									<option value="6">Palabra clave 4</option>
 								</select>
 								<input type="text" id="txtFiltro" name="txtFiltro" class="input-medium" style="width:150px">
-								<p class="help-block">Ingrese los criterios de búsqueda</p>
 							</div>
 						</div>
 						<br>					
@@ -180,7 +115,7 @@
 									out.println(item.getFecha_creacion());
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getId_Alumno());
+									out.println(item.getAlumno().getNombre_Usuario());
 									out.println("</td>");
 									out.println("</tr>");
 								}
@@ -203,14 +138,10 @@
 			</div>
 		</div>
 
-      <footer>
-        <p>&copy; StarSoft 2014--</p>
-      </footer>
-
     </div> <!-- /container -->
 
 
-<div id="dialog-form" title=" Aprobar Idea  ">
+<div id="dialog-form" title=" Aprobar Idea" style="display: none;">
 
 		<form>
 			
@@ -244,71 +175,73 @@
 	</div>
 
 
+	<style type="text/css">
+	#dialog-form {
+		font-size: 11px;
+		font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana",
+			"sans-serif";
+	}
+	
+	
+	fieldset {
+		padding: 0;
+		border: 0;
+		margin-top: 25px;
+	}
+	
+	.ui-dialog .ui-state-error {
+		padding: .3em;
+	}
+	
+	.validateTips {
+		border: 1px solid transparent;
+		padding: 0.3em;
+	}
+	</style>
 
+	<script>
+	
+	
+	function AbrirDialog() {
+		dialog.dialog("open");
+		}
+	
+		$(function() {
+	
+	
+			
+			dialog = $("#dialog-form").dialog(
+					{
+						autoOpen : false,
+						height : 400,
+						width : 420,
+						modal : true,
+						close : function() {
+							$("#dialog-form input").attr("value", "");
+							$("#dialog-form p").html("");
+						},
+						buttons : {
+							"Guardar" : function() {
+								
+									dialog.dialog("close");
+	
+								}
+	
+							},
+							"Cerrar" : function() {
+								allFields.removeClass("ui-state-error");
+								$(this).dialog("close");
+							}
+						
+					});	
+			
+			
+		});
+		
+	</script>
+  <footer>
+        <%@ include file="PiePagina.jsp" %>
+      </footer>
+    </div> <!-- /container -->
 </body>
 </html>
-<style>
-#dialog-form {
-	font-size: 11px;
-	font-family: "Trebuchet MS", "Helvetica", "Arial", "Verdana",
-		"sans-serif";
-}
-
-
-fieldset {
-	padding: 0;
-	border: 0;
-	margin-top: 25px;
-}
-
-.ui-dialog .ui-state-error {
-	padding: .3em;
-}
-
-.validateTips {
-	border: 1px solid transparent;
-	padding: 0.3em;
-}
-</style>
-
-<script>
-
-
-function AbrirDialog() {
-	dialog.dialog("open");
-	}
-
-	$(function() {
-
-
-		
-		dialog = $("#dialog-form").dialog(
-				{
-					autoOpen : false,
-					height : 400,
-					width : 420,
-					modal : true,
-					close : function() {
-						$("#dialog-form input").attr("value", "");
-						$("#dialog-form p").html("");
-					},
-					buttons : {
-						"Guardar" : function() {
-							
-								dialog.dialog("close");
-
-							}
-
-						},
-						"Cerrar" : function() {
-							allFields.removeClass("ui-state-error");
-							$(this).dialog("close");
-						}
-					
-				});	
-		
-		
-	});
-	
-</script>
-
