@@ -47,3 +47,12 @@ INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave
 INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave1`, `palabrasClave2`, `palabrasClave3`, `palabrasClave4`, `extensionArchivo_Idea`, `id_Estado`, `id_Alumno`, `id_Asesor`) VALUES ('Idea de prueba 10', 'Esta es la decima idea de prueba', 'palabra1', 'palabra2', 'palabra3', 'palabra4', 'jpg', '15', '1', '1');
 INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave1`, `palabrasClave2`, `palabrasClave3`, `palabrasClave4`, `extensionArchivo_Idea`, `id_Estado`, `id_Alumno`, `id_Asesor`) VALUES ('Idea de prueba 11', 'Esta es la onceava idea de prueba', 'palabra1', 'palabra2', 'palabra3', 'palabra4', 'png', '14', '1', '1');
 INSERT INTO `starsoft`.`idea` (`titulo_Idea`, `descripcion_Idea`, `palabrasClave1`, `palabrasClave2`, `palabrasClave3`, `palabrasClave4`, `extensionArchivo_Idea`, `id_Estado`, `id_Alumno`, `id_Asesor`) VALUES ('Idea de prueba 12', 'Esta es la doceava idea de prueba', 'palabra1', 'palabra2', 'palabra3', 'palabra4', 'png', '16', '1', '1');
+
+
+INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (1, 1, 1);
+INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (2, 2, 1);
+INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (3, 3, 1);
+INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (4, 4, 1);
+INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (5, 5, 1);
+
+
