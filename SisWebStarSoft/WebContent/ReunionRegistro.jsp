@@ -45,13 +45,13 @@
 						<td>
 							<label class="control-label" for="input01">Calificación:</label>
 							<div class="controls">
-								<select id="ddlCalificacion" name="ddlCalificacion" class="selectpicker" data-style="btn-primary" style="display:none">
+								<select id="ddlCalificacion" name="ddlCalificacion" class="selectpicker" data-style="btn-primary" style="display:none" required>
 									<% 
 										GestionParametro negocio = new GestionParametro(); 
 										Collection<Parametro> lst = negocio.obtener(5);
 										
-										if(id_Calificacion == 0) selected = "selected";
-										out.println("<option value='0' " + selected + ">[Seleccione]</option>");
+										//if(id_Calificacion == 0) selected = "selected";
+										//out.println("<option value='0' " + selected + ">[Seleccione]</option>");
 										
 										for(Parametro item : lst)
 										{
