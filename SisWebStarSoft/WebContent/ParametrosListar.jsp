@@ -11,7 +11,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12" style="display: none;">
 				<form class="form-horizontal well" method="post" action="ParametrosListarServlet">
 					<fieldset>
 				  		<legend>Lista de parametros</legend>
@@ -23,7 +23,7 @@
 				</form>
 			</div>
 			
-			<div class="col-md-12">
+			<div class="col-md-12" >
 				<div class="form-actions">
 					<button type="button" class="btn btn-primary" onclick="">Agregar</button>
 				</div>

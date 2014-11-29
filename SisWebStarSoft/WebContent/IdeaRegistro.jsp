@@ -11,32 +11,37 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<form class="form-horizontal well" method="post" action="RegistroIdeaServlet" enctype="multipart/form-data">
+			<% if(request.getAttribute("REGISTRO_IDEA")==null) {} else { %>
+				<div class="alert alert-success" role="alert">
+			    <h4><%= request.getAttribute("REGISTRO_IDEA") %></h4>
+			   </div>
+			  <% } %>
+				<form class="form-horizontal well" role="form" method="post" action="RegistroIdeaServlet" enctype="multipart/form-data">
 					<fieldset>
 				  		<legend>Registro de ideas:</legend>
 							<div class="control-group">
 								<label class="control-label">Título:</label>
 								<div class="controls">
-									<input type="text" id="txttitulo" name="txttitulo" class="input-medium" style="width:150px">
+									<input type="text" id="txttitulo" name="txttitulo" class="input-medium" required="required">
 								</div>
 							</div>			
 
 							<div class="control-group">
 								<label class="control-label">Descripción:</label>
 								<div class="controls">
-									<input type="text" id="txtdescripcion" name="txtdecripcion" class="input-medium" style="width:70%;" value="Esta es la primera idea">      
+									<textarea id="txtdescripcion" name="txtdecripcion">Esta es la primera idea</textarea>      
 								</div>
 							</div>	
 							<div class="control-group">
 								<label class="control-label">Archivo:</label>
 								<div class="controls">
-									<input type="file" id="txtarchivo" name="txtarchivo" class="input-small" style="width:70%;">      
+									<input type="file" id="txtarchivo" name="txtarchivo" class="input-small" required="required">      
 								</div>
 							</div>	
 							<div class="control-group">
 								<label class="control-label">Palabra clave 1:</label>
 								<div class="controls">
-									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" style="width:70%;">      
+									<input type="text" id="txtclave1" name="txtclave1" class="input-medium" required="required">      
 								</div>
 							</div>	
 							<div class="control-group">
@@ -59,13 +64,13 @@
 							</div>	
 							<br />
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary" id="btnBuscar">Agregar</button>
-								<button type="submit" class="btn btn-primary" id="btnBuscar">Editar</button>
+								<button type="submit" class="btn btn-primary" id="btnBuscar">Guardar</button>
+								<button type="button" class="btn btn-primary">Cancelar</button>
 							
 							</div>					
 					</fieldset>
 				</form>
-				<%=request.getAttribute("REGISTRO_IDEA")==null? "": request.getAttribute("REGISTRO_IDEA") %>
+				
       <footer>
         <%@ include file="PiePagina.jsp" %>
       </footer>

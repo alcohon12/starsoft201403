@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+	$('#btnBuscar').click();
 	$('#tblUsuario').dataTable();
 	$("#tblUsuario_filter").css("visibility","hidden");
 	
