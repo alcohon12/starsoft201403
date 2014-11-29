@@ -7,6 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
 -- Schema StarSoft
+DROP SCHEMA IF EXISTS `Starsoft` ;
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `StarSoft` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
 USE `StarSoft` ;
