@@ -13,6 +13,7 @@ public class Idea {
 	private String palabraClave3;
 	private String palabraClave4;
 	private String estado_Idea;
+	private Usuario alumno;
 	private String extensionArchivoIdea;
 	private int id_Estado;
 	private int id_Alumno;
@@ -120,6 +121,12 @@ public class Idea {
 	}
 	public void setId_Asesor(int id_Asesor) {
 		this.id_Asesor = id_Asesor;
+	}
+	public Usuario getAlumno() {
+		return alumno;
+	}
+	public void setAlumno(Usuario alumno) {
+		this.alumno = alumno;
 	}
 	
 	

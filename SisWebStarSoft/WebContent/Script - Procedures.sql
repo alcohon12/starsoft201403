@@ -202,6 +202,7 @@ CREATE PROCEDURE SP_ListarIdea
         IDE.palabrasClave4,
         IDE.extensionArchivo_Idea,
         IDE.id_Estado,
+        IDE.fecha_creacion,
         TIDE.descripcion_Parametro
 	FROM idea IDE
 	INNER JOIN parametro TIDE
