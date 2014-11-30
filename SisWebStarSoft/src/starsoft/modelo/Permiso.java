@@ -8,9 +8,16 @@ public class Permiso {
 	private int id_Usuario;
 	private int votacion_Permiso;
 	private Date fecha_creacion;
+	private String descripcion_Idea;
 	
 	public int getId_Permiso() {
 		return id_Permiso;
+	}
+	public String getDescripcion_Idea() {
+		return descripcion_Idea;
+	}
+	public void setDescripcion_Idea(String descripcion_Idea) {
+		this.descripcion_Idea = descripcion_Idea;
 	}
 	public void setId_Permiso(int id_Permiso) {
 		this.id_Permiso = id_Permiso;
