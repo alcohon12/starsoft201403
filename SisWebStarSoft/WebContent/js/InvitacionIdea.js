@@ -1,10 +1,14 @@
-function AbriRegistro(pCodigoIdea)
+$(document).ready(function () {
+	$('#tblIdea').dataTable();
+});
+
+function AbriRegistro(pCodigoIdea, pVotacion)
 {
-	window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea);
-	if(pCodigoIdea == null)
-		window.location = ("IdeaBuscar.jsp");
-	else
-		window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea);
+	window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea + "&Votacion=" + pVotacion);
+	//if(pCodigoIdea == null)
+		//window.location = ("IdeaBuscar.jsp");
+	//else
+		//window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea);
 }
 
 //function ListarIdeas(){ 

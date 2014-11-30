@@ -72,7 +72,13 @@
 							{
 								for(Idea item : lst)
 								{
-									out.println("<tr>");
+									String styleRow = "";
+									
+									//if(item.getEstado_Idea().equalsIgnoreCase("PUBLICADA"))		styleRow = "active";
+									//else if(item.getEstado_Idea().equalsIgnoreCase("APROBADA")) styleRow = "success";
+									//else if(item.getEstado_Idea().equalsIgnoreCase("RECHAZADA")) styleRow = "info";
+									
+									out.println("<tr class='" +styleRow+ "' >");
 									//out.println("<td style='text-align:center;cursor:pointer'>");
 									//out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Idea() + ")'>");
 									//out.println("</td>");
