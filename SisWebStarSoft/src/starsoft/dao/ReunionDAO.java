@@ -2,7 +2,6 @@ package starsoft.dao;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -33,6 +32,8 @@ public class ReunionDAO extends BaseDAO  {
 			while (rs.next()) {
 				Reunion vo = new Reunion();
 				vo.setId_Reunion(rs.getInt("id_Reunion"));
+				vo.setId_Idea(rs.getInt("id_Idea"));
+				vo.setTitulo_Idea(rs.getString("titulo_Idea"));
 				vo.setObservacion_Reunion(rs.getString("observacion_Reunion"));
 				vo.setNombre_Calificacion(rs.getString("nombre_Calificacion"));
 				vo.setFecha_Reunion(rs.getDate("fecha_Reunion"));
@@ -51,7 +52,7 @@ public class ReunionDAO extends BaseDAO  {
 	}
 	
 	public Boolean insertar(Reunion vo) throws DAOExcepcion {
-		String query = "CALL SP_InsertarReunion(?,?,?,?);";
+		String query = "CALL SP_InsertarReunion(?,?,?,?,?);";
 		System.err.println(query);
 		Connection con = null;
 		CallableStatement stmt = null;
@@ -60,12 +61,13 @@ public class ReunionDAO extends BaseDAO  {
 		try {
 			con = ConexionBD.obtenerConexion();
 			stmt = con.prepareCall(query);
-			stmt.setString(1, vo.getObservacion_Reunion());
-			stmt.setInt(2, vo.getId_Calificacion());
-			stmt.setInt(3, vo.getId_Asesor());
+			stmt.setInt(1, vo.getId_Idea());
+			stmt.setString(2, vo.getObservacion_Reunion());
+			stmt.setInt(3, vo.getId_Calificacion());
+			stmt.setInt(4, vo.getId_Asesor());
 			
 			java.sql.Date dFechaReunion = new java.sql.Date(vo.getFecha_Reunion().getTime());
-			stmt.setDate(4, dFechaReunion);
+			stmt.setDate(5, dFechaReunion);
 
 			int i = stmt.executeUpdate();
 			if (i != 1) {
@@ -84,7 +86,7 @@ public class ReunionDAO extends BaseDAO  {
 	}
 	
 	public Boolean actualizar(Reunion vo) throws DAOExcepcion {
-		String query = "CALL SP_ActualizarReunion(?,?,?,?,?);";
+		String query = "CALL SP_ActualizarReunion(?,?,?,?,?,?);";
 		System.err.println(query);
 		Connection con = null;
 		CallableStatement stmt = null;
@@ -94,12 +96,13 @@ public class ReunionDAO extends BaseDAO  {
 			con = ConexionBD.obtenerConexion();
 			stmt = con.prepareCall(query);
 			stmt.setInt(1, vo.getId_Reunion());
-			stmt.setString(2, vo.getObservacion_Reunion());
-			stmt.setInt(3, vo.getId_Calificacion());
-			stmt.setInt(4, vo.getId_Asesor());
+			stmt.setInt(2, vo.getId_Idea());
+			stmt.setString(3, vo.getObservacion_Reunion());
+			stmt.setInt(4, vo.getId_Calificacion());
+			stmt.setInt(5, vo.getId_Asesor());
 			
 			java.sql.Date dFechaReunion = new java.sql.Date(vo.getFecha_Reunion().getTime());
-			stmt.setDate(5, dFechaReunion);
+			stmt.setDate(6, dFechaReunion);
 
 			int i = stmt.executeUpdate();
 			if (i != 1) {
@@ -132,6 +135,7 @@ public class ReunionDAO extends BaseDAO  {
 			if (rs.next()) {
 				vo = new Reunion();
 				vo.setId_Reunion(rs.getInt("id_Reunion"));
+				vo.setId_Idea(rs.getInt("id_Idea"));
 				vo.setId_Calificacion(rs.getInt("id_Calificacion"));
 				vo.setObservacion_Reunion(rs.getString("observacion_Reunion"));
 				vo.setNombre_Calificacion(rs.getString("nombre_Calificacion"));

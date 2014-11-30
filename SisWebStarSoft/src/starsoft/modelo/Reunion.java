@@ -5,6 +5,8 @@ import java.text.*;
 
 public class Reunion {
 	private int id_Reunion;
+	private int id_Idea;
+	private String titulo_Idea;
 	private String observacion_Reunion;
 	private int id_Calificacion;
 	private String nombre_Calificacion;
@@ -78,6 +80,18 @@ public class Reunion {
 	}
 	public void setNombre_Calificacion(String nombre_Calificacion) {
 		this.nombre_Calificacion = nombre_Calificacion;
+	}
+	public int getId_Idea() {
+		return id_Idea;
+	}
+	public void setId_Idea(int id_Idea) {
+		this.id_Idea = id_Idea;
+	}
+	public String getTitulo_Idea() {
+		return titulo_Idea;
+	}
+	public void setTitulo_Idea(String titulo_Idea) {
+		this.titulo_Idea = titulo_Idea;
 	}
 	
 	
