@@ -9,10 +9,10 @@ import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Idea;
 
 public class GestionIdea {
-	public Collection<Idea> listarIdea(String fi, String ff, int Estado, String criterio)
+	public Collection<Idea> listarIdea()
 			throws DAOExcepcion, LoginExcepcion {
 		IdeaDAO dao = new IdeaDAO();
-		return dao.listarIdea(fi, ff, Estado, criterio);
+		return dao.listarIdea();
 	}
 
 	public Boolean insertar(Idea vo)
