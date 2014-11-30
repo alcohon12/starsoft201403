@@ -207,3 +207,16 @@ CREATE PROCEDURE SP_ListarIdea
 	FROM idea IDE
 	INNER JOIN parametro TIDE
 	ON IDE.id_Estado = TIDE.id_Parametro
+	
+CREATE PROCEDURE SP_ListarPermiso
+(
+	pi_id_Usuario INT
+)
+	SELECT 
+		PER.id_Permiso,
+		PER.id_Idea,
+		PER.votacion_Permiso
+	FROM permiso PER
+	INNER JOIN idea IDE
+	ON IDE.id_Idea = PER.id_Idea
+	WHERE PER.id_Usuario = pi_id_Usuario
