@@ -215,7 +215,8 @@ CREATE PROCEDURE SP_ListarPermiso
 	SELECT 
 		PER.id_Permiso,
 		PER.id_Idea,
-		PER.votacion_Permiso
+		PER.votacion_Permiso,
+        IDE.descripcion_Idea
 	FROM permiso PER
 	INNER JOIN idea IDE
 	ON IDE.id_Idea = PER.id_Idea
