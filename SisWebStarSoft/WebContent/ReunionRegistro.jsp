@@ -10,6 +10,7 @@
 	<form class="form-horizontal well" method="post" action="RegistroReunionServlet">
 		<% 
 			int idReunion = Integer.parseInt(request.getParameter("CodigoReunion"));
+			int id_Idea = 0;
 			String observacion = "";
 			int id_Calificacion = 0;
 			String fecha = "";
@@ -22,6 +23,7 @@
 				
 				if(obj != null)
 				{
+					id_Idea = obj.getId_Idea();
 					observacion = obj.getObservacion_Reunion();
 					id_Calificacion = obj.getId_Calificacion();
 					fecha = obj.getFecha_Reunion_String();
@@ -33,6 +35,27 @@
       	<div class="modal-body">
 			<fieldset>
 				<table>
+					<tr>
+						<td>
+							<label class="control-label" for="input01">Idea:</label>
+							<div class="controls">
+								<select id="ddlIdea" name="ddlIdea" class="selectpicker" data-style="btn-primary" style="display:none" required>
+									<% 
+										GestionIdea negIdea = new GestionIdea();
+										Collection<Idea> lstIdea = negIdea.listarIdea();
+										
+										for(Idea item : lstIdea)
+										{
+											if(item.getId_Idea() == id_Idea) selected = "selected";
+											else selected = "";
+											
+											out.println("<option value='" + item.getId_Idea() + "' " + selected + ">" + item.getTitulo_Idea() + "</option>");
+										}
+									%>
+								</select>
+							</div>
+						</td>
+					</tr>
 					<tr>
 						<td>
 							<label class="control-label" for="input01">Observaciones:</label>
@@ -47,8 +70,8 @@
 							<div class="controls">
 								<select id="ddlCalificacion" name="ddlCalificacion" class="selectpicker" data-style="btn-primary" style="display:none" required>
 									<% 
-										GestionParametro negocio = new GestionParametro(); 
-										Collection<Parametro> lst = negocio.obtener(5);
+										GestionParametro negPar = new GestionParametro(); 
+										Collection<Parametro> lst = negPar.obtener(5);
 										
 										//if(id_Calificacion == 0) selected = "selected";
 										//out.println("<option value='0' " + selected + ">[Seleccione]</option>");

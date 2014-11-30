@@ -62,6 +62,7 @@
 						<tr>
 							<th style="width:50px">Editar</th>
 							<th style="width:50px">Eliminar</th>
+							<th style="width:200px">Idea</th>
 							<th style="width:400px">Observaciones</th>
 							<th style="width:150px">Calificación</th>
 							<th style="width:100px">Fecha</th>
@@ -69,7 +70,7 @@
 					</thead>
 					<tfoot>
 						<tr>
-							<th colspan="5">Registros: 
+							<th colspan="6">Registros: 
 								<% 
 									ArrayList<Reunion> lst = (ArrayList<Reunion>) request.getAttribute("LISTADO_REUNIONES");
 									if(lst != null) 
@@ -92,6 +93,9 @@
 									out.println("</td>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
 									out.println("<img src='img/Iconos/Delete.png' onclick='EliminarRegistro(" + item.getId_Reunion() + ")'>");
+									out.println("</td>");
+									out.println("<td>");
+									out.println(item.getTitulo_Idea());
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getObservacion_Reunion());
@@ -136,7 +140,7 @@
 				  <h4 class="modal-title" id="myModalLabel">Registro de reuniones</h4>
 				</div>
 				<center>
-					<iframe id="frmRegistro" width="590" height="410" scrolling="yes" frameBorder="0"></iframe>
+					<iframe id="frmRegistro" width="590" height="450" scrolling="yes" frameBorder="0"></iframe>
 				</center>
 		    </div>
 		  </div>

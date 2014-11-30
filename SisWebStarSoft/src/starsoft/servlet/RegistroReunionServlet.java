@@ -45,6 +45,7 @@ public class RegistroReunionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id_Reunion = Integer.parseInt(request.getParameter("txtIdReunion"));
+		int id_Idea = Integer.parseInt(request.getParameter("ddlIdea"));
 		String Observaciones = request.getParameter("txtObservaciones");
 		int Calificacion = Integer.parseInt(request.getParameter("ddlCalificacion"));
 		String Fecha = request.getParameter("txtFecha");
@@ -59,6 +60,7 @@ public class RegistroReunionServlet extends HttpServlet {
 		{
 			Reunion obj = new Reunion();
 			obj.setId_Reunion(id_Reunion);
+			obj.setId_Idea(id_Idea);
 			obj.setObservacion_Reunion(Observaciones);
 			obj.setId_Calificacion(Calificacion);
 			obj.setId_Asesor(id_Asesor);

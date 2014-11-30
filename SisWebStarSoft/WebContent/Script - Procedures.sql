@@ -118,12 +118,16 @@ CREATE PROCEDURE SP_ListarReunion
 )
 	SELECT
 		RE.id_Reunion,
+		RE.id_Idea,
+		IDE.titulo_Idea,
 		RE.observacion_Reunion,
 		RE.id_Calificacion,
 		PAR.descripcion_Parametro AS nombre_Calificacion,
 		RE.id_Asesor,
 		RE.fecha_Reunion
 	FROM reunion RE
+	INNER JOIN idea IDE
+	ON IDE.id_Idea = RE.id_Idea
 	INNER JOIN parametro PAR
 	ON PAR.id_Parametro = RE.id_Calificacion
 	WHERE RE.fecha_Reunion BETWEEN pi_FechaDesde AND pi_FechaHasta;
@@ -140,26 +144,29 @@ CREATE PROCEDURE SP_ListarParametro
 	
 CREATE PROCEDURE SP_InsertarReunion
 (
+	pi_id_Idea INT,
 	pi_observacion_Reunion VARCHAR(500),
 	pi_id_Calificacion INT,
 	pi_id_Asesor INT,
 	pi_fecha_Reunion DATETIME
 )
 	INSERT INTO reunion 
-		(observacion_Reunion, id_Calificacion, id_Asesor, fecha_Reunion)
+		(id_Idea, observacion_Reunion, id_Calificacion, id_Asesor, fecha_Reunion)
 	VALUES
-		(pi_observacion_Reunion, pi_id_Calificacion, pi_id_Asesor, pi_fecha_Reunion);
+		(pi_id_Idea, pi_observacion_Reunion, pi_id_Calificacion, pi_id_Asesor, pi_fecha_Reunion);
 		
 CREATE PROCEDURE SP_ActualizarReunion
 (
 	pi_id_Reunion INT,
+	pi_id_Idea INT,
 	pi_observacion_Reunion VARCHAR(500),
 	pi_id_Calificacion INT,
 	pi_id_Asesor INT,
 	pi_fecha_Reunion DATETIME
 )
 	UPDATE reunion 
-	SET observacion_Reunion = pi_observacion_Reunion,
+	SET id_Idea = pi_id_Idea,
+		observacion_Reunion = pi_observacion_Reunion,
 		id_Calificacion = pi_id_Calificacion,
 		id_Asesor = pi_id_Asesor,
 		fecha_Reunion = pi_fecha_Reunion,
@@ -172,12 +179,16 @@ CREATE PROCEDURE SP_ObtenerReunion
 )
 	SELECT
 		RE.id_Reunion,
+		RE.id_Idea,
+		IDE.titulo_Idea,
 		RE.observacion_Reunion,
 		RE.id_Calificacion,
 		PAR.descripcion_Parametro AS nombre_Calificacion,
 		RE.id_Asesor,
 		RE.fecha_Reunion
 	FROM reunion RE
+	INNER JOIN idea IDE
+	ON IDE.id_Idea = RE.id_Idea
 	INNER JOIN parametro PAR
 	ON PAR.id_Parametro = RE.id_Calificacion
 	WHERE RE.id_Reunion = pi_id_Reunion;
