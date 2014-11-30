@@ -1,4 +1,4 @@
-------------- martel  -----------
+
 create PROCEDURE SP_ListarCentroInformacion
 (
 	Nombre VARCHAR(200)
