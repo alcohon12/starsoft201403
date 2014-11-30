@@ -15,69 +15,40 @@ import starsoft.modelo.Usuario;
 import starsoft.util.ConexionBD;
 
 public class IdeaDAO extends BaseDAO {
-	public Collection<Idea> listarIdea(String fi, String ff, int Estado, String criterio)
-			throws DAOExcepcion, LoginExcepcion {
-		Collection<Idea> lst = new ArrayList<Idea>();
-		Connection con = null;
-		CallableStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			String query = "SELECT " +
-			"	IDE.id_Idea, " +
-			"      IDE.titulo_Idea, " +
-		  	"      IDE.descripcion_Idea, " +
-			"	IDE.palabrasClave1, " +
-			"      IDE.palabrasClave2, " +
-		  	"      IDE.palabrasClave3, " +
-		  	"     IDE.palabrasClave4, " +
-		  	"     IDE.extensionArchivo_Idea, " +
-		  	"     IDE.id_Estado, " +
-			"    IDE.fecha_creacion, " +
-			"     TIDE.descripcion_Parametro, " +
-			"   US.id_Usuario , " +
-			"     US.nombre_Usuario " +
-			"FROM idea IDE " +
-			"INNER JOIN usuario US ON US.id_Usuario = IDE.id_Alumno " +
-			"INNER JOIN parametro TIDE " +
-			"ON IDE.id_Estado = TIDE.id_Parametro"
-			+ " where IDE.fecha_creacion BETWEEN ? AND ? "
-			+ "AND IDE.id_Estado = ? "; 
-			//String query = "SELECT id_Idea, titulo_Idea, descripcion_Idea, palabrasClave1, palabrasClave2, palabrasClave3, palabrasClave4, extensionArchivo_Idea, descripcion_Parametro FROM idea;";
-			con = ConexionBD.obtenerConexion();
-			stmt = con.prepareCall(query);
-			stmt.setString(1, fi);
-			stmt.setString(2, ff);
-			stmt.setInt(3, Estado);
-			rs = stmt.executeQuery();
-			
-			while (rs.next()) {
-				Idea vo = new Idea();
-				Usuario vu = new Usuario();
-				vu.setId_Usuario(rs.getInt("id_Usuario"));
-				vu.setNombre_Usuario(rs.getString("nombre_Usuario"));
-				vo.setId_Idea(rs.getInt("id_Idea"));
-				vo.setTitulo_Idea(rs.getString("titulo_Idea"));
-				vo.setDescripcion_Idea(rs.getString("descripcion_Idea"));
-				vo.setPalabraClave1(rs.getString("palabrasClave1"));
-				vo.setPalabraClave2(rs.getString("palabrasClave2"));
-				vo.setPalabraClave3(rs.getString("palabrasClave3"));
-				vo.setPalabraClave4(rs.getString("palabrasClave4"));
-				vo.setExtensionArchivoIdea(rs.getString("extensionArchivo_Idea"));
-				vo.setEstado_Idea(rs.getString("descripcion_Parametro"));
-				vo.setFecha_creacion(rs.getDate("fecha_creacion"));
-				vo.setAlumno(vu);
-				lst.add(vo);
-			}
-		} catch (SQLException e) {
-			System.err.println(e.getMessage());
-			throw new DAOExcepcion(e.getMessage());
-		} finally {
-			this.cerrarResultSet(rs);
-			this.cerrarStatement(stmt);
-			this.cerrarConexion(con);
-		}
-		return lst;
-	}
+	public Collection<Idea> listarIdea()
+            throws DAOExcepcion, LoginExcepcion {
+    Collection<Idea> lst = new ArrayList<Idea>();
+    Connection con = null;
+    CallableStatement stmt = null;
+    ResultSet rs = null;
+    try {
+            String query = "CALL SP_ListarIdea();";
+            con = ConexionBD.obtenerConexion();
+            stmt = con.prepareCall(query);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                    Idea vo = new Idea();
+                    vo.setId_Idea(rs.getInt("id_Idea"));
+                    vo.setTitulo_Idea(rs.getString("titulo_Idea"));
+                    vo.setDescripcion_Idea(rs.getString("descripcion_Idea"));
+                    vo.setPalabraClave1(rs.getString("palabrasClave1"));
+                    vo.setPalabraClave2(rs.getString("palabrasClave2"));
+                    vo.setPalabraClave3(rs.getString("palabrasClave3"));
+                    vo.setPalabraClave4(rs.getString("palabrasClave4"));
+                    vo.setExtensionArchivoIdea(rs.getString("extensionArchivo_Idea"));
+                    vo.setEstado_Idea(rs.getString("descripcion_Parametro"));
+                    lst.add(vo);
+            }
+    } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new DAOExcepcion(e.getMessage());
+    } finally {
+            this.cerrarResultSet(rs);
+            this.cerrarStatement(stmt);
+            this.cerrarConexion(con);
+    }
+    return lst;
+}
 	public Boolean insertar(Idea vo) throws DAOExcepcion {		
 		String query = "INSERT INTO idea(titulo_Idea, descripcion_Idea, palabrasClave1, palabrasClave2, palabrasClave3, palabrasClave4,"
 			+ " extensionArchivo_Idea, id_Estado, id_Alumno, fecha_creacion) "
