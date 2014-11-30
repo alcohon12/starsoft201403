@@ -194,15 +194,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `StarSoft`.`Reunion` (
   `id_Reunion` INT NOT NULL AUTO_INCREMENT,
+  `id_Idea` INT NOT NULL,
   `observacion_Reunion` VARCHAR(500) NOT NULL,
   `id_Calificacion` INT NOT NULL,
   `id_Asesor` INT NOT NULL,
   `fecha_Reunion` DATETIME NOT NULL,
-  `fecha_creacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  `fecha_creacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP NOT NULL,
   `fecha_modificacion` DATETIME NULL,
   PRIMARY KEY (`id_Reunion`),
   INDEX `fk_Reunion_Parametro1` (`id_Calificacion` ASC),
   INDEX `fk_Reunion_Usuario1` (`id_Asesor` ASC),
+  INDEX `fk_Reunion_Idea1_idx` (`id_Idea` ASC),
   CONSTRAINT `fk_Reunion_Parametro1`
     FOREIGN KEY (`id_Calificacion`)
     REFERENCES `StarSoft`.`Parametro` (`id_Parametro`)
@@ -211,6 +213,11 @@ CREATE TABLE IF NOT EXISTS `StarSoft`.`Reunion` (
   CONSTRAINT `fk_Reunion_Usuario1`
     FOREIGN KEY (`id_Asesor`)
     REFERENCES `StarSoft`.`Usuario` (`id_Usuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Reunion_Idea1`
+    FOREIGN KEY (`id_Idea`)
+    REFERENCES `StarSoft`.`Idea` (`id_Idea`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
