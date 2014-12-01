@@ -43,4 +43,31 @@ public class PermisoDAO  extends BaseDAO {
     }
     return lst;
 }
+	
+	public static Collection<Permiso> listarPermisoStatic(int id_Usuario)
+            throws DAOExcepcion, LoginExcepcion {
+    Collection<Permiso> lst = new ArrayList<Permiso>();
+    Connection con = null;
+    CallableStatement stmt = null;
+    ResultSet rs = null;
+    try {
+            String query = "CALL SP_ListarPermiso(?);";
+            con = ConexionBD.obtenerConexion();
+            stmt = con.prepareCall(query);
+            stmt.setInt(1, id_Usuario);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+            		Permiso vo = new Permiso();
+                    vo.setId_Permiso(rs.getInt("id_Permiso"));
+                    vo.setId_Idea(rs.getInt("id_Idea"));
+                    vo.setVotacion_Permiso(rs.getInt("votacion_Permiso"));
+                    vo.setDescripcion_Idea(rs.getString("descripcion_Idea"));
+                    lst.add(vo);
+            }
+    } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            throw new DAOExcepcion(e.getMessage());
+    } 
+    return lst;
+}
 }
