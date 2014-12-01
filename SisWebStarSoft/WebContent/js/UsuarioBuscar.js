@@ -6,7 +6,7 @@ $(document).ready(function () {
 	
 	$("#btnAgregar").click(function()
 	{
-		AbriRegistro(0);
+		AbrirRegistro(0);
 	});
 	
 	$('.selectpicker').selectpicker();
@@ -19,7 +19,7 @@ function KeyPress(){
 }
 */
 
-function AbriRegistro(pCodigoUsuario)
+function AbrirRegistro(pCodigoUsuario)
 {
 	$("#frmRegistro").attr("src", "");
 	

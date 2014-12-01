@@ -1,4 +1,4 @@
-
+------------- martel  -----------
 create PROCEDURE SP_ListarCentroInformacion
 (
 	Nombre VARCHAR(200)
@@ -111,6 +111,26 @@ CREATE PROCEDURE SP_ListarUsuario
 	AND USU.paterno_Usuario LIKE CASE WHEN pi_Campo = 2 THEN pi_Filtro ELSE '%%' END 
 	AND USU.materno_Usuario LIKE CASE WHEN pi_Campo = 3 THEN pi_Filtro ELSE '%%' END;
 	
+CREATE PROCEDURE SP_ObtenerUsuario
+(
+	pi_id_Usuario INT
+)
+	SELECT 
+		USU.id_Usuario,
+		USU.nombre_Usuario,
+		USU.paterno_Usuario,
+		USU.materno_Usuario,
+		USU.id_Genero,
+		USU.id_Tipo_Documento,
+		USU.NroDocumento,
+		USU.correo_Usuario,
+		USU.celular_Usuario,
+		USU.password_Usuario,
+		USU.id_Tipo_Usuario,
+		USU.id_Centro_Informacion
+	FROM usuario USU
+	WHERE USU.id_Usuario = pi_id_Usuario;
+	
 CREATE PROCEDURE SP_ListarReunion
 (
 	pi_FechaDesde DATETIME,
@@ -217,7 +237,7 @@ CREATE PROCEDURE SP_ListarIdea
         TIDE.descripcion_Parametro
 	FROM idea IDE
 	INNER JOIN parametro TIDE
-	ON IDE.id_Estado = TIDE.id_Parametro
+	ON IDE.id_Estado = TIDE.id_Parametro;
 	
 CREATE PROCEDURE SP_ListarPermiso
 (
@@ -231,4 +251,4 @@ CREATE PROCEDURE SP_ListarPermiso
 	FROM permiso PER
 	INNER JOIN idea IDE
 	ON IDE.id_Idea = PER.id_Idea
-	WHERE PER.id_Usuario = pi_id_Usuario
+	WHERE PER.id_Usuario = pi_id_Usuario;
