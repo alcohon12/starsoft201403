@@ -132,7 +132,7 @@
 						<h4 class="modal-title" id="myModalLabel">Registro Centro Información</h4>
 					</div>
 					<center>
-						<iframe id="frmRegistro" width="590" height="410" scrolling="yes"
+						<iframe id="frmRegistro" width="590" height="520" scrolling="no"
 							frameBorder="0"></iframe>
 					</center>
 				</div>

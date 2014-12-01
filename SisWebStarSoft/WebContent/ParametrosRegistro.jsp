@@ -9,18 +9,18 @@
 </head>
 <body style="padding: 0px; margin: 0px">
 	<form class="form-horizontal well" method="post"
-		action="RegistroCentroInformacionServlet">
+		action="RegistroParametroServlet">
 		<% 
-			int id_Centro_Informacion = Integer.parseInt(request.getParameter("CodigoCentro"));
-			String nombre_Centro_Informacion = "";
-			int id_Tipo_Centro = 0;
-			String url_Centro_Informacion = "";
-			String monto_Pago = "";
+			int id_Parametro = Integer.parseInt(request.getParameter("CodigoParametro"));
+			String descripcion_Parametro = "";
 			
-			if(id_Centro_Informacion != 0)
+			String nombre_Tabla = "";
+			int id_Tabla=0;
+			
+			if(id_Parametro != 0)
 			{
-				GestionCentroFormacion negocio = new GestionCentroFormacion();
-				CentroFormacion obj = negocio.obtener(id_Centro_Informacion);
+				GestionParametro negocio = new GestionParametro();
+				/*CentroFormacion obj = negocio.obtener(id_Parametro);
 				
 				if(obj != null)
 				{
@@ -28,12 +28,12 @@
 					id_Tipo_Centro = obj.getId_TipoCentroFormacion();
 					url_Centro_Informacion = obj.getUrl_CentroFormacion();										
 					monto_Pago=obj.getSs_Pago_String();
-				}
+				}*/
 			}
 		%>
 
 		<input type="text" id="id_Centro_Informacion" name="id_Centro_Informacion"
-			style="display: none" value="<%=id_Centro_Informacion%>">
+			style="display: none" value="<%=id_Parametro%>">
 
 
 		<div class="modal-body">
@@ -42,53 +42,28 @@
 					<tr>
 
 						<td class="control-group"><label class="control-label"
-							for="input01">Centro Formacion:</label>
+							for="input01">Parametro:</label>
 							<div class="controls">
-								<input type="text" id="nombre_Centro_Informacion" name="nombre_Centro_Informacion"
-									class="form-control" style="width: 200px" required value="<%=nombre_Centro_Informacion%>">
+								<input type="text" id="descripcion_Parametro" name="descripcion_Parametro"
+									class="form-control" style="width: 200px" required value="<%=descripcion_Parametro%>">
 							</div></td>
 						<td style="width: 20px"></td>
 						<td><label class="control-label" for="input01">Tipo:</label>
 							<div class="controls">
-								<select id="id_Tipo_Centro" name="id_Tipo_Centro" class="selectpicker"
+								<select id="id_Tabla" name="id_Tabla" class="selectpicker"
 									data-style="btn-primary" style="display: none">
 									<option value="0" selected>[Seleccione]</option>
-									<option value="1">Universidad</option>
-									<option value="2">Intituto</option>
+									<option value="1">Tipo Centro Informacion</option>
+									<option value="2">Genero </option>
+									<option value="3">Tipo Usuario</option>
+									<option value="4">Tipo Calificacion</option>
+									
 								</select>
 							</div></td>
 					</tr>
 
 
-					<tr>
-						<td class="control-group"><label class="control-label"
-							for="input01">% Pago:</label>
-							<div class="controls">
-								<input type="text" id="monto_Pago" name="monto_Pago"
-									class="form-control" style="width: 200px" required value="<%=monto_Pago%>">
-							</div></td>
-						<td style="width: 20px"></td>
-						<td class="control-group" colspan="3"><label
-							class="control-label" for="input01">URL:</label>
-							<div class="controls">
-
-								<input type="text" id="url_Centro_Informacion" name="url_Centro_Informacion" class="form-control"
-									style="width: 200px" required value="<%=url_Centro_Informacion%>">
-							</div></td>
-					</tr>
-					<tr>
-
-						<td class="control-group" colspan="3"><label
-							class="control-label" for="input01">Foto:</label>
-							<center>
-								<div class="controls">
-									<img src="img/machupicchu1.jpg" alt="Logo"
-										style="width: 150px; height: 150px;" class="img-circle">
-								</div>
-							</center></td>
-					</tr>
-
-				</table>
+							</table>
 			</fieldset>
 		</div>
 		<div class="modal-footer">
