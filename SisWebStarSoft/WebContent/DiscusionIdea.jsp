@@ -1,3 +1,4 @@
+<%@page import="starsoft.dao.PermisoDAO"%>
 <%@page import="java.util.Date"%>
 <%@ page import="java.util.*,starsoft.modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -12,6 +13,12 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
+			<%
+			int CodigoIdea = Integer.parseInt(request.getParameter("CodigoIdea"));
+			Collection<Permiso> listarPermiso = PermisoDAO.listarPermisoStatic(CodigoIdea);
+			
+			String Titulo = 
+			%>
 				<form id="frmDiscusionIdea" class="form-horizontal well" method="post" action="RegistroDiscusionServlet">
 				<input type="text" id="txtIdea" style="display: none;" name="txtIdea"  value ="<% out.println(CodigoIdea); %>">
 					<fieldset>
