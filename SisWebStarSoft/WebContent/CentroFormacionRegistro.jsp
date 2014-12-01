@@ -9,14 +9,14 @@
 </head>
 <body style="padding: 0px; margin: 0px">
 	<form class="form-horizontal well" method="post"
-		action="RegistroCentroInformacionServlet">
+		action="RegistroCentroInformacionServlet" enctype="multipart/form-data">
 		<% 
 			int id_Centro_Informacion = Integer.parseInt(request.getParameter("CodigoCentro"));
 			String nombre_Centro_Informacion = "";
 			int id_Tipo_Centro = 0;
 			String url_Centro_Informacion = "";
 			String monto_Pago = "";
-			
+			String selected = "";
 			if(id_Centro_Informacion != 0)
 			{
 				GestionCentroFormacion negocio = new GestionCentroFormacion();
@@ -50,12 +50,25 @@
 						<td style="width: 20px"></td>
 						<td><label class="control-label" for="input01">Tipo:</label>
 							<div class="controls">
-								<select id="id_Tipo_Centro" name="id_Tipo_Centro" class="selectpicker"
-									data-style="btn-primary" style="display: none">
-									<option value="0" selected>[Seleccione]</option>
-									<option value="1">Universidad</option>
-									<option value="2">Intituto</option>
+								<select id="id_Tipo_Centro" name="id_Tipo_Centro" class="selectpicker" data-style="btn-primary" style="display:none">
+									<% 
+										GestionParametro negocio = new GestionParametro(); 
+										Collection<Parametro> lst = negocio.obtener(1);
+										
+										if(id_Tipo_Centro == 0) selected = "selected";
+										out.println("<option value='0' " + selected + ">[Seleccione]</option>");
+										
+										for(Parametro item : lst)
+										{
+											if(item.getId_Parametro() == id_Tipo_Centro) selected = "selected";
+											else selected = "";
+											
+											out.println("<option value='" + item.getId_Parametro() + "' " + selected + ">" + item.getDescripcion_Parametro() + "</option>");
+										}
+									%>
 								</select>
+							
+							
 							</div></td>
 					</tr>
 
@@ -64,7 +77,7 @@
 						<td class="control-group"><label class="control-label"
 							for="input01">% Pago:</label>
 							<div class="controls">
-								<input type="text" id="monto_Pago" name="monto_Pago"
+								<input type="number" step="any"  id="monto_Pago" name="monto_Pago"
 									class="form-control" style="width: 200px" required value="<%=monto_Pago%>">
 							</div></td>
 						<td style="width: 20px"></td>
@@ -85,9 +98,14 @@
 									<img src="img/machupicchu1.jpg" alt="Logo"
 										style="width: 150px; height: 150px;" class="img-circle">
 								</div>
+								<div class="controls">
+									<input type="file" id="txtarchivo" name="txtarchivo" class="input-small" required="required"  accept="image/*">   
+								</div>
 							</center></td>
 					</tr>
+					
 
+							</div>	
 				</table>
 			</fieldset>
 		</div>

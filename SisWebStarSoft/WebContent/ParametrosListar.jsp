@@ -106,7 +106,7 @@
 		    <div class="modal-content">
 				<div class="modal-header">
 				  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-				  <h4 class="modal-title" id="myModalLabel">Registro de reuniones</h4>
+				  <h4 class="modal-title" id="myModalLabel">Registro de Parametros</h4>
 				</div>
 				<center>
 					<iframe id="frmRegistro" width="590" height="410" scrolling="yes" frameBorder="0"></iframe>

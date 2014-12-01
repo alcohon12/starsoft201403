@@ -21,4 +21,10 @@ public class GestionParametro {
 			return dao.listar();
 		}
 	
+	public Collection<Parametro> ListarMnt()
+			throws DAOExcepcion, LoginExcepcion {
+			ParametroDAO dao = new ParametroDAO();
+			return dao.obtener(1);
+		}
+	
 }
