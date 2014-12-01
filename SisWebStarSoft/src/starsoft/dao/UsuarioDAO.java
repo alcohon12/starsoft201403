@@ -80,4 +80,44 @@ public class UsuarioDAO extends BaseDAO {
 		}
 		return lst;
 	}
+	
+	public Usuario obtener(int idUsuario)
+			throws DAOExcepcion, LoginExcepcion {
+		Usuario vo = new Usuario();
+		Connection con = null;
+		CallableStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			String query = "CALL SP_ObtenerUsuario(?);";
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareCall(query);
+			stmt.setInt(1, idUsuario);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				vo.setId_Usuario(rs.getInt("id_Usuario"));
+				vo.setNombre_Usuario(rs.getString("nombre_Usuario"));
+				vo.setPaterno_Usuario(rs.getString("paterno_Usuario"));
+				vo.setMaterno_Usuario(rs.getString("materno_Usuario"));
+				vo.setId_Genero(rs.getInt("id_Genero"));
+				vo.setId_Tipo_Documento(rs.getInt("id_Genero"));
+				vo.setNroDocumento(rs.getString("NroDocumento"));
+				vo.setCorreo_Usuario(rs.getString("correo_Usuario"));
+				vo.setCelular_Usuario(rs.getString("celular_Usuario"));
+				vo.setPassword_Usuario(rs.getString("password_Usuario"));
+				vo.setId_Tipo_Usuario(rs.getInt("id_Tipo_Usuario"));
+				vo.setId_Centro_Informacion(rs.getInt("id_Centro_Informacion"));
+			}
+			else {
+				throw new LoginExcepcion("No existe");
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarResultSet(rs);
+			this.cerrarCallable(stmt);
+			this.cerrarConexion(con);
+		}
+		return vo;
+	}
 }

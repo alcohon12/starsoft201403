@@ -90,7 +90,7 @@
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick='AbriRegistro(" + item.getId_Usuario() + ")'>");
+									out.println("<img src='img/Iconos/EditFile.png' onclick='AbrirRegistro(" + item.getId_Usuario() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getNombre_Usuario());
