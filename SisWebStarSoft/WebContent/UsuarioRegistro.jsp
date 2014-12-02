@@ -47,6 +47,8 @@
 				}
 			}
 		%>
+		
+		<input type="text" id="txtIdUsuario" name="txtIdUsuario" style="display:none" value="<%=idUsuario%>">
       	<div class="modal-body">
 			<fieldset>
 				<table>
@@ -189,8 +191,26 @@
 			</fieldset>
       	</div>
 		<div class="modal-footer">
-		  <button type="submit" class="btn btn-primary">Registrar</button>
-		  <button id="btnCerrar" type="button" class="btn btn-default">Cerrar</button>
+			<% 
+				String mensaje = (String) request.getAttribute("MENSAJE");
+				if(mensaje != null)
+				{
+					if(!mensaje.equals(""))
+					{
+						out.println("<div style='color:red'>");
+						out.println(mensaje);
+						out.println("</div>");
+					}
+					else
+					{
+						out.println("<script>");
+						out.println("parent.$('#myModal').modal('hide');");
+						out.println("</script>");
+					}
+				}
+			%>
+			<button type="submit" class="btn btn-primary">Registrar</button>
+			<button id="btnCerrar" type="button" class="btn btn-default">Cerrar</button>
 		</div>
 	</form>
 </body>

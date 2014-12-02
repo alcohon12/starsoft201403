@@ -59,16 +59,17 @@
 					<thead>
 						<tr>
 							<th style="width:50px">Editar</th>
+							<th style="width:50px">Eliminar</th>
 							<th style="width:200px">Nombres</th>
 							<th style="width:200px">Ape.Pat.</th>
 							<th style="width:200px">Ape.Mat.</th>
-							<th style="width:200px">Tipo</th>
-							<th style="width:200px">Correo</th>
+							<th style="width:150px">Tipo</th>
+							<th style="width:250px">Correo</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-							<th colspan="6">
+							<th colspan="7">
 								Registros: 
 								<% 
 									ArrayList<Usuario> lst = (ArrayList<Usuario>) request.getAttribute("LISTADO_USUARIOS");
@@ -91,6 +92,9 @@
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
 									out.println("<img src='img/Iconos/EditFile.png' onclick='AbrirRegistro(" + item.getId_Usuario() + ")'>");
+									out.println("</td>");
+									out.println("<td style='text-align:center;cursor:pointer'>");
+									out.println("<img src='img/Iconos/Delete.png' onclick='EliminarRegistro(" + item.getId_Usuario() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getNombre_Usuario());
@@ -115,6 +119,22 @@
 				</table>
 			</div>
 		</div>
+
+		<form method="post" action="EliminarUsuario">
+			<input type="text" id="txtIdUsuario" name="txtIdUsuario" style="display:none">
+			<button type="submit" id="btnEliminar" style="display:none">Buscar</button>
+			
+			<%
+				String mensaje = (String) request.getAttribute("MENSAJE");
+			
+				if(mensaje != null)
+				{
+					out.println("<div style='color:red'>");
+					out.println(mensaje);
+					out.println("</div>");
+				}
+			%>
+		</form>
 
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

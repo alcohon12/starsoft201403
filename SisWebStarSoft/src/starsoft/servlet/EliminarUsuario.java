@@ -10,19 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import starsoft.excepcion.DAOExcepcion;
-import starsoft.negocio.GestionReunion;
+import starsoft.negocio.GestionUsuario;
 
 /**
- * Servlet implementation class EliminarReunion
+ * Servlet implementation class EliminarUsuario
  */
-@WebServlet("/EliminarReunion")
-public class EliminarReunion extends HttpServlet {
+@WebServlet("/EliminarUsuario")
+public class EliminarUsuario extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarReunion() {
+    public EliminarUsuario() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,19 +38,19 @@ public class EliminarReunion extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idReunion = Integer.parseInt(request.getParameter("txtIdReunion"));
+		int idUsuario = Integer.parseInt(request.getParameter("txtIdUsuario"));
 		
-		GestionReunion negocio = new GestionReunion();
+		GestionUsuario negocio = new GestionUsuario();
 		
 		try
 		{
-			negocio.eliminar(idReunion);
+			negocio.eliminar(idUsuario);
 		}
 		catch (DAOExcepcion e) {
 			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
 		}
 		
-		RequestDispatcher rd = request.getRequestDispatcher("ReunionBuscar.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("UsuarioBuscar.jsp");
 		rd.forward(request, response);
 	}
 
