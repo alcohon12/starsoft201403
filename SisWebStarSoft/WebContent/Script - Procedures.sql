@@ -270,10 +270,9 @@ CREATE PROCEDURE SP_EliminarReunion
 	DELETE FROM reunion 
 	WHERE id_Reunion = pi_id_Reunion;
 	
-CREATE PROCEDURE SP_ListarIdea
-(
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarIdea`(
 )
-	SELECT 
+SELECT 
 		IDE.id_Idea,
         IDE.titulo_Idea,
         IDE.descripcion_Idea,
@@ -287,18 +286,36 @@ CREATE PROCEDURE SP_ListarIdea
         TIDE.descripcion_Parametro
 	FROM idea IDE
 	INNER JOIN parametro TIDE
-	ON IDE.id_Estado = TIDE.id_Parametro;
-	
-CREATE PROCEDURE SP_ListarPermiso
-(
+	ON IDE.id_Estado = TIDE.id_Parametro
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ActualizarVotacionPermiso`(
+	pi_id_Permiso INT,
+    pi_Votacion INT
+)
+UPDATE permiso SET votacion_Permiso = pi_Votacion
+	WHERE id_Permiso = pi_id_Permiso
+    
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarDiscusion`(
+	pi_id_Idea INT
+)
+SELECT DIS.id_Discucion, DIS.comentario, DIS.id_DiscucionPadre, DIS.fecha_creacion, USU.nombre_Usuario
+FROM DISCUCION DIS
+INNER JOIN USUARIO USU ON DIS.id_Usuario = USU.id_Usuario
+where DIS.id_Idea = pi_id_Idea
+
+
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarPermiso`(
 	pi_id_Usuario INT
 )
-	SELECT 
+SELECT 
 		PER.id_Permiso,
 		PER.id_Idea,
 		PER.votacion_Permiso,
+        IDE.titulo_Idea,
         IDE.descripcion_Idea
 	FROM permiso PER
 	INNER JOIN idea IDE
 	ON IDE.id_Idea = PER.id_Idea
-	WHERE PER.id_Usuario = pi_id_Usuario;
+	WHERE PER.id_Usuario = pi_id_Usuario
