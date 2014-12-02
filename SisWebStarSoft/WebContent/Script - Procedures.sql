@@ -72,12 +72,7 @@ CREATE PROCEDURE SP_EliminarCentroInformacion
 	DELETE FROM centro_informacion  
 	where id_Centro_Informacion=pi_id_Centro_Informacion ;
     
-
-    
-    
-
-
------------ martel ------------
+----------- Victor ------------
 CREATE PROCEDURE SP_ValidarUsuario
 (
 	pi_correo_Usuario VARCHAR(100),
@@ -177,6 +172,13 @@ CREATE PROCEDURE SP_ActualizarUsuario
 		password_Usuario = pi_password_Usuario,
 		id_Tipo_Usuario = pi_id_Tipo_Usuario,
 		id_Centro_Informacion = pi_id_Centro_Informacion
+	WHERE id_Usuario = pi_id_Usuario;
+	
+CREATE PROCEDURE SP_EliminarUsuario
+(
+	pi_id_Usuario INT
+)
+	DELETE FROM usuario
 	WHERE id_Usuario = pi_id_Usuario;
 	
 CREATE PROCEDURE SP_ListarReunion
