@@ -270,6 +270,8 @@ CREATE PROCEDURE SP_EliminarReunion
 	DELETE FROM reunion 
 	WHERE id_Reunion = pi_id_Reunion;
 	
+------------FRANK ---------------------------
+	
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarIdea`(
 )
 SELECT 
@@ -319,3 +321,12 @@ SELECT
 	INNER JOIN idea IDE
 	ON IDE.id_Idea = PER.id_Idea
 	WHERE PER.id_Usuario = pi_id_Usuario
+	
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InsertarDiscusion`(
+	pi_id_Idea INT,
+    pi_id_Usuario INT,
+    pi_Comentario VARCHAR(500),
+    pi_id_DiscucionPadre INT
+)
+insert into discusion (id_Idea,id_Usuario,comentario,id_DiscucionPadre) 
+values (pi_id_Idea,pi_id_Usuario,pi_Comentario,pi_id_DiscucionPadre)
