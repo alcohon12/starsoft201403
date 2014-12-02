@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function AbriRegistro(pCodigoIdea, pVotacion)
 {
-	window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea + "&Votacion=" + pVotacion);
+	window.location = ("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea);
 	//if(pCodigoIdea == null)
 		//window.location = ("IdeaBuscar.jsp");
 	//else

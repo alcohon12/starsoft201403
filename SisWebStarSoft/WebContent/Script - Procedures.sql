@@ -328,5 +328,5 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InsertarDiscusion`(
     pi_Comentario VARCHAR(500),
     pi_id_DiscucionPadre INT
 )
-insert into discusion (id_Idea,id_Usuario,comentario,id_DiscucionPadre) 
+insert into discucion (id_Idea,id_Usuario,comentario,id_DiscucionPadre) 
 values (pi_id_Idea,pi_id_Usuario,pi_Comentario,pi_id_DiscucionPadre)
