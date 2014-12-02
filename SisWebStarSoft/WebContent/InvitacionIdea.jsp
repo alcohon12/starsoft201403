@@ -1,4 +1,6 @@
-<%@page import="starsoft.modelo.Permiso"%>
+<%@page import="starsoft.excepcion.LoginExcepcion"%>
+<%@page import="starsoft.excepcion.DAOExcepcion"%>
+<%@page import="starsoft.negocio.GestionPermiso"%>
 <%@ page import="java.util.*,starsoft.modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,6 +13,20 @@
 	<%@ include file="MenuPagina.jsp" %>
 	<div class="container">
 		<div class="row">
+			<%
+			HttpSession sessionS = request.getSession();
+			Usuario vo = (Usuario)sessionS.getAttribute("USUARIO_ACTUAL");
+
+			Collection<Permiso> lst = new ArrayList<Permiso>();		
+			GestionPermiso negocio = new GestionPermiso();
+			try {
+				lst = negocio.listarPermiso(vo.getId_Usuario());
+			} catch (DAOExcepcion e) {
+				request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+			} catch (LoginExcepcion e) {			
+				request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
+			}		
+			%>
 			<div class="col-md-12">
 				<form id="frmInvitacionIdea" class="form-horizontal well" method="post" action="BusquedaIdeaDiscusionServlet">
 					<fieldset>
@@ -36,7 +52,7 @@
 					</thead>
 					<tbody>
 						<% 
-							ArrayList<Permiso> lst = (ArrayList<Permiso>) request.getAttribute("LISTADO_IDEAS_DISCUSION");
+							//ArrayList<Permiso> lst = (ArrayList<Permiso>) request.getAttribute("LISTADO_IDEAS_DISCUSION");
 							if(lst != null)
 							{
 								for(Permiso item : lst)
@@ -46,7 +62,7 @@
 									out.println("<img src='img/Iconos/Coment.png' onclick='AbriRegistro(" + item.getId_Idea() + "," + item.getVotacion_Permiso() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
-									out.println(item.getDescripcion_Idea());
+									out.println(item.getTitulo_Idea());
 									out.println("</td>");
 									out.println("</tr>");
 								}
