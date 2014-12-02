@@ -25,4 +25,22 @@ public class GestionUsuario {
 		UsuarioDAO dao = new UsuarioDAO();
 		return dao.obtener(idUsuario);
 	}
+	
+	public Boolean insertar(Usuario vo)
+			throws DAOExcepcion {
+		UsuarioDAO dao = new UsuarioDAO();
+		return dao.insertar(vo);
+	}
+	
+	public Boolean actualizar(Usuario vo)
+			throws DAOExcepcion {
+		UsuarioDAO dao = new UsuarioDAO();
+		return dao.actualizar(vo);
+	}
+	
+	public Boolean eliminar(int idUsuario)
+			throws DAOExcepcion {
+		UsuarioDAO dao = new UsuarioDAO();
+		return dao.eliminar(idUsuario);
+	}
 }

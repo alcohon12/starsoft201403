@@ -27,3 +27,14 @@ function AbrirRegistro(pCodigoUsuario)
 	
 	$("#myModal").modal("show");
 }
+
+function EliminarRegistro(pCodigoReunion)
+{
+	bootbox.confirm("Esta seguro de eliminar el registro?", function(result) {
+	  if(result)
+	  {
+		  $("#txtIdUsuario").val(pCodigoReunion);
+		  $("#btnEliminar").click();
+	  }
+	}); 
+}

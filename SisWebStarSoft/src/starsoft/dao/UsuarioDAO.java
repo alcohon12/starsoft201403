@@ -120,4 +120,109 @@ public class UsuarioDAO extends BaseDAO {
 		}
 		return vo;
 	}
+	
+	public Boolean insertar(Usuario vo) throws DAOExcepcion {
+		String query = "CALL SP_InsertarUsuario(?,?,?,?,?,?,?,?,?,?,?);";
+		System.err.println(query);
+		Connection con = null;
+		CallableStatement stmt = null;
+		Boolean result = false;
+		
+		try {
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareCall(query);
+			stmt.setString(1, vo.getNombre_Usuario());
+			stmt.setString(2, vo.getPaterno_Usuario());
+			stmt.setString(3, vo.getMaterno_Usuario());
+			stmt.setInt(4, vo.getId_Genero());
+			stmt.setInt(5, vo.getId_Tipo_Documento());
+			stmt.setString(6, vo.getNroDocumento());
+			stmt.setString(7, vo.getCorreo_Usuario());
+			stmt.setString(8, vo.getCelular_Usuario());
+			stmt.setString(9, vo.getPassword_Usuario());
+			stmt.setInt(10, vo.getId_Tipo_Usuario());
+			stmt.setInt(11, vo.getId_Centro_Informacion());
+
+			int i = stmt.executeUpdate();
+			if (i != 1) {
+				throw new SQLException("No se pudo insertar");
+			}
+			
+			result = true;
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return result;
+	}
+	
+	public Boolean actualizar(Usuario vo) throws DAOExcepcion {
+		String query = "CALL SP_ActualizarUsuario(?,?,?,?,?,?,?,?,?,?,?,?);";
+		System.err.println(query);
+		Connection con = null;
+		CallableStatement stmt = null;
+		Boolean result = false;
+		
+		try {
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareCall(query);
+			stmt.setInt(1, vo.getId_Usuario());
+			stmt.setString(2, vo.getNombre_Usuario());
+			stmt.setString(3, vo.getPaterno_Usuario());
+			stmt.setString(4, vo.getMaterno_Usuario());
+			stmt.setInt(5, vo.getId_Genero());
+			stmt.setInt(6, vo.getId_Tipo_Documento());
+			stmt.setString(7, vo.getNroDocumento());
+			stmt.setString(8, vo.getCorreo_Usuario());
+			stmt.setString(9, vo.getCelular_Usuario());
+			stmt.setString(10, vo.getPassword_Usuario());
+			stmt.setInt(11, vo.getId_Tipo_Usuario());
+			stmt.setInt(12, vo.getId_Centro_Informacion());
+
+			int i = stmt.executeUpdate();
+			if (i != 1) {
+				throw new SQLException("No se pudo actualizar");
+			}
+			
+			result = true;
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return result;
+	}
+	
+	public Boolean eliminar(int idUsuario) throws DAOExcepcion {
+		String query = "CALL SP_EliminarUsuario(?);";
+		System.err.println(query);
+		Connection con = null;
+		CallableStatement stmt = null;
+		Boolean result = false;
+		
+		try {
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareCall(query);
+			stmt.setInt(1, idUsuario);
+
+			int i = stmt.executeUpdate();
+			if (i != 1) {
+				throw new SQLException("No se pudo eliminar");
+			}
+			
+			result = true;
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return result;
+	}
 }
