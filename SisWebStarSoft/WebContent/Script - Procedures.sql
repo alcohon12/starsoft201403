@@ -131,6 +131,54 @@ CREATE PROCEDURE SP_ObtenerUsuario
 	FROM usuario USU
 	WHERE USU.id_Usuario = pi_id_Usuario;
 	
+CREATE PROCEDURE SP_InsertarUsuario
+(
+	pi_nombre_Usuario VARCHAR(50),
+	pi_paterno_Usuario VARCHAR(50),
+	pi_materno_Usuario VARCHAR(50),
+	pi_id_Genero INT,
+	pi_id_Tipo_Documento INT,
+	pi_NroDocumento VARCHAR(20),
+	pi_correo_Usuario VARCHAR(100),
+	pi_celular_Usuario VARCHAR(15),
+	pi_password_Usuario VARCHAR(1000),
+	pi_id_Tipo_Usuario INT,
+	pi_id_Centro_Informacion INT
+)
+	INSERT INTO usuario 
+		(nombre_Usuario, paterno_Usuario, materno_Usuario, id_Genero, id_Tipo_Documento, NroDocumento, correo_Usuario, celular_Usuario, password_Usuario, id_Tipo_Usuario, id_Centro_Informacion)
+	VALUES 
+		(pi_nombre_Usuario, pi_paterno_Usuario, pi_materno_Usuario, pi_id_Genero, pi_id_Tipo_Documento, pi_NroDocumento, pi_correo_Usuario, pi_celular_Usuario, pi_password_Usuario, pi_id_Tipo_Usuario, pi_id_Centro_Informacion);	
+	
+CREATE PROCEDURE SP_ActualizarUsuario
+(
+	pi_id_Usuario INT,
+	pi_nombre_Usuario VARCHAR(50),
+	pi_paterno_Usuario VARCHAR(50),
+	pi_materno_Usuario VARCHAR(50),
+	pi_id_Genero INT,
+	pi_id_Tipo_Documento INT,
+	pi_NroDocumento VARCHAR(20),
+	pi_correo_Usuario VARCHAR(100),
+	pi_celular_Usuario VARCHAR(15),
+	pi_password_Usuario VARCHAR(1000),
+	pi_id_Tipo_Usuario INT,
+	pi_id_Centro_Informacion INT
+)
+	UPDATE usuario
+	SET nombre_Usuario = pi_nombre_Usuario,
+		paterno_Usuario = pi_paterno_Usuario,
+		materno_Usuario = pi_materno_Usuario,
+		id_Genero = pi_id_Genero,
+		id_Tipo_Documento = pi_id_Tipo_Documento,
+		NroDocumento = pi_NroDocumento,
+		correo_Usuario = pi_correo_Usuario,
+		celular_Usuario = pi_celular_Usuario,
+		password_Usuario = pi_password_Usuario,
+		id_Tipo_Usuario = pi_id_Tipo_Usuario,
+		id_Centro_Informacion = pi_id_Centro_Informacion
+	WHERE id_Usuario = pi_id_Usuario;
+	
 CREATE PROCEDURE SP_ListarReunion
 (
 	pi_FechaDesde DATETIME,
