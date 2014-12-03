@@ -13,4 +13,9 @@ public class GestionPermiso {
 		PermisoDAO dao = new PermisoDAO();
 		return dao.listarPermiso(id_Usuario);
 	}
+	public int ActualizarVotacionPermiso(Permiso obj)
+			throws DAOExcepcion, LoginExcepcion {
+		PermisoDAO dao = new PermisoDAO();
+		return dao.ActualizarVotacionPermiso(obj);
+	}
 }
