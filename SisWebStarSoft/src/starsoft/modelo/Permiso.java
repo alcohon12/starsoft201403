@@ -9,7 +9,14 @@ public class Permiso {
 	private int votacion_Permiso;
 	private Date fecha_creacion;
 	private String descripcion_Idea;
+	private String titulo_Idea;
 	
+	public String getTitulo_Idea() {
+		return titulo_Idea;
+	}
+	public void setTitulo_Idea(String titulo_Idea) {
+		this.titulo_Idea = titulo_Idea;
+	}
 	public int getId_Permiso() {
 		return id_Permiso;
 	}
