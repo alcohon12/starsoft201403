@@ -2,6 +2,7 @@ package starsoft.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,7 +14,14 @@ import javax.servlet.http.HttpSession;
 
 
 
+
+
+import starsoft.excepcion.DAOExcepcion;
+import starsoft.excepcion.LoginExcepcion;
+import starsoft.modelo.Discusion;
 import starsoft.modelo.Permiso;
+import starsoft.negocio.GestionDiscusion;
+import starsoft.negocio.GestionPermiso;
 
 /**
  * Servlet implementation class RegistroVotacionServlet
@@ -44,24 +52,26 @@ public class RegistroVotacionServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		if(request.getParameter("txtVotacion")!=null){
 			String NumVotacion = request.getParameter("txtVotacion");
+			String pId_Permiso = request.getParameter("txtId_Permiso");
 			String pCodigoIdea = request.getParameter("txtIdea");
 			
 			Permiso permisoLst = new Permiso();
-			permisoLst.setId_Idea(Integer.parseInt(pCodigoIdea));
+			permisoLst.setId_Permiso(Integer.parseInt(pId_Permiso));
 			permisoLst.setVotacion_Permiso(Integer.parseInt(NumVotacion));
 			
-			HttpSession SesionComent = request.getSession();
-			if(SesionComent.getAttribute("Votacion") == null){
-				ArrayList<Permiso>  permisoList = new ArrayList<Permiso>();
-				permisoList.add(permisoLst);
-				SesionComent.setAttribute("Votacion", permisoList);
-			}else{
-				ArrayList<Permiso> permList = (ArrayList<Permiso>)SesionComent.getAttribute("Votacion");
-				permList.add(permisoLst);
-				SesionComent.setAttribute("Votacion", permList);
+			
+			GestionPermiso negocio = new GestionPermiso();
+			Permiso obj = new Permiso();
+			try {
+				obj.setId_Permiso(Integer.parseInt(pId_Permiso));
+				obj.setVotacion_Permiso(Integer.parseInt(NumVotacion));
+				negocio.ActualizarVotacionPermiso(obj);
+			} catch (DAOExcepcion e) {
+				request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+			} catch (LoginExcepcion e) {			
+				request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
 			}
-	    	
-			RequestDispatcher a = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea + "&NumEstrellas=" + NumVotacion);
+			RequestDispatcher a = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea );
 			a.forward(request, response);
 		}
 	}
