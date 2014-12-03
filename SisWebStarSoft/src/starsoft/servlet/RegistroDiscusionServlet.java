@@ -2,6 +2,7 @@ package starsoft.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -12,9 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import starsoft.excepcion.DAOExcepcion;
+import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Discusion;
 import starsoft.modelo.Idea;
 import starsoft.modelo.Permiso;
+import starsoft.modelo.Usuario;
+import starsoft.negocio.GestionDiscusion;
 
 /**
  * Servlet implementation class RegistroDiscusionServlet
@@ -42,36 +47,28 @@ public class RegistroDiscusionServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		ArrayList<Discusion> lst = new ArrayList<Discusion>();
-		String comentario = request.getParameter("txtComent");
-		String idIdea = request.getParameter("txtIdea");
-		String NumEstrellas = "";
-				
-		HttpSession SesionComent = request.getSession();
-		if(SesionComent.getAttribute("Votacion") != null){
-			ArrayList<Permiso>  permisoList = (ArrayList<Permiso>)SesionComent.getAttribute("Votacion");
-			for(Permiso item : permisoList){
-				if(item.getId_Idea() == Integer.parseInt(idIdea)){
-					NumEstrellas =  String.valueOf(item.getVotacion_Permiso());
-				}
-			}
-		}
-		Discusion objD1 = new Discusion();
-		objD1.setId_Idea(Integer.parseInt(idIdea));
-		objD1.setComentario(comentario);
-		objD1.setFecha_creacion(new Date());
-		objD1.setUsuario_Comentario("fchara");
-		lst.add(objD1);
-			
-		request.setAttribute("LISTADO_DISCUSION", lst);
-		RequestDispatcher rd = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + idIdea + "&NumEstrellas=" + NumEstrellas);
-		if(NumEstrellas == "" || NumEstrellas == null){
-			rd = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + idIdea);
-		}else{
-			rd = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + idIdea + "&NumEstrellas=" + NumEstrellas);
-		}
+		int Id_IdeaParam = Integer.parseInt(request.getParameter("txtIdea"));
+		String ComentarioParam = request.getParameter("txtComent");
+		HttpSession session = request.getSession(true);
+		Usuario user = (Usuario)session.getAttribute("USUARIO_ACTUAL");
 		
+		Collection<Discusion> lst = new ArrayList<Discusion>();		
+		GestionDiscusion negocio = new GestionDiscusion();
+		Discusion ds = new Discusion();
+		try {
+			ds.setId_Idea(Id_IdeaParam);
+			ds.setId_Usuario(user.getId_Usuario());
+			ds.setComentario(ComentarioParam);
+			ds.setId_DiscusionPadre(1);
+			negocio.InsertarVotacionDiscusion(ds);
+		} catch (DAOExcepcion e) {
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+		} catch (LoginExcepcion e) {			
+			request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
+		}		
+		
+		request.setAttribute("LISTADO_DISCUSION", lst);
+		RequestDispatcher rd = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + Id_IdeaParam);
 		rd.forward(request, response);
 	}
 }
