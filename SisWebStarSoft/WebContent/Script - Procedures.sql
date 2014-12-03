@@ -1,4 +1,4 @@
-------------- martel  -----------
+/*------------- martel  -----------*/
 create PROCEDURE SP_ListarCentroInformacion
 (
 	Nombre VARCHAR(200)
@@ -35,17 +35,16 @@ create PROCEDURE SP_ObtenerCentroInformacion
 	where id_Centro_Informacion=pi_id_Centro_Informacion ;
  
     	
-CREATE PROCEDURE SP_InsertarCentroInformacion
-(
+CREATE PROCEDURE SP_InsertarCentroInformacion(
 	pi_nombre_Centro_Informacion VARCHAR(500),
 	pi_id_Tipo_Centro INT,
 	pi_url_Centro_Informacion VARCHAR(500),
 	pi_monto_Pago DECIMAL(10,0)
 )
-	INSERT INTO centro_informacion 
-		(nombre_Centro_Informacion, id_Tipo_Centro, url_Centro_Informacion, monto_Pago)
+INSERT INTO centro_informacion 
+		(nombre_Centro_Informacion, id_Tipo_Centro, url_Centro_Informacion, monto_Pago,servicio_Pago)
 	VALUES
-		(pi_nombre_Centro_Informacion, pi_id_Tipo_Centro, pi_url_Centro_Informacion, pi_monto_Pago);
+		(pi_nombre_Centro_Informacion, pi_id_Tipo_Centro, pi_url_Centro_Informacion, pi_monto_Pago,0)
         
     	
 CREATE PROCEDURE SP_ActualizarCentroInformacion
@@ -271,7 +270,7 @@ CREATE PROCEDURE SP_EliminarReunion
 	DELETE FROM reunion 
 	WHERE id_Reunion = pi_id_Reunion;
 	
-------------FRANK ---------------------------
+/*------------FRANK ---------------------------*/
 	
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarIdea`(
 )
