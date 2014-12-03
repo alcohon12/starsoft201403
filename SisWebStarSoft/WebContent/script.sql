@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `StarSoft`.`Centro_Informacion` (
   `id_Tipo_Centro` INT NOT NULL,
   `url_Centro_Informacion` VARCHAR(150) NOT NULL,
   `extensionLogo_Centro_Informacion` VARCHAR(20) NULL,
-  `monto_Pago` DECIMAL NOT NULL DEFAULT 0,
+  `monto_Pago` DECIMAL NOT NULL ,
   `servicio_Pago` BIT NOT NULL,
   `fecha_creacion` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   `fecha_modificacion` DATETIME NULL,
