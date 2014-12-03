@@ -82,7 +82,8 @@ CREATE PROCEDURE SP_ValidarUsuario
 		id_Usuario,
 		nombre_Usuario,
 		paterno_Usuario,
-		materno_Usuario 
+		materno_Usuario,
+		id_Tipo_Usuario
 	FROM usuario 
 	WHERE correo_Usuario = pi_correo_Usuario 
 	AND password_Usuario = pi_password_Usuario;

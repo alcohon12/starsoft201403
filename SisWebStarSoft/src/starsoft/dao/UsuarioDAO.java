@@ -31,6 +31,7 @@ public class UsuarioDAO extends BaseDAO {
 				vo.setNombre_Usuario(rs.getString("nombre_Usuario"));
 				vo.setPaterno_Usuario(rs.getString("paterno_Usuario"));
 				vo.setMaterno_Usuario(rs.getString("materno_Usuario"));
+				vo.setId_Tipo_Usuario(rs.getInt("id_Tipo_Usuario"));
 			}
 			else {
 				throw new LoginExcepcion("No existe");
