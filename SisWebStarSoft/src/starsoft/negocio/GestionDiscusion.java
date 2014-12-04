@@ -14,6 +14,7 @@ public class GestionDiscusion {
 		return dao.listarDiscusion(id_Idea);
 	}
 	
+	
 	public int InsertarVotacionDiscusion(Discusion ds)
 			throws DAOExcepcion, LoginExcepcion {
 		DiscusionDAO dao = new DiscusionDAO();
