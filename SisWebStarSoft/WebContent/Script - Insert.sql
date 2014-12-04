@@ -58,5 +58,15 @@ INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES 
 INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (3, 3, 1);
 INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (4, 4, 1);
 INSERT INTO `starsoft`.`permiso` (`id_Permiso`, `id_Idea`, `id_Usuario`) VALUES (5, 5, 1);
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('1', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('2', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('3', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('4', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('5', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('6', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('7', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('8', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('9', '4', '0');
+INSERT INTO `starsoft`.`permiso` (`id_Idea`, `id_Usuario`, `votacion_Permiso`) VALUES ('10', '4', '0');
 
 
