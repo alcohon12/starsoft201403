@@ -100,27 +100,28 @@
 							}
 
 							for (Discusion item : lstDiscusion) {
-									String b = new String("");
-									SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
-									b = format.format(item.getFecha_creacion());
+									//String b = new String("");
+									//SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+									//b = format.format(item.getFecha_creacion());
 									//out.println("<div class='panel panel-success'>");
 									out.println("<div class='panel panel-primary'>");
 									out.println("<div class='panel-heading'>");
-									out.println("<h3 class='panel-title' style='font-size: 12px;'>Usuario: "
+									out.println("<h3 class='panel-title' style='font-size: 12px;'>Publicado por "
 											+ item.getUsuario_Comentario()
-											+ "&nbsp;&nbsp;&nbsp;Fecha de Comentario: "
-											+ b
+											+ " el "
+											+ item.getFecha_creacion()
 											+ "</h3>");
 									out.println("</div>");
 									out.println("<div class='panel-body'>");
 									out.println(item.getComentario());
 									out.println("</div>");
+									out.println("<button type='button' class='btn btn-xs btn-link'>Responder</button>");
 									out.println("</div>");
 							}
 						%>
 						<div class="controls">
 							Escribe tu comentario:
-							<textarea id="txtComent" name="txtComent" rows="4"
+							<textarea id="txtComent" placeholder="Escriba su comentario..." name="txtComent" rows="4"
 								style="width: 100%" required></textarea>
 							<div class="form-actions">
 								<br>
