@@ -123,7 +123,7 @@
 												
 												out.println("<div class='media'>");
 												out.println("    <a class='pull-left' href='#'>");
-												out.println("      <img class='media-object' src='img/Photo/Default.jpg' alt='...' style='width: 64px; height: 64px;'>");
+												out.println("      <img class='media-object' src='img/Photo/" + item.getId_Usuario() + ".jpg' alt='...' style='width: 64px; height: 64px;'/>");
 												out.println("    </a>");
 												out.println("    <div class='media-body'>");
 												out.println("		<div class='panel panel-primary'>");
@@ -137,31 +137,31 @@
 												out.println(			item.getComentario());
 												out.println("		</div>");
 												%>
-												<button type='button' class='btn btn-xs btn-link' onclick="$('#target').toggle();">Responder</button>
+												<button type='button' class='btn btn-xs btn-link' onclick="$(<% out.println("'#target" + item.getId_Discusion() + "'"); %>).toggle();">Responder</button>
 												<%
-												out.println("</div>");
-												//SEGUNDO PLANO
-												out.println("<div class='media' id='target' style='display: none;'>");
-												out.println("  <a class='pull-left' href='#'>");
-												out.println("    <img class='media-object' src='img/Photo/Default.jpg' alt='...' style='width: 32px; height: 32px;'>");
-												out.println("  </a>");
-												out.println("  <div class='media-body'>");
-												//ESCrIBIR RESPUESTA								
-												out.println("<div class='controls'>");
-														out.println("<textarea id='txtComent' placeholder='Escriba su respuesta...'");
-																out.println("name='txtComent' rows='2' style='width: 100%' required></textarea>");
-																		out.println("<div class='form-actions'>");
-																						out.println("<button type='submit' class='btn btn-primary' id='btnResponder'>Comentar</button>");
-																								out.println("</div>");
-																										out.println("</div>");
-																						
-												out.println("  </div>");
-												out.println("</div>");
+													out.println("</div>");
+																						//SEGUNDO PLANO
+																						out.println("<div class='media' id='target" + item.getId_Discusion() + "' style='display: none;'>");
+																						out.println("  <a class='pull-left' href='#'>");
+																						out.println("    <img class='media-object' src='img/Photo/Default.jpg' alt='...' style='width: 32px; height: 32px;'/>");
+																						out.println("  </a>");
+																						out.println("  <div class='media-body'>");
+																						//ESCrIBIR RESPUESTA								
+																						out.println("<div class='controls'>");
+																								out.println("<textarea id='txtComent" + item.getId_Discusion() + "' placeholder='Escriba su respuesta...'");
+																										out.println("name='txtComent" + item.getId_Discusion() + "' rows='2' style='width: 100%' required></textarea>");
+																												out.println("<div class='form-actions'>");
+																						//out.println("<button type='submit' class='btn btn-primary' id='btnResponder'>Comentar</button>");
+														out.println("</div>");
+														out.println("</div>");
 
-												out.println("   </div>");
-												out.println("</div>");
-											}
-						%>
+														out.println("  </div>");
+														out.println("</div>");
+
+														out.println("   </div>");
+														out.println("</div>");
+													}
+												%>
 						<div class='media'>
 							<a class='pull-left' href='#'> <img class='media-object'
 								src='img/Photo/Default.jpg' alt='...'
