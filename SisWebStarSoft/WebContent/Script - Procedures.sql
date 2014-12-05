@@ -304,7 +304,8 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarDiscusion`(
 SELECT DIS.id_Discucion, DIS.id_Usuario, DIS.comentario, DIS.id_DiscucionPadre, DIS.fecha_creacion, USU.nombre_Usuario
 FROM DISCUCION DIS
 INNER JOIN USUARIO USU ON DIS.id_Usuario = USU.id_Usuario
-where DIS.id_Idea = pi_id_Idea;
+where DIS.id_Idea = pi_id_Idea
+order by DIS.fecha_creacion asc
 
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarPermiso`(
