@@ -71,7 +71,7 @@ CREATE PROCEDURE SP_EliminarCentroInformacion
 	DELETE FROM centro_informacion  
 	where id_Centro_Informacion=pi_id_Centro_Informacion ;
     
------------ Victor ------------
+/*----------- Victor ------------*/
 CREATE PROCEDURE SP_ValidarUsuario
 (
 	pi_correo_Usuario VARCHAR(100),
@@ -301,11 +301,10 @@ UPDATE permiso SET votacion_Permiso = pi_Votacion
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarDiscusion`(
 	pi_id_Idea INT
 )
-SELECT DIS.id_Discucion, DIS.comentario, DIS.id_DiscucionPadre, DIS.fecha_creacion, USU.nombre_Usuario
+SELECT DIS.id_Discucion, DIS.id_Usuario, DIS.comentario, DIS.id_DiscucionPadre, DIS.fecha_creacion, USU.nombre_Usuario
 FROM DISCUCION DIS
 INNER JOIN USUARIO USU ON DIS.id_Usuario = USU.id_Usuario
-where DIS.id_Idea = pi_id_Idea
-
+where DIS.id_Idea = pi_id_Idea;
 
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarPermiso`(
