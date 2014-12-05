@@ -1,3 +1,19 @@
+/*------------- melissa  -----------*/
+
+
+CREATE PROCEDURE SP_CentroFormacion_Pagos
+()
+select x.nombre,x.monto_pago,x.cantidad,x.cantidad * x.monto_pago as "Pago" from (
+select c.nombre_Centro_Informacion as "Nombre",c.monto_Pago,count(*) as "Cantidad"
+from idea a,usuario b, centro_informacion c
+where a.id_Alumno=b.id_Usuario and c.id_Centro_Informacion=b.id_Centro_Informacion
+and MONTH(a.fecha_creacion)=12
+group by c.nombre_Centro_Informacion,c.monto_Pago 
+
+) x 
+
+
+
 /*------------- martel  -----------*/
 create PROCEDURE SP_ListarCentroInformacion
 (
