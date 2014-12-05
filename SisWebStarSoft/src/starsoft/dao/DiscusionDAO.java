@@ -33,6 +33,7 @@ public class DiscusionDAO extends BaseDAO {
 				vo.setId_DiscusionPadre(rs.getInt("id_DiscucionPadre"));
 				vo.setFecha_creacion(rs.getDate("fecha_creacion"));
 				vo.setUsuario_Comentario(rs.getString("nombre_Usuario"));
+				vo.setId_Usuario(rs.getInt("id_Usuario"));
 				lst.add(vo);
 			}
 		} catch (SQLException e) {
