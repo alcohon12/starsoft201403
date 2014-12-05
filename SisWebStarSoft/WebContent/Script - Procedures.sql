@@ -44,7 +44,7 @@ CREATE PROCEDURE SP_InsertarCentroInformacion(
 INSERT INTO centro_informacion 
 		(nombre_Centro_Informacion, id_Tipo_Centro, url_Centro_Informacion, monto_Pago,servicio_Pago)
 	VALUES
-		(pi_nombre_Centro_Informacion, pi_id_Tipo_Centro, pi_url_Centro_Informacion, pi_monto_Pago,0)
+		(pi_nombre_Centro_Informacion, pi_id_Tipo_Centro, pi_url_Centro_Informacion, pi_monto_Pago,0);
         
     	
 CREATE PROCEDURE SP_ActualizarCentroInformacion
@@ -288,14 +288,14 @@ SELECT
         TIDE.descripcion_Parametro
 	FROM idea IDE
 	INNER JOIN parametro TIDE
-	ON IDE.id_Estado = TIDE.id_Parametro
+	ON IDE.id_Estado = TIDE.id_Parametro;
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ActualizarVotacionPermiso`(
 	pi_id_Permiso INT,
     pi_Votacion INT
 )
 UPDATE permiso SET votacion_Permiso = pi_Votacion
-	WHERE id_Permiso = pi_id_Permiso
+	WHERE id_Permiso = pi_id_Permiso;
     
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarDiscusion`(
@@ -319,13 +319,19 @@ SELECT
 	FROM permiso PER
 	INNER JOIN idea IDE
 	ON IDE.id_Idea = PER.id_Idea
-	WHERE PER.id_Usuario = pi_id_Usuario
+	WHERE PER.id_Usuario = pi_id_Usuario;
 	
+DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_InsertarDiscusion`(
 	pi_id_Idea INT,
     pi_id_Usuario INT,
     pi_Comentario VARCHAR(500),
     pi_id_DiscucionPadre INT
 )
-insert into discucion (id_Idea,id_Usuario,comentario,id_DiscucionPadre) 
-values (pi_id_Idea,pi_id_Usuario,pi_Comentario,pi_id_DiscucionPadre)
+if (pi_id_DiscucionPadre = 0) then
+	insert into discucion (id_Idea,id_Usuario,comentario) 
+	values (pi_id_Idea,pi_id_Usuario,pi_Comentario);
+else
+	insert into discucion (id_Idea,id_Usuario,comentario,id_DiscucionPadre) 
+	values (pi_id_Idea,pi_id_Usuario,pi_Comentario,pi_id_DiscucionPadre);
+end if
