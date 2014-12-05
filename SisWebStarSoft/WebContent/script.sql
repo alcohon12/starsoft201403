@@ -180,13 +180,9 @@ CREATE TABLE IF NOT EXISTS `StarSoft`.`Discucion` (
     FOREIGN KEY (`id_Idea`)
     REFERENCES `StarSoft`.`Idea` (`id_Idea`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Discucion_Discucion1`
-    FOREIGN KEY (`id_DiscucionPadre`)
-    REFERENCES `StarSoft`.`Discucion` (`id_Discucion`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
