@@ -3,7 +3,6 @@ package starsoft.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,22 +15,20 @@ import javax.servlet.http.HttpSession;
 import starsoft.excepcion.DAOExcepcion;
 import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Discusion;
-import starsoft.modelo.Idea;
-import starsoft.modelo.Permiso;
 import starsoft.modelo.Usuario;
 import starsoft.negocio.GestionDiscusion;
 
 /**
- * Servlet implementation class RegistroDiscusionServlet
+ * Servlet implementation class RegistroRespuestaServlet
  */
-@WebServlet("/RegistroDiscusionServlet")
-public class RegistroDiscusionServlet extends HttpServlet {
+@WebServlet("/RegistroRespuestaServlet")
+public class RegistroRespuestaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistroDiscusionServlet() {
+    public RegistroRespuestaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -48,7 +45,8 @@ public class RegistroDiscusionServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int Id_IdeaParam = Integer.parseInt(request.getParameter("txtIdea"));
-		String ComentarioParam = request.getParameter("txtComent");
+		String ComentarioParam = request.getParameter("txtRespuesta");
+		String Padre = request.getParameter("txtPadre");
 		HttpSession session = request.getSession(true);
 		Usuario user = (Usuario)session.getAttribute("USUARIO_ACTUAL");
 		
@@ -59,7 +57,7 @@ public class RegistroDiscusionServlet extends HttpServlet {
 			ds.setId_Idea(Id_IdeaParam);
 			ds.setId_Usuario(user.getId_Usuario());
 			ds.setComentario(ComentarioParam);
-			//ds.setId_DiscusionPadre(1);
+			ds.setId_DiscusionPadre(Integer.parseInt(Padre));
 			negocio.InsertarVotacionDiscusion(ds);
 		} catch (DAOExcepcion e) {
 			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
@@ -71,4 +69,5 @@ public class RegistroDiscusionServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + Id_IdeaParam);
 		rd.forward(request, response);
 	}
+
 }

@@ -36,3 +36,19 @@ function AgregarVotacion(pCodigoUsuario)
     document.forms['frmDiscusionIdea'].action = 'RegistroVotacionServlet'; 
     document.forms['frmDiscusionIdea'].submit();
 }
+
+function GuargarComentario() {
+	if (event.which == 13 && document.getElementById("txtComent").value.trim() != '') {
+			document.forms['frmDiscusionIdea'].action = 'RegistroDiscusionServlet'; 
+		    document.forms['frmDiscusionIdea'].submit();
+    }
+}
+
+function GuargarRespuesta(padre,caja) {
+	document.getElementById("txtRespuesta").value = document.getElementById(caja).value;
+	if (event.which == 13 && document.getElementById("txtRespuesta").value.trim() != '') {
+			document.getElementById("txtPadre").value = padre;
+			document.forms['frmDiscusionIdea'].action = 'RegistroRespuestaServlet'; 
+		    document.forms['frmDiscusionIdea'].submit();
+    }
+}
