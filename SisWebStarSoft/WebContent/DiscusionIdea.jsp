@@ -43,8 +43,7 @@
 								request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
 							}
 				%>
-				<form id="frmDiscusionIdea" class="form-horizontal well"
-					method="post" action="RegistroDiscusionServlet">
+				<form id="frmDiscusionIdea" class="form-horizontal well" method="post" action="RegistroDiscusionServlet">
 					<input type="text" id="txtIdea" style="display: none;"
 						name="txtIdea" value="<%out.println(CodigoIdea);%>">
 					<fieldset>
@@ -54,11 +53,10 @@
 							%>
 						</legend>
 						<div align="center">
-							<input type="text" id="txtVotacion" style="display: none;"
-								name="txtVotacion"> <input type="text"
-								id="txtId_Permiso" style="display: none;" name="txtId_Permiso"
-								value="<%out.println(Efiltro.getId_Permiso());%>">
-
+							<input type="text" id="txtVotacion" style="display: none;"	name="txtVotacion"/> 
+							<input type="text" id="txtId_Permiso" style="display: none;" name="txtId_Permiso" value="<%out.println(Efiltro.getId_Permiso());%>"/>
+							<input type="text" id="txtPadre" style="display: none;"	name="txtPadre"/> 
+							<input type="text" id="txtRespuesta" style="display: none;"	name="txtRespuesta"/> 
 							<%
 								if (Efiltro.getVotacion_Permiso() != 0) {
 														for (int i = 1; i <= Efiltro.getVotacion_Permiso(); i++) {
@@ -102,24 +100,7 @@
 											}
 
 											for (Discusion item : lstDiscusion) {
-												//String b = new String("");
-												//SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
-												//b = format.format(item.getFecha_creacion());
-												//out.println("<div class='panel panel-success'>");
-												
-												//out.println("<div class='panel panel-primary'>");
-												//out.println("<div class='panel-heading'>");
-												//out.println("<h3 class='panel-title' style='font-size: 12px;'>Publicado por "
-														//+ item.getUsuario_Comentario()
-														//+ " el "
-														//+ item.getFecha_creacion() + "</h3>");
-												//out.println("</div>");
-												//out.println("<div class='panel-body'>");
-												//out.println(item.getComentario());
-												//out.println("</div>");
-												//out.println("<button type='button' class='btn btn-xs btn-link'>Responder</button>");
-												//out.println("</div>");
-												//out.println("<br>");
+												if(item.getId_DiscusionPadre() == 0){
 												
 												out.println("<div class='media'>");
 												out.println("    <a class='pull-left' href='#'>");
@@ -133,49 +114,87 @@
 																			+ " el "
 																			+ item.getFecha_creacion() + "</h3>");
 												out.println("			</div>");
-												out.println("		<div class='panel-body'>");
-												out.println(			item.getComentario());
-												out.println("		</div>");
+												out.println("			<div class='panel-body'>");
+												out.println(				item.getComentario());
+												out.println("			</div>");
+												out.println("<div class='panel-footer'>");
+												int con = 0;
+												
+												for (Discusion it : lstDiscusion) {
+													if(it.getId_DiscusionPadre() == item.getId_Discusion()){
+														con ++;
+													}
+												}
+												
 												%>
 												<button type='button' class='btn btn-xs btn-link' onclick="$(<% out.println("'#target" + item.getId_Discusion() + "'"); %>).toggle();">Responder</button>
+												<% out.println("<span style='font-size: 11px;'> . (" + con + ") Respuestas</span>"); %>
+												</div>
 												<%
-													out.println("</div>");
-																						//SEGUNDO PLANO
-																						out.println("<div class='media' id='target" + item.getId_Discusion() + "' style='display: none;'>");
-																						out.println("  <a class='pull-left' href='#'>");
-																						out.println("    <img class='media-object' src='img/Photo/Default.jpg' alt='...' style='width: 32px; height: 32px;'/>");
-																						out.println("  </a>");
-																						out.println("  <div class='media-body'>");
-																						//ESCrIBIR RESPUESTA								
-																						out.println("<div class='controls'>");
-																								out.println("<textarea id='txtComent" + item.getId_Discusion() + "' placeholder='Escriba su respuesta...'");
-																										out.println("name='txtComent" + item.getId_Discusion() + "' rows='2' style='width: 100%' required></textarea>");
-																												out.println("<div class='form-actions'>");
-																						//out.println("<button type='submit' class='btn btn-primary' id='btnResponder'>Comentar</button>");
-														out.println("</div>");
-														out.println("</div>");
-
-														out.println("  </div>");
-														out.println("</div>");
-
-														out.println("   </div>");
-														out.println("</div>");
+												out.println("		</div>");
+													//SEGUNDO PLANO
+													out.println("<div id='target" + item.getId_Discusion() + "' style='display: none;'>");
+													//LISTA DE LAS RESPUESTAS
+													for (Discusion it : lstDiscusion) {
+														if(it.getId_DiscusionPadre() == item.getId_Discusion()){
+															out.println("<div class='media'>");
+															out.println("    <a class='pull-left' href='#'>");
+															out.println("      <img class='media-object' src='img/Photo/" + it.getId_Usuario() + ".jpg' alt='...' style='width: 32px; height: 32px;'/>");
+															out.println("    </a>");
+															out.println("    <div class='media-body'>");
+															out.println("		<div class='panel panel-info'>");
+															out.println("			<div class='panel-heading'>");
+															out.println("				<h3 class='panel-title' style='font-size: 12px;'>Publicado por "
+																						+ it.getUsuario_Comentario()
+																						+ " el "
+																						+ it.getFecha_creacion() + "</h3>");
+															out.println("			</div>");
+															out.println("			<div class='panel-body'>");
+															out.println(			it.getComentario());
+															out.println("			</div>");
+															out.println("   	</div>");
+															out.println("	</div>");
+															out.println("</div>");
+														}
 													}
-												%>
+													//***************************FIn LISTA
+													//ESCrIBIR RESPUESTA
+													out.println("<div class='media' >");
+													out.println("  <a class='pull-left' href='#'>");
+													out.println("    	<img class='media-object' src='img/Photo/" + item.getId_Usuario() + ".jpg' alt='...' style='width: 32px; height: 32px;'/>");
+													out.println("  </a>");
+													out.println("  <div class='media-body'>");
+													out.println("		<div class='controls'>");
+													out.println("			<textarea id='txtComent" + item.getId_Discusion() + "' placeholder='Escriba su respuesta...' ");
+													%>
+													onkeypress="GuargarRespuesta(<%  out.println(item.getId_Discusion() + ",'txtComent" + item.getId_Discusion() + "');"); %>"
+													<%
+													out.println("			name='txtComent" + item.getId_Discusion() + "' rows='2' style='width: 100%' ></textarea>");
+													out.println("		</div>");
+													out.println("  </div>");
+													out.println("</div>");
+													//**************** FIN ESCRIBIR
+													out.println("</div>");
+													//**************** FIN SEGUNDO PLANO
+													out.println("   </div>");
+													out.println("</div>");
+													
+												}
+											}
+											%>
 						<div class='media'>
 							<a class='pull-left' href='#'> <img class='media-object'
-								src='img/Photo/Default.jpg' alt='...'
+								src='img/Photo/<%  out.println(vo.getId_Usuario());%>.jpg' alt='...'
 								style='width: 64px; height: 64px;'>
 
 							</a>
 							<div class='media-body'>
 								<div class="controls">
-									<textarea id="txtComent" placeholder="Escriba su comentario..."
+									<textarea id="txtComent" placeholder="Escriba su comentario..." onkeypress="GuargarComentario();"
 										name="txtComent" rows="4" style="width: 100%" required></textarea>
 									<div class="form-actions">
 										<br>
-										<button type="submit" class="btn btn-primary"
-											id="btnResponder">Comentar</button>
+										<button type="submit" class="btn btn-primary" onclick="GuargarComentario();">Comentar</button>
 										<button type="button" class="btn btn-default" id="btnRegresar"
 											onclick="window.location = ('InvitacionIdea.jsp');">Regresar</button>
 									</div>
