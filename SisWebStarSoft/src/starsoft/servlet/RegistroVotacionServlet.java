@@ -66,10 +66,11 @@ public class RegistroVotacionServlet extends HttpServlet {
 				obj.setId_Permiso(Integer.parseInt(pId_Permiso));
 				obj.setVotacion_Permiso(Integer.parseInt(NumVotacion));
 				negocio.ActualizarVotacionPermiso(obj);
+				request.setAttribute("MENSAJE_CONFIRMACION", 1);
 			} catch (DAOExcepcion e) {
-				request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+				request.setAttribute("MENSAJE_CONFIRMACION", 0);
 			} catch (LoginExcepcion e) {			
-				request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
+				request.setAttribute("MENSAJE_CONFIRMACION", 0);
 			}
 			RequestDispatcher a = request.getRequestDispatcher("DiscusionIdea.jsp?CodigoIdea=" + pCodigoIdea );
 			a.forward(request, response);

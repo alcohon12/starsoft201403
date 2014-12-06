@@ -57,14 +57,15 @@ public class BusquedaIdeaServlet extends HttpServlet {
 		String filtro = request.getParameter("txtfiltro").toUpperCase();
 		Collection<Idea> lst = new ArrayList<Idea>();		
 
+		
 		GestionIdea negocio = new GestionIdea();
 
 		try {
 			lst = negocio.listarIdea();
 		} catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);	
 		} catch (LoginExcepcion e) {			
-			request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
 		}
 		
 		
