@@ -29,7 +29,16 @@ a.descripcion_Idea like  CONCAT  ('%',IFNULL(p_Descripcion,descripcion_Idea),'%'
 END //
 DELIMITER ;
 
+CREATE  PROCEDURE SP_CentroFormacion_Pagos( Mes int)
+select x.nombre,Tipo,x.monto_pago,x.cantidad,x.cantidad * x.monto_pago as "Pago" 
+from (
+		select c.nombre_Centro_Informacion as "Nombre",d.descripcion_Parametro as Tipo,c.monto_Pago,count(*) as "Cantidad"
+		from idea a,usuario b, centro_informacion c,parametro d
+		where a.id_Alumno=b.id_Usuario and c.id_Centro_Informacion=b.id_Centro_Informacion and d.id_Parametro=c.id_Tipo_Centro
+		and MONTH(a.fecha_creacion)=Mes
+		group by c.nombre_Centro_Informacion,c.monto_Pago ,d.descripcion_Parametro
 
+) x;
 
 /*------------- martel  -----------*/
 create PROCEDURE SP_ListarCentroInformacion
