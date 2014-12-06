@@ -1,27 +1,25 @@
-INSERT INTO parametro VALUES (1,'Universidad',1,'Tipo Centro Informacion',CURDATE(),NULL);
-INSERT INTO parametro VALUES (2,'Intituto',1,'Tipo Centro Informacion',CURDATE(),NULL);
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Universidad',1,'Tipo Centro Informacion');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Intituto',1,'Tipo Centro Informacion');
 
-INSERT INTO parametro VALUES (3,'Masculino',2,'Genero',CURDATE(),NULL);
-INSERT INTO parametro VALUES (4,'Femenino',2,'Genero',CURDATE(),NULL);
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Masculino',2,'Genero');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Femenino',2,'Genero');
 
-INSERT INTO parametro VALUES (5,'DNI',3,'Tipo Documento',CURDATE(),NULL);
-INSERT INTO parametro VALUES (6,'CE',3,'Tipo Documento',CURDATE(),NULL);
-INSERT INTO parametro VALUES (7,'PASS',3,'Tipo Documento',CURDATE(),NULL);
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('DNI',3,'Tipo Documento');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('CE',3,'Tipo Documento');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('PASS',3,'Tipo Documento');
 
-INSERT INTO parametro VALUES (8,'Estudiantes',4,'Tipo Usuario',CURDATE(),NULL);
-INSERT INTO parametro VALUES (9,'Docentes',4,'Tipo Usuario',CURDATE(),NULL);
-INSERT INTO parametro VALUES (10,'Evaluadores',4,'Tipo Usuario',CURDATE(),NULL);
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Estudiantes',4,'Tipo Usuario');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Docentes',4,'Tipo Usuario');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Evaluadores',4,'Tipo Usuario');
 
-INSERT INTO parametro VALUES (11,'Bueno',5,'Tipo Calificacion',CURDATE(),NULL);
-INSERT INTO parametro VALUES (12,'Medio',5,'Tipo Calificacion',CURDATE(),NULL);
-INSERT INTO parametro VALUES (13,'Mejorar',5,'Tipo Calificacion',CURDATE(),NULL);
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Bueno',5,'Tipo Calificacion');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Medio',5,'Tipo Calificacion');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Mejorar',5,'Tipo Calificacion');
 
-INSERT INTO parametro VALUES (14,'Publicada',6,'Idea',CURDATE(),NULL);
-INSERT INTO parametro VALUES (15,'Aprobada',6,'Idea',CURDATE(),NULL);
-INSERT INTO parametro VALUES (16,'Rechazada',6,'Idea',CURDATE(),NULL);
-INSERT INTO parametro VALUES (17,'Registrado',6,'Idea',CURDATE(),NULL);
-
-INSERT INTO parametro VALUES (18,'Administradores',4,'Tipo Usuario',CURDATE(),NULL);
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Publicada',6,'Idea');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Aprobada',6,'Idea');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Rechazada',6,'Idea');
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Registrado',6,'Idea');
 
 INSERT INTO centro_informacion VALUES (1,'Univeridad Peruana de Ciencias',1,'http://www.upc.edu.pe','jpg',1500,1,CURDATE(),NULL);
 INSERT INTO centro_informacion VALUES (2,'Cibertec',2,'http://www.cibertec.edu.pe','jpg',2500,1,CURDATE(),null);
