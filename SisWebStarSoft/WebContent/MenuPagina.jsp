@@ -131,3 +131,25 @@
 <div class="container">
 	<h4>Bienvenido(a) <b>${sessionScope.USUARIO_ACTUAL.getNombreCompleto_Usuario() }</b></h4>
 </div>
+
+	<% 
+	if(request.getAttribute("MENSAJE_CONFIRMACION") != null)
+	{
+		if((int)request.getAttribute("MENSAJE_CONFIRMACION") == 1)
+		{ 
+			%>
+				<div class="alert alert-success" role="alert">
+			   		<h4>Se han registrado los datos correctamente.</h4>
+			  	</div>
+		 	<% 
+ 		}
+		else if((int)request.getAttribute("MENSAJE_CONFIRMACION") == 0)
+		{
+			%>
+				<div class="alert alert-warning" role="alert">
+			   		<h4>Hubieron errores al registrar los datos.</h4>
+			  	</div>		
+			<%
+		}
+	}
+ %>
