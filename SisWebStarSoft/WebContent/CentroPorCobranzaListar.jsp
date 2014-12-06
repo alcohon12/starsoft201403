@@ -1,162 +1,125 @@
-<%@ page import="java.util.*,starsoft.modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*,starsoft.modelo.*,java.text.*"
+	language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Starsoft">
-	<meta name="keywords" content="Starsoft">
-    <meta name="author" content="Starsoft">
-    
-    
-    
-    <title>Sistema de gestión de la innovación</title>
-	
-	<script src="js/jquery-1.10.2.js"></script>
-	<script src="js/bootstrap-3.2.0.js"></script>
-	<script src="js/bootstrap-datepicker.js"></script>
-	<script src="js/locales/bootstrap-datepicker.es.js"></script>
-    <script src="js/Utils.js"></script>
-    <script src="js/CentroPorCobranzaListar.js"></script>
-
-	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-	<link href="css/offcanvas.css" rel="stylesheet">	
-	<link href="css/datepicker.css" rel="stylesheet">
-	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+<%@ include file="CabeceraPagina.jsp"%>
+<script src="js/CentroInformacionBuscar.js"></script>
 </head>
 <body>
-    <!-- INICIO DEL MENU PRINCIPAL -->
-	<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-			<span class="icon-bar"></span>			
-          </button>
-          <a class="navbar-brand" href="index.php">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-          	<li><a href="UsuarioBuscar.jsp">Usuarios</a></li>
-            <li><a href="ReunionBuscar.jsp">Reuniones</a></li>
-			<li><a href="IdeaBuscar.jsp">Ideas</a></li>
-			<li><a href="InvitacionIdea.jsp">Discusiones</a></li>            
-			<li><a href="PageH06.jsp">Centro de información</a></li>
-			<li><a href="ParametrosListar.jsp">Parámetros</a></li>
-			<li><a href="MensajesListar.jsp">Mensajes</a></li>
-			<li class="active"><a href="CentroPorCobranzaListar.jsp">Listado Cobranza</a></li>
-			<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
-          </ul>
-        </div><!-- /.nav-collapse -->
-      </div><!-- /.container -->
-    </div><!-- /.navbar -->
-	<!-- FIN DEL MENU PRINCIPAL -->
-	
+	<%@ include file="MenuPagina.jsp"%>
+
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<% 
+				<%
 					Date fecha_hoy = new Date();
 					String fecha_hoy_str = "";
-				
+
 					DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 					fecha_hoy_str = df.format(fecha_hoy);
 				%>
 
-			
-				<form class="form-horizontal well" method="post" action="ListarCentroPorCobranzaServlet">
+
+				<form class="form-horizontal well" method="post"
+					action="ListarCentroPorCobranzaServlet">
 					<fieldset>
-				  		<legend>MÓDULO COBRANZA</legend>
+						<legend>Módulo Cobranza</legend>
 						<div class="control-group">
-						
-						   <p class="btn btn-primary btn-large"> Listado de Cobranza por Centro de Formacion</p>
-									<br>
+							<table>
+								<tr>
+									<td><select id="ddlCampo" name="ddlCampo"
+										class="selectpicker" data-style="btn-primary"
+										style="display: none">
+
+											<option value="1" selected>Enero</option>
+											<option value="2">Febrero</option>
+											<option value="3">Marzo</option>
+											<option value="4">Abril</option>
+											<option value="5">Mayo</option>
+											<option value="6">Junio</option>
+											<option value="7">Julio</option>
+											<option value="8">Agosto</option>
+											<option value="9">Septiembre</option>
+											<option value="10">Octubre</option>
+											<option value="11">Noviembre</option>
+											<option value="12">Diciembre</option>
+									</select></td>
+									<td style="width: 5px"></td>
+									<td>
+										<div class="form-actions">
+											<button type="submit" class="btn btn-primary" id="btnBuscar">Buscar</button>
+										</div>
+									</td>
+								</tr>
+							</table>
+
+
 						</div>
-					<fieldset>
+						<fieldset>
 			</div>
-			
-			
-										<div class="control-group">
-							<label class="control-label" for="input01">Elegir mes:</label>
-							<div class="controls">
-								<select id="ddlCampo" name="ddlCampo">
-									<option value="1" selected>Enero</option>
-									<option value="2">Febrero</option>
-									<option value="3">Marzo</option>
-									<option value="4">Abril</option>
-									<option value="5">Mayo</option>
-									<option value="6">Junio</option>
-									<option value="7">Julio</option>
-									<option value="8">Agosto</option>
-									<option value="9">Septiembre</option>
-									<option value="10">Octubre</option>
-									<option value="11">Noviembre</option>
-									<option value="12">Diciembre</option>
-								</select>
-								<p class="help-block">Ingrese los criterios de búsqueda</p>
-							</div>
-						</div>
+
+
+
 
 			<div class="col-md-12">
-				<table class="table table-striped table-bordered">
-
-					<thead>
+				<table id="tblUsuario" class="table table-striped table-bordered"
+					cellspacing="0" width="100%">
+					
+						<thead>
 						<tr>
-							<th style="width:50px">Id</th>
-							<th style="width:300px">Nombre</th>
-							<th style="width:200px">Tipo</th>
-							<th style="width:250px">Pago</th>			
-							
+							<th >Centro Formación</th>
+							<th>Tipo</th>
+							<th >Porcentaje</th>
+							<th >N° Ideas</th>
+							<th >Pago</th>
+
 						</tr>
 					</thead>
 					<tbody>
 
-                        <%@page import="java.util.*,starsoft.modelo.CentroFormacion" %>
-                        <%
-                        
-                        	ArrayList<CentroFormacion> Centros=(ArrayList<CentroFormacion>) request.getAttribute("Centros");
-                        	if (Centros!=null){
-                        		for(CentroFormacion c: Centros){
-                        			out.println("<td> "  + c.getId_CentroFormacion() +  "  </td>");
-                        			out.println("<td> "  + c.getNom_CentroFormacion() +  "  </td>");
-                        			out.println("<td> "  + c.getDs_TipoCentroFormacion() +  "  </td>");
-                        			out.println("<td> "  + c.getSs_Pago() + "  </td>");
-                        			out.println("</tr>");
-                        		}
-                        	}
-             	
-                        %>
+						<%@page import="java.util.*,starsoft.modelo.CentroFormacion"%>
+						<%
+							ArrayList<CentroFormacionCobranza> Centros = (ArrayList<CentroFormacionCobranza>) request
+									.getAttribute("Centros");
+							if (Centros != null) {
+								for (CentroFormacionCobranza c : Centros) {
+									out.println("<td> " + c.getCentro_formacion() + "  </td>");
+									out.println("<td> " + c.getTipo() + "  </td>");
+									out.println("<td> " + c.getMonto()					+ "  </td>");
+									out.println("<td> " + c.getNro_Ideas() + "  </td>");
+									out.println("<td> " + c.getPago() + "  </td>");
+									out.println("</tr>");
+								}
+							}
+						%>
+					
+				</table>
+			</div>
 
-                </table>
-            </div>
+		</div>
+		<br>
 
-        </div>
-        	<br>
-        	
- 
-                    <input type="submit" value="Listar" />
-         			</form>
-        <footer>
-            <p>&copy; Company 2014</p>
-        </footer>
 
-    </div>
-    <!-- /container -->
+
+		</form>
+
+		<footer>
+			<%@ include file="PiePagina.jsp"%>
+		</footer>
+
+	</div>
+	<!-- /container -->
 
 </body>
+
+
+
+
 </html>
-					
-    
-    
-    
-    
+
+
+
+
+
