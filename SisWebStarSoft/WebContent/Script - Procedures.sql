@@ -88,6 +88,22 @@ CREATE PROCEDURE SP_EliminarCentroInformacion
 	where id_Centro_Informacion=pi_id_Centro_Informacion ;
     
 /*----------- Victor ------------*/
+CREATE PROCEDURE SP_ListarIdeaMiembro
+(
+	pi_id_Idea INT
+)
+	SELECT 
+		USU.nombre_Usuario,
+		USU.paterno_Usuario,
+		USU.materno_Usuario,
+		PAR.descripcion_Parametro AS nombreTipoUsuario
+	FROM permiso PER
+	INNER JOIN usuario USU
+	ON PER.id_Usuario = USU.id_Usuario
+	INNER JOIN parametro PAR
+	ON PAR.id_Parametro = USU.id_Tipo_Usuario
+	WHERE PER.id_Idea = pi_id_Idea;
+	
 CREATE PROCEDURE SP_ValidarUsuario
 (
 	pi_correo_Usuario VARCHAR(100),
