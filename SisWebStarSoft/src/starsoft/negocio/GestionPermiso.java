@@ -18,4 +18,19 @@ public class GestionPermiso {
 		PermisoDAO dao = new PermisoDAO();
 		return dao.ActualizarVotacionPermiso(obj);
 	}
+	public Boolean insertar(String id_Usuario, int id_Idea)
+			throws DAOExcepcion, LoginExcepcion {
+		PermisoDAO dao = new PermisoDAO();
+		return dao.insertar(Integer.parseInt(id_Usuario), id_Idea);
+	}
+	public int quitarTodo(int id_Idea)
+			throws DAOExcepcion, LoginExcepcion {
+		PermisoDAO dao = new PermisoDAO();
+		return dao.quitarTodo(id_Idea);
+	}
+	public Collection<Permiso> listarPermisoPorIdea(int id_Idea)
+			throws DAOExcepcion, LoginExcepcion {
+		PermisoDAO dao = new PermisoDAO();
+		return dao.listarPermisoPorIdea(id_Idea);
+	}
 }

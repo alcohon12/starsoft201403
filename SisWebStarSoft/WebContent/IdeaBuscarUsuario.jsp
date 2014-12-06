@@ -1,31 +1,10 @@
-<%@ page import="java.util.ArrayList,starsoft.modelo.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="java.util.*,starsoft.modelo.*,java.text.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-	<meta charset="utf-8">	
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Victor Marino">
-	<meta name="keywords" content="Victor Marino">
-    <meta name="author" content="Victor Marino">
-	
-    <title>Sistema de gestión de la innovación</title>
-	
-	<script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap-3.2.0.js"></script>
-    <script src="js/Utils.js"></script>
-    <script src="js/UsuarioBuscar.js"></script>
-
-	<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-	<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-	<link href="css/offcanvas.css" rel="stylesheet">	
-	<link href="css/datepicker.css" rel="stylesheet">
-	
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+	<%@ include file="CabeceraPagina.jsp" %>
+    <script src="js/IdeaPublicar.js"></script>
 </head>
 <body>
 		<div class="row">
@@ -66,7 +45,7 @@
 								{
 									out.println("<tr>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
-									out.println("<img src='img/Iconos/EditFile.png' onclick=\"parent.document.getElementById(\\'txtusuarios\\').innerHTML = parent.document.getElementById(\\'txtusuarios\\').innerHTML + \'<option value=" + item.getId_Usuario() + ">" + item.getNombre_Usuario() + "</option>'\">");
+									out.println("<img src='img/Iconos/EditFile.png' onclick=\"parent.agregarusuario('"+item.getId_Usuario()+"', '"+item.getNombre_Usuario()+"')\"");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getNombre_Usuario());

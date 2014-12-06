@@ -10,9 +10,10 @@ public class Permiso {
 	private Date fecha_creacion;
 	private String descripcion_Idea;
 	private String titulo_Idea;
+	private String nombre_usuario;
 	
 	public String getTitulo_Idea() {
-		return titulo_Idea;
+		return this.titulo_Idea;
 	}
 	public void setTitulo_Idea(String titulo_Idea) {
 		this.titulo_Idea = titulo_Idea;
@@ -52,5 +53,12 @@ public class Permiso {
 	}
 	public void setFecha_creacion(Date fecha_creacion) {
 		this.fecha_creacion = fecha_creacion;
+	}
+
+	public String getNombre_usuario() {
+		return this.nombre_usuario;
+	}
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
 	}
 }
