@@ -20,6 +20,12 @@ public class GestionUsuario {
 		return dao.obtener(campo, filtro);
 	}
 	
+	public Collection<Usuario> obtenerUsuarioIdea(int idIdea)
+			throws DAOExcepcion {
+		UsuarioDAO dao = new UsuarioDAO();
+		return dao.obtenerUsuarioIdea(idIdea);
+	}
+	
 	public Usuario obtener(int idUsuario)
 			throws DAOExcepcion, LoginExcepcion {
 		UsuarioDAO dao = new UsuarioDAO();

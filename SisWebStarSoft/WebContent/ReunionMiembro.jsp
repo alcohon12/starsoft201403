@@ -1,4 +1,4 @@
-<%@ page import="starsoft.modelo.*, java.util.*" language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page import="starsoft.modelo.*, java.util.*, starsoft.negocio.*" language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,7 +19,8 @@
 		
 		int idIdea = Integer.parseInt(request.getParameter("CodigoIdea"));
 		
-		
+		GestionUsuario negocio = new GestionUsuario();
+		lst = negocio.obtenerUsuarioIdea(idIdea);
 	%>
 
 	<div class="modal-body">
@@ -31,16 +32,19 @@
 							Nombres
 						</th>
 						<th style="width:200px">
-							Apelllido Paterno
+							Ape. Paterno
 						</th>
 						<th style="width:200px">
-							Apellido Materno
+							Ape. Materno
+						</th>
+						<th style="width:200px">
+							Tipo Usuario
 						</th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th colspan="3">Registros: 
+						<th colspan="4">Registros: 
 							<% 
 								if(lst != null) 
 									out.println(lst.size()); 
@@ -65,6 +69,9 @@
 								out.println("</td>");
 								out.println("<td>");
 								out.println(item.getMaterno_Usuario());
+								out.println("</td>");
+								out.println("<td>");
+								out.println(item.getNombre_Tipo_Usuario());
 								out.println("</td>");
 								out.println("</tr>");
 							}
