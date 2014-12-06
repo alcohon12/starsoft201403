@@ -63,21 +63,19 @@
 															out.println("<img id='ImgStar1' src='img/Iconos/Star.png' alt='star icon'>");
 														}
 													} else {
-														out.println("Votar : ");
-														out.println("<img id='ImgStar1' class='imgStar' onclick='AgregarVotacion(1);' src='img/Iconos/StarD.png' alt='star icon'>");
-														out.println("<img id='ImgStar2' class='imgStar' onclick='AgregarVotacion(2);' src='img/Iconos/StarD.png' alt='star icon'>");
-														out.println("<img id='ImgStar3' class='imgStar' onclick='AgregarVotacion(3);' src='img/Iconos/StarD.png' alt='star icon'>");
-														out.println("<img id='ImgStar4' class='imgStar' onclick='AgregarVotacion(4);' src='img/Iconos/StarD.png' alt='star icon'>");
-														out.println("<img id='ImgStar5' class='imgStar' onclick='AgregarVotacion(5);' src='img/Iconos/StarD.png' alt='star icon'>");
-														//out.println("<button type='hidden' class='btn btn-primary' id='btnResponder' value='votar' name='accion'>Votar</button>");
+														%>
+													
+													<span class='btn btn-link' >Votar</span>
+													
+													    <%
+																		out.println("<img id='ImgStar1' class='imgStar' onclick='AgregarVotacion(1);' src='img/Iconos/StarD.png' alt='star icon'>");
+																		out.println("<img id='ImgStar2' class='imgStar' onclick='AgregarVotacion(2);' src='img/Iconos/StarD.png' alt='star icon'>");
+																		out.println("<img id='ImgStar3' class='imgStar' onclick='AgregarVotacion(3);' src='img/Iconos/StarD.png' alt='star icon'>");
+																		out.println("<img id='ImgStar4' class='imgStar' onclick='AgregarVotacion(4);' src='img/Iconos/StarD.png' alt='star icon'>");
+																		out.println("<img id='ImgStar5' class='imgStar' onclick='AgregarVotacion(5);' src='img/Iconos/StarD.png' alt='star icon'>");
+													     
 													}
 							%>
-							<!-- Votar :
-					  		<img id="ImgStar1" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
-					  		<img id="ImgStar2" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
-					  		<img id="ImgStar3" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
-					  		<img id="ImgStar4" class="imgStar" src="img/Iconos/StarD.png" alt="star icon">
-					  		<img id="ImgStar5" class="imgStar" src="img/Iconos/StarD.png" alt="star icon"> -->
 						</div>
 						<br>
 						<%
@@ -102,12 +100,12 @@
 											for (Discusion item : lstDiscusion) {
 												if(item.getId_DiscusionPadre() == 0){
 												
-												out.println("<div class='media'>");
+												out.println("<div class='media' style='margin-top:10px;'>");
 												out.println("    <a class='pull-left' href='#'>");
 												out.println("      <img class='media-object' src='img/Photo/" + item.getId_Usuario() + ".jpg' alt='...' style='width: 64px; height: 64px;'/>");
 												out.println("    </a>");
 												out.println("    <div class='media-body'>");
-												out.println("		<div class='panel panel-primary'>");
+												out.println("		<div class='panel panel-primary' style='margin-bottom:10px;'>");
 												out.println("			<div class='panel-heading'>");
 												out.println("				<h3 class='panel-title' style='font-size: 12px;'>Publicado por "
 																			+ item.getUsuario_Comentario()
@@ -117,7 +115,7 @@
 												out.println("			<div class='panel-body'>");
 												out.println(				item.getComentario());
 												out.println("			</div>");
-												out.println("<div class='panel-footer'>");
+												out.println("<div class='panel-footer' style ='padding: 5px 10px;'>");
 												int con = 0;
 												
 												for (Discusion it : lstDiscusion) {
@@ -133,16 +131,16 @@
 												<%
 												out.println("		</div>");
 													//SEGUNDO PLANO
-													out.println("<div id='target" + item.getId_Discusion() + "' style='display: none;'>");
+													out.println("<div >");
 													//LISTA DE LAS RESPUESTAS
 													for (Discusion it : lstDiscusion) {
 														if(it.getId_DiscusionPadre() == item.getId_Discusion()){
-															out.println("<div class='media'>");
+															out.println("<div class='media' style='margin-top:10px;'>");
 															out.println("    <a class='pull-left' href='#'>");
 															out.println("      <img class='media-object' src='img/Photo/" + it.getId_Usuario() + ".jpg' alt='...' style='width: 32px; height: 32px;'/>");
 															out.println("    </a>");
 															out.println("    <div class='media-body'>");
-															out.println("		<div class='panel panel-info'>");
+															out.println("		<div class='panel panel-info' style='margin-bottom:10px;'>");
 															out.println("			<div class='panel-heading'>");
 															out.println("				<h3 class='panel-title' style='font-size: 12px;'>Publicado por "
 																						+ it.getUsuario_Comentario()
@@ -159,7 +157,7 @@
 													}
 													//***************************FIn LISTA
 													//ESCrIBIR RESPUESTA
-													out.println("<div class='media' >");
+													out.println("<div id='target" + item.getId_Discusion() + "' style='display: none;' class='media' style='margin-top:10px;'>");
 													out.println("  <a class='pull-left' href='#'>");
 													out.println("    	<img class='media-object' src='img/Photo/" + item.getId_Usuario() + ".jpg' alt='...' style='width: 32px; height: 32px;'/>");
 													out.println("  </a>");
@@ -182,11 +180,10 @@
 												}
 											}
 											%>
-						<div class='media'>
+						<div class='media' style='margin-top:10px;'>
 							<a class='pull-left' href='#'> <img class='media-object'
 								src='img/Photo/<%  out.println(vo.getId_Usuario());%>.jpg' alt='...'
 								style='width: 64px; height: 64px;'>
-
 							</a>
 							<div class='media-body'>
 								<div class="controls">
@@ -205,7 +202,26 @@
 				</form>
 			</div>
 		</div>
-
+		<div class="modal-footer">
+			<% 
+				String mensaje = (String) request.getAttribute("MENSAJE");
+				if(mensaje != null)
+				{
+					if(!mensaje.equals(""))
+					{
+						out.println("<div style='color:red'>");
+						out.println(mensaje);
+						out.println("</div>");
+					}
+					else
+					{
+						out.println("<script>");
+						out.println("parent.$('#myModal').modal('hide');");
+						out.println("</script>");
+					}
+				}
+			%>
+		</div>
 		<footer>
 			<%@ include file="PiePagina.jsp"%>
 		</footer>
