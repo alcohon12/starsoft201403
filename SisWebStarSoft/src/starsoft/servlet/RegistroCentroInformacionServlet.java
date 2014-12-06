@@ -17,7 +17,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import starsoft.excepcion.DAOExcepcion;
+import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.CentroFormacion;
+import starsoft.modelo.Respuesta;
 import starsoft.negocio.GestionCentroFormacion;
 
 /**
@@ -27,7 +29,7 @@ import starsoft.negocio.GestionCentroFormacion;
 @MultipartConfig
 public class RegistroCentroInformacionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final String UPLOAD_DIR_LOCAL = "C:/uploads";
+	private final String UPLOAD_DIR_LOCAL = "D:/Vicente/CURSOS/UPC/4 CICLO/Desarrollo Web/Desarrollo Web/PROYECTOS/SisWebStarSoft/WebContent/img/uploads";
 	private static final String UPLOAD_DIR = "uploads";
 
 	/**
@@ -81,7 +83,7 @@ public class RegistroCentroInformacionServlet extends HttpServlet {
 		Double monto_Pago = Double.parseDouble(request
 				.getParameter("monto_Pago"));
 
-		String applicationPath = request.getServletContext().getRealPath("");
+		String applicationPath = request.getServletContext().getRealPath("/");
 		// constructs path of the directory to save uploaded file
 		String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
 		String Archivo = "";
@@ -90,40 +92,53 @@ public class RegistroCentroInformacionServlet extends HttpServlet {
 			fileSaveDir.mkdirs();
 		}
 
-
-
 		GestionCentroFormacion negocio = new GestionCentroFormacion();
 
 		try {
 			CentroFormacion vo = new CentroFormacion();
+			Respuesta beRespuesta = new Respuesta();
 			vo.setId_CentroFormacion(id_Centro_Informacion);
 			vo.setNom_CentroFormacion(nombre_Centro_Informacion);
 			vo.setId_TipoCentroFormacion(id_Tipo_Centro);
 			vo.setUrl_CentroFormacion(url_Centro_Informacion);
 			vo.setSs_Pago(monto_Pago);
 
-			if (id_Centro_Informacion == 0)
-				negocio.insertar(vo);
-			else
-				negocio.actualizar(vo);
+			if (id_Centro_Informacion == 0) {
+				beRespuesta = negocio.insertar(vo);
+				
+			} else {
 
-			String fileName = null;
-			// Get all the parts from request and write it to the file on server
-			for (Part part : request.getParts()) {
-				fileName = getFileName(part);
-				if (fileName != "") {
-					Archivo = new File(fileName).getName();
-					part.write(uploadFilePath + File.separator + Archivo);
-					File f = new File(uploadFilePath + File.separator + Archivo);
-					f.renameTo(new File(UPLOAD_DIR_LOCAL + File.separator + Archivo));
-				}
+				beRespuesta=negocio.actualizar(vo);
 			}
-			
-			
-			request.setAttribute("MENSAJE", "");
+
+			if (!beRespuesta.getExisteError()) {
+				
+				id_Centro_Informacion = (int) beRespuesta.getData();
+				
+				String fileName = null;
+
+				for (Part part : request.getParts()) {
+					fileName = getFileName(part);
+					if (fileName != "") {
+						Archivo = new File(fileName).getName();
+						part.write(uploadFilePath + File.separator + Archivo);
+						
+						File f = new File(uploadFilePath + File.separator
+								+ Archivo);
+						f.renameTo(new File(applicationPath + "/uploads" + File.separator
+								+ id_Centro_Informacion + ".jpg"));
+					}
+				}
+
+			}
+
+			request.setAttribute("MENSAJE", beRespuesta.getMensajeError());
+
 		} catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE",
+			request.setAttribute("MENSAJE--2",
 					"Hubo un error al procesar la operación: " + e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("Excepció llençada " + e.getMessage());
 		}
 
 		RequestDispatcher rd = request

@@ -2,6 +2,7 @@ package starsoft.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import starsoft.modelo.CentroFormacion;
-import starsoft.modelo.Idea;
+import starsoft.excepcion.DAOExcepcion;
+import starsoft.modelo.CentroFormacionCobranza;
+import starsoft.negocio.GestionCentroFormacionCobranza;
 
 /**
  * Servlet implementation class ListarCentroPorCobranzaServlet
@@ -41,25 +43,22 @@ public class ListarCentroPorCobranzaServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		int mes = Integer.parseInt(request.getParameter("ddlCampo"));
+		GestionCentroFormacionCobranza negocio=new GestionCentroFormacionCobranza();
+	
 		
-		ArrayList<CentroFormacion> Centros=new ArrayList<CentroFormacion>();
-		CentroFormacion Centro=null;
-		ArrayList<CentroFormacion> CentrosP = new ArrayList<CentroFormacion>();
 		
+		Collection<CentroFormacionCobranza> Centros = new ArrayList<CentroFormacionCobranza>();
+
 		
-		for(int x=1;x<=10;x++){
-			
-			Centro=new CentroFormacion();
-			Centro.setId_CentroFormacion(x);
-			Centro.setNom_CentroFormacion("Centro Formacion Nro " + x);
-			Centro.setSs_Pago(1500/x);
-			if(x%5==0)
-				Centro.setDs_TipoCentroFormacion("Universidad");
-			else
-				Centro.setDs_TipoCentroFormacion("Instituto");
-			Centros.add(Centro);
+		try {
+			Centros = negocio.obetner(mes);
+		} catch (DAOExcepcion e) {
+			request.setAttribute("MENSAJE",
+					"Hubo un error al procesar la operación: " + e.getMessage());
+		} catch (NullPointerException e) {
+			System.out.println("Excepció llençada " + e.getMessage());
 		}
-		
 		
 		request.setAttribute("Centros", Centros);
 		

@@ -21,11 +21,10 @@ import javax.servlet.http.HttpServletResponse;
 import starsoft.excepcion.DAOExcepcion;
 import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Idea;
-import starsoft.modelo.Parametro;
-import starsoft.modelo.Reunion;
-import starsoft.modelo.Usuario;
-import starsoft.negocio.GestionIdea;
-import starsoft.negocio.GestionParametro;
+
+
+import starsoft.negocio.GestionIdeaReporte;;
+
 
 /**
  * Servlet implementation class ListarIdeasServlet
@@ -57,27 +56,55 @@ public class ListarIdeasServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		int campo = Integer.parseInt(request.getParameter("ddlCampo"));
-		String filtro = request.getParameter("txtFiltro");
-		int status = Integer.parseInt(request.getParameter("status"));
-
-		String FechaIni = request.getParameter("txtFechaIni");
+		
+		String FechaIni = request.getParameter("txtFechaIni"); 
 		String FechaFin = request.getParameter("txtFechaFin");
-
+		
+		String str_Estado = (request.getParameter("ddlEstado")); //estado
+		
+		int ddlCampo = Integer.parseInt(request.getParameter("ddlCampo"));
+		String filtro = request.getParameter("txtFiltro"); //filtro por campo 1=titulo,2=descripcion
+	
+		Date dFechaIni = new Date();
+		Date dFechaFin = new Date();
 		Collection<Idea> lst = new ArrayList<Idea>();
+		String titulo="";
+		String descripcion="";
+		GestionIdeaReporte negocio = new GestionIdeaReporte();
+		if(FechaIni.trim().equals("")){
+			FechaIni="01/01/2000";
+			FechaFin="01/01/2020";
+		}
 
-		GestionIdea negocio = new GestionIdea();
+		switch (ddlCampo) {
+		case 1:
+			titulo=filtro;
+			break;
 
+		case 2:
+			descripcion=filtro;
+			break;
+		}
+		
+			
+		
 		try
 		{
-			lst = negocio.listarIdea(FechaIni, FechaFin, status, filtro);
+			
+			DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+			dFechaIni = df.parse(FechaIni);
+			dFechaFin = df.parse(FechaFin);
+			lst = negocio.obtener(dFechaIni, dFechaFin, str_Estado, titulo, descripcion);
 		}
 		catch (DAOExcepcion e) {
 			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
 		} catch (LoginExcepcion e) {			
 			request.setAttribute("MENSAJE", e.getMessage());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} 
-		
+	
 
 		request.setAttribute("LISTADO_IDEAS", lst);
 		RequestDispatcher rd = request.getRequestDispatcher("IdeasListar.jsp");

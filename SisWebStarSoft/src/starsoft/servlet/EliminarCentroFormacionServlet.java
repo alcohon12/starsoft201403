@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import starsoft.excepcion.DAOExcepcion;
+import starsoft.modelo.Respuesta;
 import starsoft.negocio.GestionCentroFormacion;
 
 
@@ -45,10 +46,14 @@ public class EliminarCentroFormacionServlet extends HttpServlet {
 		
 		try
 		{
-			negocio.eliminar(id_Centro_Informacion);
+			Respuesta beRespuesta = new Respuesta();
+			
+			beRespuesta=negocio.eliminar(id_Centro_Informacion);
+			
+			request.setAttribute("MENSAJE", beRespuesta.getMensajeError());
 		}
 		catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: ");
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("PageH06.jsp");
