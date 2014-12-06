@@ -202,26 +202,6 @@
 				</form>
 			</div>
 		</div>
-		<div class="modal-footer">
-			<% 
-				String mensaje = (String) request.getAttribute("MENSAJE");
-				if(mensaje != null)
-				{
-					if(!mensaje.equals(""))
-					{
-						out.println("<div style='color:red'>");
-						out.println(mensaje);
-						out.println("</div>");
-					}
-					else
-					{
-						out.println("<script>");
-						out.println("parent.$('#myModal').modal('hide');");
-						out.println("</script>");
-					}
-				}
-			%>
-		</div>
 		<footer>
 			<%@ include file="PiePagina.jsp"%>
 		</footer>
