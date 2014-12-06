@@ -178,16 +178,14 @@ public class IdeaDAO extends BaseDAO {
 			stmt.setInt(1, idIdea);
 			rs = stmt.executeQuery();
 			if (rs.next()) {
-				vo = new Idea();
 				vo.setId_Idea(rs.getInt("id_Idea"));
-				vo.setTitulo_Idea(rs.getString("id_Calificacion"));
+				vo.setTitulo_Idea(rs.getString("titulo_Idea"));
 				vo.setDescripcion_Idea(rs.getString("descripcion_Idea"));
 				vo.setPalabraClave1(rs.getString("palabrasClave1"));
 				vo.setPalabraClave2(rs.getString("palabrasClave1"));
 				vo.setPalabraClave3(rs.getString("palabrasClave1"));
 				vo.setPalabraClave4(rs.getString("palabrasClave1"));
-				vo.setExtensionArchivoIdea(rs
-						.getString("extensionArchivo_Idea"));
+				vo.setExtensionArchivoIdea(rs.getString("extensionArchivo_Idea"));
 				vo.setId_Estado(rs.getInt("id_Estado"));
 				vo.setId_Alumno(rs.getInt("id_Alumno"));
 				vo.setFecha_creacion(rs.getDate("fecha_creacion"));
