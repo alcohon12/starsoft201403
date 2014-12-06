@@ -286,6 +286,16 @@ CREATE PROCEDURE SP_EliminarReunion
 	DELETE FROM reunion 
 	WHERE id_Reunion = pi_id_Reunion;
 	
+CREATE PROCEDURE SP_ListarIdeaAsesor
+(
+	pi_id_Asesor INT
+)
+	SELECT 
+		IDE.id_Idea,
+        IDE.titulo_Idea
+	FROM idea IDE
+	WHERE IDE.id_Asesor = pi_id_Asesor;
+	
 /*------------FRANK ---------------------------*/
 	
 CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_ListarIdea`(
