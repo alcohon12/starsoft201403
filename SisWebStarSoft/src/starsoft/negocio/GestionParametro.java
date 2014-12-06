@@ -2,6 +2,7 @@ package starsoft.negocio;
 
 import java.util.Collection;
 
+import starsoft.dao.CentroInformacionDAO;
 import starsoft.dao.ParametroDAO;
 import starsoft.excepcion.DAOExcepcion;
 import starsoft.excepcion.LoginExcepcion;
@@ -20,10 +21,9 @@ public class GestionParametro {
 			return dao.listar();
 		}
 	
-	public Collection<Parametro> ListarMnt()
-			throws DAOExcepcion, LoginExcepcion {
+	public int Registrar(Parametro obj)
+			throws DAOExcepcion {
 			ParametroDAO dao = new ParametroDAO();
-			return dao.obtener(1);
+			return dao.RegistrarParametro(obj);
 		}
-	
 }
