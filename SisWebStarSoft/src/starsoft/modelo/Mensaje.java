@@ -8,7 +8,7 @@ public class Mensaje {
 	int idMensaje;
 	int idEstado;
 	String dsEstado;
-	Date feExpiracion ;
+	Date fecha_Expiracion ;
 	String dsMensaje ;
 	
 	
@@ -32,15 +32,15 @@ public class Mensaje {
 	public void setIdEstado(int idEstado) {
 		this.idEstado = idEstado;
 	}
-	public String getFeExpiracionString() {
+	public String getFecha_ExpiracionString() {
 
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-		return df.format(feExpiracion);
+		return df.format(fecha_Expiracion);
 
 	}
 
-	public void setFeExpiracion(Date feExpiracion) {
-		this.feExpiracion = feExpiracion;
+	public void setFeExpiracion(Date fecha_Expiracion) {
+		this.fecha_Expiracion = fecha_Expiracion;
 	}
 	public String getDsMensaje() {
 		return dsMensaje;
