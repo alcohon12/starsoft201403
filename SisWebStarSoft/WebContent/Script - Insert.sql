@@ -21,6 +21,8 @@ INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALU
 INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Rechazada',6,'Idea');
 INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Registrado',6,'Idea');
 
+INSERT INTO parametro (`descripcion_Parametro`, `id_Tabla`, `nombre_Tabla`) VALUES ('Administradores',4,'Tipo Usuario');
+
 INSERT INTO centro_informacion VALUES (1,'Univeridad Peruana de Ciencias',1,'http://www.upc.edu.pe','jpg',1500,1,CURDATE(),NULL);
 INSERT INTO centro_informacion VALUES (2,'Cibertec',2,'http://www.cibertec.edu.pe','jpg',2500,1,CURDATE(),null);
 INSERT INTO centro_informacion VALUES (3,'Universidad Tecnológica del Perú',1,'http://www.utp.edu.pe','jpg',1500,1,CURDATE(),NULL);
