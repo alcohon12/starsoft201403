@@ -139,6 +139,7 @@
 		{ 
 			%>
 				<div class="alert alert-success" role="alert">
+				<a class="close"  data-dismiss="alert">&times;</a>
 			   		<h4>Se han registrado los datos correctamente.</h4>
 			  	</div>
 		 	<% 
@@ -147,8 +148,9 @@
 		{
 			%>
 				<div class="alert alert-warning" role="alert">
+				<a class="close"  data-dismiss="alert">&times;</a>
 			   		<h4>Hubieron errores al registrar los datos.</h4>
-			  	</div>		
+			  	</div>	
 			<%
 		}
 	}
