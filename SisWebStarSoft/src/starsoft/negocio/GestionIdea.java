@@ -13,6 +13,12 @@ public class GestionIdea {
 		IdeaDAO dao = new IdeaDAO();
 		return dao.listarIdea();
 	}
+	
+	public Collection<Idea> listarIdea(int idAsesor)
+			throws DAOExcepcion {
+		IdeaDAO dao = new IdeaDAO();
+		return dao.listarIdea(idAsesor);
+	}
 
 	public Boolean insertar(Idea vo)
 			throws DAOExcepcion {
