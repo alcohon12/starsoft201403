@@ -12,6 +12,10 @@
 	}
 %>
 
+<form method="post" action="CerrarSesionServlet">
+	<button type="submit" id="btnCerrarSesion" style="display:none">Buscar</button>
+</form>
+
 <div class="navbar navbar-fixed-top navbar-default" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -117,7 +121,7 @@
 			<% 
         		}
         	%>
-			<li><a href="CerrarSesion.jsp">Cerrar Sesión</a></li>
+			<li><a onclick="return fncUtil_CerrarSesion();" href="#">Cerrar Sesión</a></li>
         </ul>
       </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
