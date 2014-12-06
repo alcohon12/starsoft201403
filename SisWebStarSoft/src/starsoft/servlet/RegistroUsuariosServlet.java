@@ -75,10 +75,12 @@ public class RegistroUsuariosServlet extends HttpServlet {
 			else
 				negocio.actualizar(obj);
 			
-			request.setAttribute("MENSAJE", "");
+			request.setAttribute("MENSAJE_CONFIRMACION", 1);
+			//request.setAttribute("MENSAJE", "");
 		}
 		catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
+			//request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("UsuarioRegistro.jsp?CodigoUsuario=" + id_Usuario);

@@ -62,7 +62,7 @@ function EliminarRegistro(pCodigoReunion)
 
 function VerMiembros(pCodigoIdea)
 {
-	$("#myModalLabel").html("Usuario Miembros");
+	$("#myModalLabel").html("Usuarios Miembros");
 	
 	$("#frmRegistro").attr("src", "");
 	

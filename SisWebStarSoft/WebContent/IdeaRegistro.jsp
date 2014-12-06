@@ -11,11 +11,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-			<% if(request.getAttribute("REGISTRO_IDEA")==null) {} else { %>
-				<div class="alert alert-success" role="alert">
-			    <h4><%= request.getAttribute("REGISTRO_IDEA") %></h4>
-			   </div>
-			  <% } %>
 				<form class="form-horizontal well" role="form" method="post" action="RegistroIdeaServlet" enctype="multipart/form-data">
 					<fieldset>
 				  		<legend>Registro de ideas:</legend>

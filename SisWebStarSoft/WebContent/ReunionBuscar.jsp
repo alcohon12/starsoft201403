@@ -8,6 +8,14 @@
 </head>
 <body>
     <%@ include file="MenuPagina.jsp" %>
+    
+    <form method="post" action="RefrescarReunionServlet">
+		<div style="display:none">
+			<input type="text" id="txtResultado" name="txtResultado">
+			<input type="submit" id="btnRefrescar">
+		</div>
+	</form>
+    
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">

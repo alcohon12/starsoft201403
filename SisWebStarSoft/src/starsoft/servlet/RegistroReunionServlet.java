@@ -73,12 +73,15 @@ public class RegistroReunionServlet extends HttpServlet {
 			else
 				negocio.actualizar(obj);
 			
-			request.setAttribute("MENSAJE", "");
+			request.setAttribute("MENSAJE_CONFIRMACION", 1);
+			//request.setAttribute("MENSAJE", "");
 		}
 		catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
+			//request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());
 		} catch (ParseException e) {
-			e.printStackTrace();
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
+			//e.printStackTrace();
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("ReunionRegistro.jsp?CodigoReunion=" + id_Reunion);
