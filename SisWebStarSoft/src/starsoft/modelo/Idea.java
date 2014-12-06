@@ -26,6 +26,18 @@ public class Idea {
 	
 	private String fecha_creacion_String;
 	
+	private String estudiante;
+	
+	
+	
+
+	public String getEstudiante() {
+		return estudiante;
+	}
+
+	public void setEstudiante(String estudiante) {
+		this.estudiante = estudiante;
+	}
 
 	public String getFecha_creacion_String() {
 	
