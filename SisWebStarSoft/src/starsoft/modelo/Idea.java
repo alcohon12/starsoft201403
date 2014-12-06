@@ -1,9 +1,11 @@
 package starsoft.modelo;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import java.text.*;
 public class Idea {
 	private int id_Idea;
 	private String titulo_Idea;
@@ -21,6 +23,15 @@ public class Idea {
 	private Date fecha_modificacion;
 	private Date fecha_aprobacion;
 	private int id_Asesor;
+	
+	private String fecha_creacion_String;
+	
+
+	public String getFecha_creacion_String() {
+	
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		return df.format(fecha_creacion);
+	}
 
 	public int getId_Idea() {
 		return id_Idea;
