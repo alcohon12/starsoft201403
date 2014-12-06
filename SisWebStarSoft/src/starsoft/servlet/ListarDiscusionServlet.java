@@ -53,9 +53,9 @@ public class ListarDiscusionServlet extends HttpServlet {
 		try {
 			lst = negocio.listarDiscusion(Id_IdeaParam);
 		} catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
 		} catch (LoginExcepcion e) {			
-			request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
 		}		
 		
 		request.setAttribute("LISTADO_DISCUSION", lst);

@@ -59,10 +59,11 @@ public class RegistroRespuestaServlet extends HttpServlet {
 			ds.setComentario(ComentarioParam);
 			ds.setId_DiscusionPadre(Integer.parseInt(Padre));
 			negocio.InsertarVotacionDiscusion(ds);
+			request.setAttribute("MENSAJE_CONFIRMACION", 1);
 		} catch (DAOExcepcion e) {
-			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
 		} catch (LoginExcepcion e) {			
-			request.setAttribute("MENSAJE", "Usuario y/o clave incorrectos");
+			request.setAttribute("MENSAJE_CONFIRMACION", 0);
 		}		
 		
 		request.setAttribute("LISTADO_DISCUSION", lst);
