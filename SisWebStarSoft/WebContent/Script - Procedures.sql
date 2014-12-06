@@ -1,16 +1,33 @@
 /*------------- melissa  -----------*/
 
 
-CREATE PROCEDURE SP_CentroFormacion_Pagos
-()
-select x.nombre,x.monto_pago,x.cantidad,x.cantidad * x.monto_pago as "Pago" from (
-select c.nombre_Centro_Informacion as "Nombre",c.monto_Pago,count(*) as "Cantidad"
-from idea a,usuario b, centro_informacion c
-where a.id_Alumno=b.id_Usuario and c.id_Centro_Informacion=b.id_Centro_Informacion
-and MONTH(a.fecha_creacion)=12
-group by c.nombre_Centro_Informacion,c.monto_Pago 
+DELIMITER //
+create procedure sp_Listar_IdeasReporte
+(
 
-) x;
+p_F1 DATETIME,
+p_F2 DATETIME,
+p_idEstado varchar(10),
+p_Titulo varchar(100),
+p_Descripcion varchar(100)
+)
+begin
+IF(p_idEstado='0') THEN
+	SET p_idEstado=NULL;
+END IF;
+ 
+select  a.id_Idea,a.titulo_Idea,a.descripcion_Idea,
+a.palabrasClave1,a.palabrasClave2,a.palabrasClave3,a.palabrasClave4,
+a.fecha_creacion,b.nombre_Usuario
+from idea a, usuario b
+where a.id_Alumno=b.id_Usuario 
+and
+a.fecha_creacion between p_F1 and p_F2
+and a.id_Estado=IFNULL(p_idEstado,id_Estado) and 
+a.titulo_Idea like  CONCAT  ('%',IFNULL(p_Titulo,titulo_Idea),'%') and
+a.descripcion_Idea like  CONCAT  ('%',IFNULL(p_Descripcion,descripcion_Idea),'%');
+END //
+DELIMITER ;
 
 
 
