@@ -3,6 +3,7 @@ package starsoft.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import starsoft.excepcion.DAOExcepcion;
+import starsoft.excepcion.LoginExcepcion;
 import starsoft.modelo.Mensaje;
+import starsoft.negocio.GestionMensaje;
 
 
 /**
@@ -43,7 +47,26 @@ public class MensajesListarServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+		Collection<Mensaje> lst = new ArrayList<Mensaje>();
 
+		GestionMensaje negocio = new GestionMensaje();
+
+		try
+		{
+			lst = negocio.Listar();
+		}
+		catch (DAOExcepcion e) {
+			request.setAttribute("MENSAJE", "Hubo un error al procesar la operación: " + e.getMessage());	
+		} catch (LoginExcepcion e) {			
+			request.setAttribute("MENSAJE", e.getMessage());
+		} 
+		
+		
+		request.setAttribute("LISTADO", lst);
+		RequestDispatcher rd = request.getRequestDispatcher("MensajesListar.jsp");
+		rd.forward(request, response);
+		
+/**		
 		ArrayList<Mensaje> lst = new ArrayList<Mensaje>();
 	
 		
@@ -103,6 +126,7 @@ public class MensajesListarServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("MensajesListar.jsp");
 		rd.forward(request, response);
 		
+**/
 		
 	}
 
