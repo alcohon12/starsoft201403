@@ -11,7 +11,7 @@
 	
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12" style="display: none;">
+			<div class="col-md-12">
 				<form class="form-horizontal well" method="post" action="ParametrosListarServlet">
 					<fieldset>
 				  		<legend>Lista de parametros</legend>
@@ -25,7 +25,7 @@
 			
 			<div class="col-md-12" >
 				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="">Agregar</button>
+					<button type="button" class="btn btn-primary" onclick="AbrirRegistro(0);">Agregar</button>
 				</div>
 			</div>
 			
@@ -79,9 +79,6 @@
 		</div>
 
  
-
-
-    
 
 
 		<form method="post" action="EliminarParametrosServlet">
