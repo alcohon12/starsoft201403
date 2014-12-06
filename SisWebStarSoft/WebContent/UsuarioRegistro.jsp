@@ -192,21 +192,15 @@
       	</div>
 		<div class="modal-footer">
 			<% 
-				String mensaje = (String) request.getAttribute("MENSAJE");
-				if(mensaje != null)
+				if(request.getAttribute("MENSAJE_CONFIRMACION") != null)
 				{
-					if(!mensaje.equals(""))
-					{
-						out.println("<div style='color:red'>");
-						out.println(mensaje);
-						out.println("</div>");
-					}
-					else
-					{
-						out.println("<script>");
-						out.println("parent.$('#myModal').modal('hide');");
-						out.println("</script>");
-					}
+					int resultado = (int)request.getAttribute("MENSAJE_CONFIRMACION");
+					
+					out.println("<script>");
+					out.println("parent.$('#txtResultado').val('" + resultado + "');");
+					out.println("parent.$('#btnRefrescar').click();");
+					//out.println("parent.$('#myModal').modal('hide');");
+					out.println("</script>");
 				}
 			%>
 			<button type="submit" class="btn btn-primary">Registrar</button>

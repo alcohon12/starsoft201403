@@ -138,7 +138,7 @@
 		if((int)request.getAttribute("MENSAJE_CONFIRMACION") == 1)
 		{ 
 			%>
-				<div class="alert alert-success" role="alert">
+				<div id="divOK" class="alert alert-success" role="alert">
 				<a class="close"  data-dismiss="alert">&times;</a>
 			   		<h4>Se han registrado los datos correctamente.</h4>
 			  	</div>
@@ -147,11 +147,23 @@
 		else if((int)request.getAttribute("MENSAJE_CONFIRMACION") == 0)
 		{
 			%>
-				<div class="alert alert-warning" role="alert">
+				<div id="divError" class="alert alert-warning" role="alert">
 				<a class="close"  data-dismiss="alert">&times;</a>
 			   		<h4>Hubieron errores al registrar los datos.</h4>
 			  	</div>	
 			<%
 		}
+		
+		%>
+		<script>
+			function OcultarMensaje()
+			{
+				$("#divOK").fadeOut(1000);
+				$("#divError").fadeOut(1000);
+			}
+			
+			setTimeout("OcultarMensaje();",2000);
+		</script>
+		<%
 	}
  %>

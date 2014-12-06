@@ -1,41 +1,167 @@
-<link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+<%@ page import="starsoft.modelo.*" language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!-- INICIO DEL MENU PRINCIPAL -->
+<% 
+	int idTipoUsuario = 0;
+	HttpSession sessionActual = request.getSession();
+	
+	if(sessionActual != null)
+	{
+		Usuario user = (Usuario)session.getAttribute("USUARIO_ACTUAL");
+		idTipoUsuario = user.getId_Tipo_Usuario(); 
+	}
+%>
 
-<meta charset="utf-8">	
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="StarSoft">
-<meta name="keywords" content="StarSoft">
-<meta name="author" content="StarSoft">
+<form method="post" action="CerrarSesionServlet">
+	<button type="submit" id="btnCerrarSesion" style="display:none">Buscar</button>
+</form>
 
-<title>Sistema de gestión de la innovación</title>
+<div class="navbar navbar-fixed-top navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          	<span class="sr-only">Toggle navigation</span>
+          	<span class="icon-bar"></span>
+          	<span class="icon-bar"></span>
+          	<span class="icon-bar"></span>
+			<span class="icon-bar"></span>			
+        </button>
+        <a class="navbar-brand" href="Principal.jsp">StarSoft</a>
+      </div>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+        	<li class="dropdown">
+        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gestión de Ideas <span class="caret"></span></a>
+        		<ul class="dropdown-menu" role="menu">
+        			<%
+		        		if(idTipoUsuario == 10 || idTipoUsuario == 18)
+		        		{
+		        	%>
+        			<li><a href="IdeaBuscar.jsp">Buscar Ideas</a></li>
+        			<li><a href="IdeasListar.jsp">Listado de Ideas</a></li>
+        			<% 
+		        		}
+		        	%>
+        			<%
+		        		if(idTipoUsuario == 8 || idTipoUsuario == 18)
+		        		{
+		        	%>
+        			<li><a href="IdeaRegistro.jsp">Registro de Ideas</a></li>
+        			<% 
+		        		}
+		        	%>
+		        	<%
+		        		if(idTipoUsuario == 8 || idTipoUsuario == 9 || idTipoUsuario == 18)
+		        		{
+		        	%>
+        			<li class="divider"></li>
+        			<li><a href="InvitacionIdea.jsp">Discusión de Ideas</a></li>
+        			<% 
+		        		}
+		        	%>
+        		</ul>
+        	</li>
+        	<%
+        		if(idTipoUsuario == 9 || idTipoUsuario == 18)
+        		{
+        	%>
+        	<li class="dropdown">
+        		<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registros Varios <span class="caret"></span></a>
+        		<ul class="dropdown-menu" role="menu">
+        			<%
+		        		if(idTipoUsuario == 18)
+		        		{
+		        	%>
+        			<li><a href="PageH06.jsp">Registro de Centro de información</a></li>
+        			<li class="divider"></li>
+        			<li><a href="MensajesListar.jsp">Registro de Mensajes</a></li>
+        			<% 
+		        		}
+		        	%>
+					<%
+		        		if(idTipoUsuario == 9 || idTipoUsuario == 18)
+		        		{
+		        	%>
+					<li class="divider"></li>
+					<li><a href="ReunionBuscar.jsp">Registro de Reuniones</a></li>
+					<% 
+		        		}
+		        	%>
+        		</ul>
+        	</li>
+        	<% 
+        		}
+        	%>
+        	<%
+        		if(idTipoUsuario == 18)
+        		{
+        	%>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reportes <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="CentroPorCobranzaListar.jsp">Reporte Listado de Cobranzas</a></li>
+				</ul>
+			</li>
+			<% 
+        		}
+        	%>
+			<%
+        		if(idTipoUsuario == 18)
+        		{
+        	%>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Administración <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">
+					
+					<li><a href="UsuarioBuscar.jsp">Registro de Usuarios</a></li>
+					<li class="divider"></li>
+					<li><a href="ParametrosListar.jsp">Registro de Parámetros</a></li>
+				</ul>
+			</li>
+			<% 
+        		}
+        	%>
+			<li><a onclick="return fncUtil_CerrarSesion();" href="#">Cerrar Sesión</a></li>
+        </ul>
+      </div><!-- /.nav-collapse -->
+    </div><!-- /.container -->
+  </div><!-- /.navbar -->
+<!-- FIN DEL MENU PRINCIPAL -->
 
-<script src="js/jquery-1.11.1.min.js"></script>
+<div class="container">
+	<h4>Bienvenido(a) <b>${sessionScope.USUARIO_ACTUAL.getNombreCompleto_Usuario() }</b></h4>
+</div>
 
-<script src="js/bootstrap-3.2.0.js"></script>
-<script src="js/bootstrap-datepicker.js"></script>
-<script src="js/locales/bootstrap-datepicker.es.js"></script>
-<script src="js/bootstrap-select.js"></script>
-<script src="js/Utils.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.js"></script>
-<script src="js/bootbox.min.js"></script>
-
-<link href="css/bootstrap-3.2.0.css" rel="stylesheet">	
-<link href="css/bootstrap-theme-3.2.0.css" rel="stylesheet">
-<link href="css/bootstrap-select.css" rel="stylesheet">
-<link href="css/offcanvas.css" rel="stylesheet">	
-<link href="css/datepicker.css" rel="stylesheet">
-<link href="css/dataTables.bootstrap.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-<![endif]-->
-<style>
-body{
-/*background-image: url("img/body-java.png") ;
-background-repeat: no-repeat;
-background-position: center;*/
-}
-
-</style>
+	<% 
+	if(request.getAttribute("MENSAJE_CONFIRMACION") != null)
+	{
+		if((int)request.getAttribute("MENSAJE_CONFIRMACION") == 1)
+		{ 
+			%>
+				<div id="divOK" class="alert alert-success" role="alert">
+			   		<h4>Se han registrado los datos correctamente.</h4>
+			  	</div>
+		 	<% 
+ 		}
+		else if((int)request.getAttribute("MENSAJE_CONFIRMACION") == 0)
+		{
+			%>
+				<div id="divError" class="alert alert-warning" role="alert">
+			   		<h4>Hubieron errores al registrar los datos.</h4>
+			  	</div>		
+			<%
+		}
+		
+		%>
+		<script>
+			function OcultarMensaje()
+			{
+				$("#divOK").fadeOut(1000);
+				$("#divError").fadeOut(1000);
+			}
+			
+			setTimeout("OcultarMensaje();",2000);
+		</script>
+		<%
+	}
+ %>

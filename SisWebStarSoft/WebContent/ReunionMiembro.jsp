@@ -32,10 +32,10 @@
 							Nombres
 						</th>
 						<th style="width:200px">
-							Ape. Paterno
+							Ap. Paterno
 						</th>
 						<th style="width:200px">
-							Ape. Materno
+							Ap. Materno
 						</th>
 						<th style="width:200px">
 							Tipo Usuario
