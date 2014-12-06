@@ -82,6 +82,39 @@ public class UsuarioDAO extends BaseDAO {
 		return lst;
 	}
 	
+	public Collection<Usuario> obtenerUsuarioIdea(int idIdea)
+			throws DAOExcepcion {
+		Collection<Usuario> lst = new ArrayList<Usuario>();
+		Connection con = null;
+		CallableStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			String query = "CALL SP_ListarIdeaMiembro(?);";
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareCall(query);
+			stmt.setInt(1, idIdea);
+			
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				Usuario vo = new Usuario();
+				vo.setNombre_Usuario(rs.getString("nombre_Usuario"));
+				vo.setPaterno_Usuario(rs.getString("paterno_Usuario"));
+				vo.setMaterno_Usuario(rs.getString("materno_Usuario"));
+				vo.setNombre_Tipo_Usuario(rs.getString("nombreTipoUsuario"));
+				
+				lst.add(vo);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarResultSet(rs);
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return lst;
+	}
+	
 	public Usuario obtener(int idUsuario)
 			throws DAOExcepcion, LoginExcepcion {
 		Usuario vo = new Usuario();
