@@ -10,7 +10,7 @@ where a.id_Alumno=b.id_Usuario and c.id_Centro_Informacion=b.id_Centro_Informaci
 and MONTH(a.fecha_creacion)=12
 group by c.nombre_Centro_Informacion,c.monto_Pago 
 
-) x 
+) x;
 
 
 
