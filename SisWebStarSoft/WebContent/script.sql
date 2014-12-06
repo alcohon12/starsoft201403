@@ -16,7 +16,7 @@ USE `StarSoft` ;
 -- Table `StarSoft`.`Parametro`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `StarSoft`.`Parametro` (
-  `id_Parametro` INT NOT NULL,
+  `id_Parametro` INT NOT NULL AUTO_INCREMENT,
   `descripcion_Parametro` VARCHAR(100) NOT NULL,
   `id_Tabla` INT NOT NULL,
   `nombre_Tabla` VARCHAR(100) NOT NULL,
