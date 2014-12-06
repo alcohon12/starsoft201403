@@ -40,6 +40,8 @@ function KeyPress(){
 
 function AbrirRegistro(pCodigoReunion)
 {
+	$("#myModalLabel").html("Registro de reuniones");
+	
 	$("#frmRegistro").attr("src", "");
 	
 	$("#frmRegistro").attr("src", "ReunionRegistro.jsp?CodigoReunion=" + pCodigoReunion);
@@ -56,4 +58,15 @@ function EliminarRegistro(pCodigoReunion)
 		  $("#btnEliminar").click();
 	  }
 	}); 
+}
+
+function VerMiembros(pCodigoIdea)
+{
+	$("#myModalLabel").html("Usuario Miembros");
+	
+	$("#frmRegistro").attr("src", "");
+	
+	$("#frmRegistro").attr("src", "ReunionMiembro.jsp?CodigoIdea=" + pCodigoIdea);
+	
+	$("#myModal").modal("show");
 }

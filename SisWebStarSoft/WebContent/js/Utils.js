@@ -9,7 +9,7 @@ function fncUtil_Enter(txt, foco) {
 
 function fncUtil_CerrarSesion()
 {
-	bootbox.confirm("Esta seguro de cerrar la sesión?", function(result) {
+	bootbox.confirm("Esta seguro de cerrar la sesi&oacute;n?", function(result) {
 	  if(result)
 	  {
 		  $("#btnCerrarSesion").click();

@@ -62,6 +62,7 @@
 						<tr>
 							<th style="width:50px">Editar</th>
 							<th style="width:50px">Eliminar</th>
+							<th style="width:50px">Miembros</th>
 							<th style="width:200px">Idea</th>
 							<th style="width:400px">Observaciones</th>
 							<th style="width:150px">Calificación</th>
@@ -93,6 +94,9 @@
 									out.println("</td>");
 									out.println("<td style='text-align:center;cursor:pointer'>");
 									out.println("<img src='img/Iconos/Delete.png' onclick='EliminarRegistro(" + item.getId_Reunion() + ")'>");
+									out.println("</td>");
+									out.println("<td style='text-align:center;cursor:pointer'>");
+									out.println("<img src='img/Iconos/view.png' onclick='VerMiembros(" + item.getId_Idea() + ")'>");
 									out.println("</td>");
 									out.println("<td>");
 									out.println(item.getTitulo_Idea());

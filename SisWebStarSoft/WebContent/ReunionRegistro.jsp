@@ -15,6 +15,10 @@
 			int id_Calificacion = 0;
 			String fecha = "";
 			String selected = "";
+
+			HttpSession sessionActual = request.getSession(true);
+			Usuario user = (Usuario)session.getAttribute("USUARIO_ACTUAL");
+			int id_Asesor = user.getId_Usuario();
 			
 			if(idReunion != 0)
 			{
@@ -42,7 +46,7 @@
 								<select id="ddlIdea" name="ddlIdea" class="selectpicker" data-style="btn-primary" style="display:none" required>
 									<% 
 										GestionIdea negIdea = new GestionIdea();
-										Collection<Idea> lstIdea = negIdea.listarIdea();
+										Collection<Idea> lstIdea = negIdea.listarIdea(id_Asesor);
 										
 										for(Idea item : lstIdea)
 										{

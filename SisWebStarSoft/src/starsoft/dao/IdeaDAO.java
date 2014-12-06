@@ -49,6 +49,36 @@ public class IdeaDAO extends BaseDAO {
 		}
 		return lst;
 	}
+	
+	public Collection<Idea> listarIdea(int idAsesor) throws DAOExcepcion {
+		Collection<Idea> lst = new ArrayList<Idea>();
+		Connection con = null;
+		CallableStatement stmt = null;
+		ResultSet rs = null;
+		try {
+			String query = "CALL SP_ListarIdeaAsesor(?);";
+			con = ConexionBD.obtenerConexion();
+			stmt = con.prepareCall(query);
+			
+			stmt.setInt(1, idAsesor);
+			
+			rs = stmt.executeQuery();
+			while (rs.next()) {
+				Idea vo = new Idea();
+				vo.setId_Idea(rs.getInt("id_Idea"));
+				vo.setTitulo_Idea(rs.getString("titulo_Idea"));
+				lst.add(vo);
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+			throw new DAOExcepcion(e.getMessage());
+		} finally {
+			this.cerrarResultSet(rs);
+			this.cerrarStatement(stmt);
+			this.cerrarConexion(con);
+		}
+		return lst;
+	}
 
 	public Boolean insertar(Idea vo) throws DAOExcepcion {
 		String query = "INSERT INTO idea(titulo_Idea, descripcion_Idea, palabrasClave1, palabrasClave2, palabrasClave3, palabrasClave4,"
