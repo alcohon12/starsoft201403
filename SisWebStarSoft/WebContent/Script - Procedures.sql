@@ -260,7 +260,34 @@ CREATE PROCEDURE SP_ListarParametro
 		PAR.descripcion_Parametro
 	FROM parametro PAR
 	WHERE PAR.id_Tabla = pi_id_Tabla;
-	
+
+CREATE PROCEDURE SP_RegistroMensaje
+(
+mensaje VARCHAR(500),
+id_estado_Mensaje INT,
+fecha_Expiracion DATETIME
+)
+INSERT INTO mensaje
+		(mensaje, id_estado_Mensaje, fecha_Expiracion, fecha_Creacion)
+	VALUES
+		(mensaje, id_estado_Mensaje, fecha_Expiracion, now())
+
+
+CREATE PROCEDURE SP_RegistroParametro
+(
+	descripcion_Parametro VARCHAR(500),
+	id_Tabla INT,
+	nombre_Tabla VARCHAR(500),
+	fecha_Creacion DATETIME,
+	fecha_Modificacion DATETIME
+)
+INSERT INTO parametro
+		(descripcion_Parametro, id_Tabla, nombre_Tabla, fecha_Creacion, fecha_Modificacion)
+	VALUES
+		(descripcion_Parametro, id_Tabla, nombre_Tabla, fecha_Creacion, now())$$
+DELIMITER ;
+
+		
 CREATE PROCEDURE SP_InsertarReunion
 (
 	pi_id_Idea INT,
